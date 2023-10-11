@@ -14,6 +14,4 @@ public interface ReservationDAOInterface
   ArrayList<ReadCustomerReservationDTO> readCompletedCustomerReservations(int customerId) throws SQLException;
   ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(int foodSellerId) throws SQLException;
   ArrayList<ReadFoodSellerReservationDTO> readCompletedFoodSellerReservations(int foodSellerId) throws SQLException;
-
-
 }
