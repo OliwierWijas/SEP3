@@ -13,7 +13,6 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
 {
   private CustomerDAOInterface dao;
 
-
   @Override public void createCustomer(CreateCustomerRequest request, StreamObserver<CreateCustomerResponse> responseObserver)
   {
     try
