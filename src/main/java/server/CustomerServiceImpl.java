@@ -1,8 +1,6 @@
 package server;
 
-import customer.CreateCustomerRequest;
-import customer.CreateCustomerResponse;
-import customer.CustomerServiceGrpc;
+import customer.*;
 import dao.AccountDAO;
 import dao.CustomerDAOInterface;
 import io.grpc.stub.StreamObserver;
@@ -32,4 +30,16 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
       throw new RuntimeException(e);
     }
   }
+
+  @Override public void updateEmail(UpdateEmailRequest request, StreamObserver<UpdateEmailResponse> responseObserver){
+    try {
+      dao.updateEmail(request.getAccountId(), request.getEmail());
+      UpdateEmailResponse response = UpdateEmailResponse.newBuilder().build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
 }
