@@ -51,6 +51,18 @@ public final class CustomerServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               customer.UpdateEmailResponse.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<customer.UpdatePasswordRequest,
+      customer.UpdatePasswordResponse> METHOD_UPDATE_PASSWORD =
+      io.grpc.MethodDescriptor.<customer.UpdatePasswordRequest, customer.UpdatePasswordResponse>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "customer.CustomerService", "UpdatePassword"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              customer.UpdatePasswordRequest.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              customer.UpdatePasswordResponse.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -93,6 +105,13 @@ public final class CustomerServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_UPDATE_EMAIL, responseObserver);
     }
 
+    /**
+     */
+    public void updatePassword(customer.UpdatePasswordRequest request,
+        io.grpc.stub.StreamObserver<customer.UpdatePasswordResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_UPDATE_PASSWORD, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -109,6 +128,13 @@ public final class CustomerServiceGrpc {
                 customer.UpdateEmailRequest,
                 customer.UpdateEmailResponse>(
                   this, METHODID_UPDATE_EMAIL)))
+          .addMethod(
+            METHOD_UPDATE_PASSWORD,
+            asyncUnaryCall(
+              new MethodHandlers<
+                customer.UpdatePasswordRequest,
+                customer.UpdatePasswordResponse>(
+                  this, METHODID_UPDATE_PASSWORD)))
           .build();
     }
   }
@@ -146,6 +172,14 @@ public final class CustomerServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_UPDATE_EMAIL, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void updatePassword(customer.UpdatePasswordRequest request,
+        io.grpc.stub.StreamObserver<customer.UpdatePasswordResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_UPDATE_PASSWORD, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -178,6 +212,13 @@ public final class CustomerServiceGrpc {
     public customer.UpdateEmailResponse updateEmail(customer.UpdateEmailRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_UPDATE_EMAIL, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public customer.UpdatePasswordResponse updatePassword(customer.UpdatePasswordRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_UPDATE_PASSWORD, getCallOptions(), request);
     }
   }
 
@@ -214,10 +255,19 @@ public final class CustomerServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_UPDATE_EMAIL, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<customer.UpdatePasswordResponse> updatePassword(
+        customer.UpdatePasswordRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_UPDATE_PASSWORD, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_CUSTOMER = 0;
   private static final int METHODID_UPDATE_EMAIL = 1;
+  private static final int METHODID_UPDATE_PASSWORD = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -243,6 +293,10 @@ public final class CustomerServiceGrpc {
         case METHODID_UPDATE_EMAIL:
           serviceImpl.updateEmail((customer.UpdateEmailRequest) request,
               (io.grpc.stub.StreamObserver<customer.UpdateEmailResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_PASSWORD:
+          serviceImpl.updatePassword((customer.UpdatePasswordRequest) request,
+              (io.grpc.stub.StreamObserver<customer.UpdatePasswordResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -279,6 +333,7 @@ public final class CustomerServiceGrpc {
               .setSchemaDescriptor(new CustomerServiceDescriptorSupplier())
               .addMethod(METHOD_CREATE_CUSTOMER)
               .addMethod(METHOD_UPDATE_EMAIL)
+              .addMethod(METHOD_UPDATE_PASSWORD)
               .build();
         }
       }

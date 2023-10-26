@@ -42,4 +42,15 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
     }
   }
 
+  @Override public void updatePassword(UpdatePasswordRequest request, StreamObserver<UpdatePasswordResponse> responseObserver){
+    try{
+      dao.updatePassword(request.getAccountId(), request.getPassword());
+      UpdatePasswordResponse response = UpdatePasswordResponse.newBuilder().build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
 }
