@@ -3,7 +3,6 @@ package server;
 import customer.CreateCustomerRequest;
 import customer.CreateCustomerResponse;
 import customer.CustomerServiceGrpc;
-import dao.AccountDAO;
 import dao.CustomerDAOInterface;
 import io.grpc.stub.StreamObserver;
 
