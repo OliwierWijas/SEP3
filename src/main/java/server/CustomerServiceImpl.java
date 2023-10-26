@@ -3,6 +3,7 @@ package server;
 import customer.CreateCustomerRequest;
 import customer.CreateCustomerResponse;
 import customer.CustomerServiceGrpc;
+import dao.AccountDAO;
 import dao.CustomerDAOInterface;
 import io.grpc.stub.StreamObserver;
 
@@ -11,6 +12,11 @@ import java.sql.SQLException;
 public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImplBase
 {
   private CustomerDAOInterface dao;
+
+  public CustomerServiceImpl() throws SQLException
+  {
+    this.dao = AccountDAO.getInstance();
+  }
 
   @Override public void createCustomer(CreateCustomerRequest request, StreamObserver<CreateCustomerResponse> responseObserver)
   {
