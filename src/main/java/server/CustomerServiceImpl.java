@@ -17,12 +17,12 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
     this.dao = AccountDAO.getInstance();
   }
 
-  @Override public void createCustomer(CreateCustomerRequest request, StreamObserver<EmptyResponse> responseObserver)
+  @Override public void createCustomer(CreateCustomerRequest request, StreamObserver<CustomerEmptyResponse> responseObserver)
   {
     try
     {
       dao.createCustomer(request.getFirstName(), request.getLastName(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
-      EmptyResponse response = EmptyResponse.newBuilder().build();
+      CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
@@ -37,10 +37,10 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
     }
   }
 
-  @Override public void updateEmail(UpdateEmailRequest request, StreamObserver<EmptyResponse> responseObserver){
+  @Override public void updateEmail(UpdateCustomerEmailRequest request, StreamObserver<CustomerEmptyResponse> responseObserver){
     try {
       dao.updateEmail(request.getAccountId(), request.getEmail());
-      EmptyResponse response = EmptyResponse.newBuilder().build();
+      CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     } catch (SQLException e) {
@@ -48,10 +48,10 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
     }
   }
 
-  @Override public void updatePassword(UpdatePasswordRequest request, StreamObserver<EmptyResponse> responseObserver){
+  @Override public void updatePassword(UpdateCustomerPasswordRequest request, StreamObserver<CustomerEmptyResponse> responseObserver){
     try{
       dao.updatePassword(request.getAccountId(), request.getPassword());
-      EmptyResponse response = EmptyResponse.newBuilder().build();
+      CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }catch (SQLException e) {
@@ -59,16 +59,28 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
     }
   }
 
-  @Override public void updatePhoneNumber(UpdatePhoneNumberRequest request, StreamObserver<EmptyResponse> responseObserver)
+  @Override public void updatePhoneNumber(UpdateCustomerPhoneNumberRequest request, StreamObserver<CustomerEmptyResponse> responseObserver)
   {
     try{
       dao.updatePhoneNumber(request.getAccountId(), request.getPhoneNumber());
-      EmptyResponse response = EmptyResponse.newBuilder().build();
+      CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     } catch (SQLException e)
     {
       responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided phone number already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
+    }
+  }
+
+  @Override public void deleteAccount(DeleteCustomerAccountRequest request, StreamObserver<CustomerEmptyResponse> responseObserver)
+  {
+    try{
+      dao.deleteAccount(request.getAccountId());
+      CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }catch (SQLException e) {
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 }

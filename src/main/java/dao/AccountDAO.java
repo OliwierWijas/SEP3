@@ -69,6 +69,30 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
+  @Override public void updateName(int accountId, String name)
+      throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("UPDATE Account SET name = ? WHERE id = ?");
+      statement.setString(1, name);
+      statement.setInt(2, accountId);
+      statement.executeUpdate();
+    }
+  }
+
+  @Override public void updateAddress(int accountId, String address)
+      throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("UPDATE Account SET address = ? WHERE id = ?");
+      statement.setString(1, address);
+      statement.setInt(2, accountId);
+      statement.executeUpdate();
+    }
+  }
+
   @Override public void updateEmail(int accountId, String email)
       throws SQLException
   {

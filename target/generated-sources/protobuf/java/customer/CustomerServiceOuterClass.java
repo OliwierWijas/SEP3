@@ -20,25 +20,30 @@ public final class CustomerServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_customer_CreateCustomerRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_UpdateEmailRequest_descriptor;
+    internal_static_customer_UpdateCustomerEmailRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_UpdateEmailRequest_fieldAccessorTable;
+      internal_static_customer_UpdateCustomerEmailRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_UpdatePasswordRequest_descriptor;
+    internal_static_customer_UpdateCustomerPasswordRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_UpdatePasswordRequest_fieldAccessorTable;
+      internal_static_customer_UpdateCustomerPasswordRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_UpdatePhoneNumberRequest_descriptor;
+    internal_static_customer_UpdateCustomerPhoneNumberRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_UpdatePhoneNumberRequest_fieldAccessorTable;
+      internal_static_customer_UpdateCustomerPhoneNumberRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_EmptyResponse_descriptor;
+    internal_static_customer_DeleteCustomerAccountRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_EmptyResponse_fieldAccessorTable;
+      internal_static_customer_DeleteCustomerAccountRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_customer_CustomerEmptyResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_customer_CustomerEmptyResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -51,21 +56,26 @@ public final class CustomerServiceOuterClass {
       "\n\025CustomerService.proto\022\010customer\"u\n\025Cre" +
       "ateCustomerRequest\022\022\n\nfirst_name\030\001 \001(\t\022\021" +
       "\n\tlast_name\030\002 \001(\t\022\024\n\014phone_number\030\003 \001(\t\022" +
-      "\r\n\005email\030\004 \001(\t\022\020\n\010password\030\005 \001(\t\"6\n\022Upda" +
-      "teEmailRequest\022\021\n\taccountId\030\001 \001(\005\022\r\n\005ema" +
-      "il\030\002 \001(\t\"<\n\025UpdatePasswordRequest\022\021\n\tacc" +
-      "ountId\030\001 \001(\005\022\020\n\010password\030\002 \001(\t\"B\n\030Update" +
-      "PhoneNumberRequest\022\021\n\taccountId\030\001 \001(\005\022\023\n" +
-      "\013phoneNumber\030\002 \001(\t\"\017\n\rEmptyResponse2\301\002\n\017" +
-      "CustomerService\022J\n\016CreateCustomer\022\037.cust",
-      "omer.CreateCustomerRequest\032\027.customer.Em" +
-      "ptyResponse\022D\n\013UpdateEmail\022\034.customer.Up" +
-      "dateEmailRequest\032\027.customer.EmptyRespons" +
-      "e\022J\n\016UpdatePassword\022\037.customer.UpdatePas" +
-      "swordRequest\032\027.customer.EmptyResponse\022P\n" +
-      "\021UpdatePhoneNumber\022\".customer.UpdatePhon" +
-      "eNumberRequest\032\027.customer.EmptyResponseB" +
-      "\002P\001b\006proto3"
+      "\r\n\005email\030\004 \001(\t\022\020\n\010password\030\005 \001(\t\">\n\032Upda" +
+      "teCustomerEmailRequest\022\021\n\taccountId\030\001 \001(" +
+      "\005\022\r\n\005email\030\002 \001(\t\"D\n\035UpdateCustomerPasswo" +
+      "rdRequest\022\021\n\taccountId\030\001 \001(\005\022\020\n\010password" +
+      "\030\002 \001(\t\"J\n UpdateCustomerPhoneNumberReque" +
+      "st\022\021\n\taccountId\030\001 \001(\005\022\023\n\013phoneNumber\030\002 \001" +
+      "(\t\"1\n\034DeleteCustomerAccountRequest\022\021\n\tac",
+      "countId\030\001 \001(\005\"\027\n\025CustomerEmptyResponse2\323" +
+      "\003\n\017CustomerService\022R\n\016CreateCustomer\022\037.c" +
+      "ustomer.CreateCustomerRequest\032\037.customer" +
+      ".CustomerEmptyResponse\022T\n\013UpdateEmail\022$." +
+      "customer.UpdateCustomerEmailRequest\032\037.cu" +
+      "stomer.CustomerEmptyResponse\022Z\n\016UpdatePa" +
+      "ssword\022\'.customer.UpdateCustomerPassword" +
+      "Request\032\037.customer.CustomerEmptyResponse" +
+      "\022`\n\021UpdatePhoneNumber\022*.customer.UpdateC" +
+      "ustomerPhoneNumberRequest\032\037.customer.Cus",
+      "tomerEmptyResponse\022X\n\rDeleteAccount\022&.cu" +
+      "stomer.DeleteCustomerAccountRequest\032\037.cu" +
+      "stomer.CustomerEmptyResponseB\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -85,29 +95,35 @@ public final class CustomerServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_customer_CreateCustomerRequest_descriptor,
         new java.lang.String[] { "FirstName", "LastName", "PhoneNumber", "Email", "Password", });
-    internal_static_customer_UpdateEmailRequest_descriptor =
+    internal_static_customer_UpdateCustomerEmailRequest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_customer_UpdateEmailRequest_fieldAccessorTable = new
+    internal_static_customer_UpdateCustomerEmailRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_UpdateEmailRequest_descriptor,
+        internal_static_customer_UpdateCustomerEmailRequest_descriptor,
         new java.lang.String[] { "AccountId", "Email", });
-    internal_static_customer_UpdatePasswordRequest_descriptor =
+    internal_static_customer_UpdateCustomerPasswordRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_customer_UpdatePasswordRequest_fieldAccessorTable = new
+    internal_static_customer_UpdateCustomerPasswordRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_UpdatePasswordRequest_descriptor,
+        internal_static_customer_UpdateCustomerPasswordRequest_descriptor,
         new java.lang.String[] { "AccountId", "Password", });
-    internal_static_customer_UpdatePhoneNumberRequest_descriptor =
+    internal_static_customer_UpdateCustomerPhoneNumberRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_customer_UpdatePhoneNumberRequest_fieldAccessorTable = new
+    internal_static_customer_UpdateCustomerPhoneNumberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_UpdatePhoneNumberRequest_descriptor,
+        internal_static_customer_UpdateCustomerPhoneNumberRequest_descriptor,
         new java.lang.String[] { "AccountId", "PhoneNumber", });
-    internal_static_customer_EmptyResponse_descriptor =
+    internal_static_customer_DeleteCustomerAccountRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_customer_EmptyResponse_fieldAccessorTable = new
+    internal_static_customer_DeleteCustomerAccountRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_EmptyResponse_descriptor,
+        internal_static_customer_DeleteCustomerAccountRequest_descriptor,
+        new java.lang.String[] { "AccountId", });
+    internal_static_customer_CustomerEmptyResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_customer_CustomerEmptyResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_customer_CustomerEmptyResponse_descriptor,
         new java.lang.String[] { });
   }
 

@@ -29,51 +29,63 @@ public final class CustomerServiceGrpc {
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
   public static final io.grpc.MethodDescriptor<customer.CreateCustomerRequest,
-      customer.EmptyResponse> METHOD_CREATE_CUSTOMER =
-      io.grpc.MethodDescriptor.<customer.CreateCustomerRequest, customer.EmptyResponse>newBuilder()
+      customer.CustomerEmptyResponse> METHOD_CREATE_CUSTOMER =
+      io.grpc.MethodDescriptor.<customer.CreateCustomerRequest, customer.CustomerEmptyResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
               "customer.CustomerService", "CreateCustomer"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               customer.CreateCustomerRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.EmptyResponse.getDefaultInstance()))
+              customer.CustomerEmptyResponse.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<customer.UpdateEmailRequest,
-      customer.EmptyResponse> METHOD_UPDATE_EMAIL =
-      io.grpc.MethodDescriptor.<customer.UpdateEmailRequest, customer.EmptyResponse>newBuilder()
+  public static final io.grpc.MethodDescriptor<customer.UpdateCustomerEmailRequest,
+      customer.CustomerEmptyResponse> METHOD_UPDATE_EMAIL =
+      io.grpc.MethodDescriptor.<customer.UpdateCustomerEmailRequest, customer.CustomerEmptyResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
               "customer.CustomerService", "UpdateEmail"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.UpdateEmailRequest.getDefaultInstance()))
+              customer.UpdateCustomerEmailRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.EmptyResponse.getDefaultInstance()))
+              customer.CustomerEmptyResponse.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<customer.UpdatePasswordRequest,
-      customer.EmptyResponse> METHOD_UPDATE_PASSWORD =
-      io.grpc.MethodDescriptor.<customer.UpdatePasswordRequest, customer.EmptyResponse>newBuilder()
+  public static final io.grpc.MethodDescriptor<customer.UpdateCustomerPasswordRequest,
+      customer.CustomerEmptyResponse> METHOD_UPDATE_PASSWORD =
+      io.grpc.MethodDescriptor.<customer.UpdateCustomerPasswordRequest, customer.CustomerEmptyResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
               "customer.CustomerService", "UpdatePassword"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.UpdatePasswordRequest.getDefaultInstance()))
+              customer.UpdateCustomerPasswordRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.EmptyResponse.getDefaultInstance()))
+              customer.CustomerEmptyResponse.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<customer.UpdatePhoneNumberRequest,
-      customer.EmptyResponse> METHOD_UPDATE_PHONE_NUMBER =
-      io.grpc.MethodDescriptor.<customer.UpdatePhoneNumberRequest, customer.EmptyResponse>newBuilder()
+  public static final io.grpc.MethodDescriptor<customer.UpdateCustomerPhoneNumberRequest,
+      customer.CustomerEmptyResponse> METHOD_UPDATE_PHONE_NUMBER =
+      io.grpc.MethodDescriptor.<customer.UpdateCustomerPhoneNumberRequest, customer.CustomerEmptyResponse>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
               "customer.CustomerService", "UpdatePhoneNumber"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.UpdatePhoneNumberRequest.getDefaultInstance()))
+              customer.UpdateCustomerPhoneNumberRequest.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              customer.EmptyResponse.getDefaultInstance()))
+              customer.CustomerEmptyResponse.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<customer.DeleteCustomerAccountRequest,
+      customer.CustomerEmptyResponse> METHOD_DELETE_ACCOUNT =
+      io.grpc.MethodDescriptor.<customer.DeleteCustomerAccountRequest, customer.CustomerEmptyResponse>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "customer.CustomerService", "DeleteAccount"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              customer.DeleteCustomerAccountRequest.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              customer.CustomerEmptyResponse.getDefaultInstance()))
           .build();
 
   /**
@@ -106,29 +118,36 @@ public final class CustomerServiceGrpc {
     /**
      */
     public void createCustomer(customer.CreateCustomerRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_CREATE_CUSTOMER, responseObserver);
     }
 
     /**
      */
-    public void updateEmail(customer.UpdateEmailRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updateEmail(customer.UpdateCustomerEmailRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_UPDATE_EMAIL, responseObserver);
     }
 
     /**
      */
-    public void updatePassword(customer.UpdatePasswordRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updatePassword(customer.UpdateCustomerPasswordRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_UPDATE_PASSWORD, responseObserver);
     }
 
     /**
      */
-    public void updatePhoneNumber(customer.UpdatePhoneNumberRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updatePhoneNumber(customer.UpdateCustomerPhoneNumberRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_UPDATE_PHONE_NUMBER, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteAccount(customer.DeleteCustomerAccountRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_DELETE_ACCOUNT, responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -138,29 +157,36 @@ public final class CustomerServiceGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 customer.CreateCustomerRequest,
-                customer.EmptyResponse>(
+                customer.CustomerEmptyResponse>(
                   this, METHODID_CREATE_CUSTOMER)))
           .addMethod(
             METHOD_UPDATE_EMAIL,
             asyncUnaryCall(
               new MethodHandlers<
-                customer.UpdateEmailRequest,
-                customer.EmptyResponse>(
+                customer.UpdateCustomerEmailRequest,
+                customer.CustomerEmptyResponse>(
                   this, METHODID_UPDATE_EMAIL)))
           .addMethod(
             METHOD_UPDATE_PASSWORD,
             asyncUnaryCall(
               new MethodHandlers<
-                customer.UpdatePasswordRequest,
-                customer.EmptyResponse>(
+                customer.UpdateCustomerPasswordRequest,
+                customer.CustomerEmptyResponse>(
                   this, METHODID_UPDATE_PASSWORD)))
           .addMethod(
             METHOD_UPDATE_PHONE_NUMBER,
             asyncUnaryCall(
               new MethodHandlers<
-                customer.UpdatePhoneNumberRequest,
-                customer.EmptyResponse>(
+                customer.UpdateCustomerPhoneNumberRequest,
+                customer.CustomerEmptyResponse>(
                   this, METHODID_UPDATE_PHONE_NUMBER)))
+          .addMethod(
+            METHOD_DELETE_ACCOUNT,
+            asyncUnaryCall(
+              new MethodHandlers<
+                customer.DeleteCustomerAccountRequest,
+                customer.CustomerEmptyResponse>(
+                  this, METHODID_DELETE_ACCOUNT)))
           .build();
     }
   }
@@ -186,33 +212,41 @@ public final class CustomerServiceGrpc {
     /**
      */
     public void createCustomer(customer.CreateCustomerRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_CREATE_CUSTOMER, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updateEmail(customer.UpdateEmailRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updateEmail(customer.UpdateCustomerEmailRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_UPDATE_EMAIL, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updatePassword(customer.UpdatePasswordRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updatePassword(customer.UpdateCustomerPasswordRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_UPDATE_PASSWORD, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updatePhoneNumber(customer.UpdatePhoneNumberRequest request,
-        io.grpc.stub.StreamObserver<customer.EmptyResponse> responseObserver) {
+    public void updatePhoneNumber(customer.UpdateCustomerPhoneNumberRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_UPDATE_PHONE_NUMBER, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteAccount(customer.DeleteCustomerAccountRequest request,
+        io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_DELETE_ACCOUNT, getCallOptions()), request, responseObserver);
     }
   }
 
@@ -236,30 +270,37 @@ public final class CustomerServiceGrpc {
 
     /**
      */
-    public customer.EmptyResponse createCustomer(customer.CreateCustomerRequest request) {
+    public customer.CustomerEmptyResponse createCustomer(customer.CreateCustomerRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_CREATE_CUSTOMER, getCallOptions(), request);
     }
 
     /**
      */
-    public customer.EmptyResponse updateEmail(customer.UpdateEmailRequest request) {
+    public customer.CustomerEmptyResponse updateEmail(customer.UpdateCustomerEmailRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_UPDATE_EMAIL, getCallOptions(), request);
     }
 
     /**
      */
-    public customer.EmptyResponse updatePassword(customer.UpdatePasswordRequest request) {
+    public customer.CustomerEmptyResponse updatePassword(customer.UpdateCustomerPasswordRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_UPDATE_PASSWORD, getCallOptions(), request);
     }
 
     /**
      */
-    public customer.EmptyResponse updatePhoneNumber(customer.UpdatePhoneNumberRequest request) {
+    public customer.CustomerEmptyResponse updatePhoneNumber(customer.UpdateCustomerPhoneNumberRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_UPDATE_PHONE_NUMBER, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public customer.CustomerEmptyResponse deleteAccount(customer.DeleteCustomerAccountRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_DELETE_ACCOUNT, getCallOptions(), request);
     }
   }
 
@@ -283,7 +324,7 @@ public final class CustomerServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<customer.EmptyResponse> createCustomer(
+    public com.google.common.util.concurrent.ListenableFuture<customer.CustomerEmptyResponse> createCustomer(
         customer.CreateCustomerRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_CREATE_CUSTOMER, getCallOptions()), request);
@@ -291,26 +332,34 @@ public final class CustomerServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<customer.EmptyResponse> updateEmail(
-        customer.UpdateEmailRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<customer.CustomerEmptyResponse> updateEmail(
+        customer.UpdateCustomerEmailRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_UPDATE_EMAIL, getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<customer.EmptyResponse> updatePassword(
-        customer.UpdatePasswordRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<customer.CustomerEmptyResponse> updatePassword(
+        customer.UpdateCustomerPasswordRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_UPDATE_PASSWORD, getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<customer.EmptyResponse> updatePhoneNumber(
-        customer.UpdatePhoneNumberRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<customer.CustomerEmptyResponse> updatePhoneNumber(
+        customer.UpdateCustomerPhoneNumberRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_UPDATE_PHONE_NUMBER, getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<customer.CustomerEmptyResponse> deleteAccount(
+        customer.DeleteCustomerAccountRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_DELETE_ACCOUNT, getCallOptions()), request);
     }
   }
 
@@ -318,6 +367,7 @@ public final class CustomerServiceGrpc {
   private static final int METHODID_UPDATE_EMAIL = 1;
   private static final int METHODID_UPDATE_PASSWORD = 2;
   private static final int METHODID_UPDATE_PHONE_NUMBER = 3;
+  private static final int METHODID_DELETE_ACCOUNT = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -338,19 +388,23 @@ public final class CustomerServiceGrpc {
       switch (methodId) {
         case METHODID_CREATE_CUSTOMER:
           serviceImpl.createCustomer((customer.CreateCustomerRequest) request,
-              (io.grpc.stub.StreamObserver<customer.EmptyResponse>) responseObserver);
+              (io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse>) responseObserver);
           break;
         case METHODID_UPDATE_EMAIL:
-          serviceImpl.updateEmail((customer.UpdateEmailRequest) request,
-              (io.grpc.stub.StreamObserver<customer.EmptyResponse>) responseObserver);
+          serviceImpl.updateEmail((customer.UpdateCustomerEmailRequest) request,
+              (io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PASSWORD:
-          serviceImpl.updatePassword((customer.UpdatePasswordRequest) request,
-              (io.grpc.stub.StreamObserver<customer.EmptyResponse>) responseObserver);
+          serviceImpl.updatePassword((customer.UpdateCustomerPasswordRequest) request,
+              (io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PHONE_NUMBER:
-          serviceImpl.updatePhoneNumber((customer.UpdatePhoneNumberRequest) request,
-              (io.grpc.stub.StreamObserver<customer.EmptyResponse>) responseObserver);
+          serviceImpl.updatePhoneNumber((customer.UpdateCustomerPhoneNumberRequest) request,
+              (io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_ACCOUNT:
+          serviceImpl.deleteAccount((customer.DeleteCustomerAccountRequest) request,
+              (io.grpc.stub.StreamObserver<customer.CustomerEmptyResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -389,6 +443,7 @@ public final class CustomerServiceGrpc {
               .addMethod(METHOD_UPDATE_EMAIL)
               .addMethod(METHOD_UPDATE_PASSWORD)
               .addMethod(METHOD_UPDATE_PHONE_NUMBER)
+              .addMethod(METHOD_DELETE_ACCOUNT)
               .build();
         }
       }
