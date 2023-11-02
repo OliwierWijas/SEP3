@@ -93,6 +93,18 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
+  @Override public void updatePhoneNumber(int accountId, String phoneNumber)
+      throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("UPDATE Account SET phonenumber = ? WHERE id = ?");
+      statement.setString(1, phoneNumber);
+      statement.setInt(2, accountId);
+      statement.executeUpdate();
+    }
+  }
+
   @Override public void deleteAccount(int accountId) throws SQLException
   {
     try (Connection connection = getConnection())

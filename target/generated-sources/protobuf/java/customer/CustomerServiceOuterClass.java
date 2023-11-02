@@ -30,20 +30,15 @@ public final class CustomerServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_customer_UpdatePasswordRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_CreateCustomerResponse_descriptor;
+    internal_static_customer_UpdatePhoneNumberRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_CreateCustomerResponse_fieldAccessorTable;
+      internal_static_customer_UpdatePhoneNumberRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_UpdateEmailResponse_descriptor;
+    internal_static_customer_EmptyResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_UpdateEmailResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_customer_UpdatePasswordResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_customer_UpdatePasswordResponse_fieldAccessorTable;
+      internal_static_customer_EmptyResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -59,16 +54,18 @@ public final class CustomerServiceOuterClass {
       "\r\n\005email\030\004 \001(\t\022\020\n\010password\030\005 \001(\t\"6\n\022Upda" +
       "teEmailRequest\022\021\n\taccountId\030\001 \001(\005\022\r\n\005ema" +
       "il\030\002 \001(\t\"<\n\025UpdatePasswordRequest\022\021\n\tacc" +
-      "ountId\030\001 \001(\005\022\020\n\010password\030\002 \001(\t\"\030\n\026Create" +
-      "CustomerResponse\"\025\n\023UpdateEmailResponse\"" +
-      "\030\n\026UpdatePasswordResponse2\207\002\n\017CustomerSe" +
-      "rvice\022S\n\016CreateCustomer\022\037.customer.Creat",
-      "eCustomerRequest\032 .customer.CreateCustom" +
-      "erResponse\022J\n\013UpdateEmail\022\034.customer.Upd" +
-      "ateEmailRequest\032\035.customer.UpdateEmailRe" +
-      "sponse\022S\n\016UpdatePassword\022\037.customer.Upda" +
-      "tePasswordRequest\032 .customer.UpdatePassw" +
-      "ordResponseB\002P\001b\006proto3"
+      "ountId\030\001 \001(\005\022\020\n\010password\030\002 \001(\t\"B\n\030Update" +
+      "PhoneNumberRequest\022\021\n\taccountId\030\001 \001(\005\022\023\n" +
+      "\013phoneNumber\030\002 \001(\t\"\017\n\rEmptyResponse2\301\002\n\017" +
+      "CustomerService\022J\n\016CreateCustomer\022\037.cust",
+      "omer.CreateCustomerRequest\032\027.customer.Em" +
+      "ptyResponse\022D\n\013UpdateEmail\022\034.customer.Up" +
+      "dateEmailRequest\032\027.customer.EmptyRespons" +
+      "e\022J\n\016UpdatePassword\022\037.customer.UpdatePas" +
+      "swordRequest\032\027.customer.EmptyResponse\022P\n" +
+      "\021UpdatePhoneNumber\022\".customer.UpdatePhon" +
+      "eNumberRequest\032\027.customer.EmptyResponseB" +
+      "\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -100,23 +97,17 @@ public final class CustomerServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_customer_UpdatePasswordRequest_descriptor,
         new java.lang.String[] { "AccountId", "Password", });
-    internal_static_customer_CreateCustomerResponse_descriptor =
+    internal_static_customer_UpdatePhoneNumberRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_customer_CreateCustomerResponse_fieldAccessorTable = new
+    internal_static_customer_UpdatePhoneNumberRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_CreateCustomerResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_customer_UpdateEmailResponse_descriptor =
+        internal_static_customer_UpdatePhoneNumberRequest_descriptor,
+        new java.lang.String[] { "AccountId", "PhoneNumber", });
+    internal_static_customer_EmptyResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_customer_UpdateEmailResponse_fieldAccessorTable = new
+    internal_static_customer_EmptyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_UpdateEmailResponse_descriptor,
-        new java.lang.String[] { });
-    internal_static_customer_UpdatePasswordResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_customer_UpdatePasswordResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_customer_UpdatePasswordResponse_descriptor,
+        internal_static_customer_EmptyResponse_descriptor,
         new java.lang.String[] { });
   }
 
