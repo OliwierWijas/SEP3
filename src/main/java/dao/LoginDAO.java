@@ -49,7 +49,7 @@ public class LoginDAO implements LoginDAOInterface
           {
             String firstName = set.getString(2);
             String lastName = set.getString(3);
-            dto = new UserBasicDto(email, password, phoneNumber, firstName, lastName,"", "");
+            dto = new UserBasicDto(id, email, password, phoneNumber, type, firstName, lastName,"", "");
           }
         }
         else
@@ -61,7 +61,7 @@ public class LoginDAO implements LoginDAOInterface
           {
             String name = set.getString("name");
             String address = set.getString("address");
-            dto = new UserBasicDto(email, password, phoneNumber, "", "",name, address);
+            dto = new UserBasicDto(id, email, password, phoneNumber, type, "", "",name, address);
           }
         }
       }

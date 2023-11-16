@@ -3,9 +3,9 @@ package server;
 import dao.LoginDAO;
 import dao.LoginDAOInterface;
 import dto.UserBasicDto;
-import foodSeller.LoginRequest;
-import foodSeller.LoginResponse;
-import foodSeller.LoginServiceGrpc;
+import login.LoginRequest;
+import login.LoginResponse;
+import login.LoginServiceGrpc;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
@@ -26,7 +26,7 @@ public class LoginServiceImpl extends LoginServiceGrpc.LoginServiceImplBase
     try
     {
       UserBasicDto dto = dao.login(request.getEmail(), request.getPassword());
-      LoginResponse response = LoginResponse.newBuilder().setEmail(dto.getEmail()).setPassword(dto.getPassword()).setPhoneNumber(dto.getPhoneNumber()).setFirstName(
+      LoginResponse response = LoginResponse.newBuilder().setId(dto.getId()).setEmail(dto.getEmail()).setPassword(dto.getPassword()).setPhoneNumber(dto.getPhoneNumber()).setType(dto.getType()).setFirstName(
           dto.getFirstName()).setLastName(dto.getLastName()).setName(dto.getName()).setAddress(dto.getAddress()).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
