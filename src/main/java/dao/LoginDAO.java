@@ -42,26 +42,26 @@ public class LoginDAO implements LoginDAOInterface
         String phoneNumber = keys.getString("phonenumber");
         if(type.equals("customer"))
         {
-          PreparedStatement statement1 = connection.prepareStatement("SELECT * FROM Customer WHERE id = ?;");
+          PreparedStatement statement1 = connection.prepareStatement("SELECT * FROM Customer WHERE accountid = ?;");
           statement1.setInt(1, id);
           ResultSet set = statement.executeQuery();
           if(set.next())
           {
-            String firstName = set.getString("firstname");
-            String lastName = set.getString("lastname");
-            dto = new UserBasicDto(email, password, phoneNumber, firstName, lastName,null, null);
+            String firstName = set.getString(2);
+            String lastName = set.getString(3);
+            dto = new UserBasicDto(email, password, phoneNumber, firstName, lastName,"", "");
           }
         }
         else
         {
-          PreparedStatement statement1 = connection.prepareStatement("SELECT * FROM FoodSeller WHERE id = ?;");
+          PreparedStatement statement1 = connection.prepareStatement("SELECT * FROM FoodSeller WHERE accountid = ?;");
           statement1.setInt(1, id);
           ResultSet set = statement.executeQuery();
           if(set.next())
           {
             String name = set.getString("name");
             String address = set.getString("address");
-            dto = new UserBasicDto(email, password, phoneNumber, null, null,name, address);
+            dto = new UserBasicDto(email, password, phoneNumber, "", "",name, address);
           }
         }
       }

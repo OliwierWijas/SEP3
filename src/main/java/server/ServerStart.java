@@ -13,7 +13,7 @@ public class ServerStart
   public static void main(String[] args)
       throws IOException, InterruptedException, SQLException
   {
-    Server server = ServerBuilder.forPort(8080).addService(new CustomerServiceImpl()).build();
+    Server server = ServerBuilder.forPort(8080).addService(new CustomerServiceImpl()).addService(new FoodSellerServiceImpl()).addService(new LoginServiceImpl()).build();
     server.start();
     System.out.println("Server ready for incoming requests at port : " + server.getPort() + ".");
     server.awaitTermination();
