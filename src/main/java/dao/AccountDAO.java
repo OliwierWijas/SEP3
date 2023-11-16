@@ -28,10 +28,11 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password) VALUES (?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password, type) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
       statement.setString(1, email);
       statement.setString(2, phoneNumber);
       statement.setString(3, password);
+      statement.setString(4, "customer");
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next())
@@ -43,6 +44,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         statement1.setString(3, lastName);
         statement1.executeUpdate();
       }
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -51,10 +54,11 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password) VALUES (?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password, type) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
       statement.setString(1, email);
       statement.setString(2, phoneNumber);
       statement.setString(3, password);
+      statement.setString(4, "foodseller");
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
       if (keys.next())
@@ -66,6 +70,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         statement1.setString(3, address);
         statement1.executeUpdate();
       }
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -78,6 +84,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setString(1, name);
       statement.setInt(2, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -90,6 +98,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setString(1, address);
       statement.setInt(2, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -102,6 +112,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setString(1, email);
       statement.setInt(2, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -114,6 +126,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setString(1, password);
       statement.setInt(2, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -126,6 +140,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setString(1, phoneNumber);
       statement.setInt(2, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -136,6 +152,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       PreparedStatement statement = connection.prepareStatement("DELETE FROM Account WHERE id = ?");
       statement.setInt(1, accountId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 }

@@ -23,7 +23,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
   }
 
   @Override public void createFoodOffer(int foodSellerId, String title,
@@ -40,6 +40,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.setDate(5, endPickUpTime);
       statement.setInt(6, foodSellerId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -67,7 +69,10 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         foodOffersDTOS.add(dto);
       }
       return foodOffersDTOS;
+    }catch(Exception e){
+      e.printStackTrace();
     }
+    return null;
   }
 
   @Override
@@ -91,7 +96,10 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         foodOffers.add(dto);
       }
       return foodOffers;
+    }catch(Exception e){
+      e.printStackTrace();
     }
+    return null;
   }
 
   @Override
@@ -106,6 +114,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.setInt(6, foodOfferId);
       statement.executeUpdate();
 
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -115,6 +125,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       PreparedStatement statement = connection.prepareStatement("DELETE FROM foodoffer WHERE id = ?");
       statement.setInt(1, foodOfferId);
       statement.executeUpdate();
+    }catch(Exception e){
+      e.printStackTrace();
     }
   }
 }

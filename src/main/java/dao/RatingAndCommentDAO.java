@@ -24,7 +24,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
 
     private Connection getConnection() throws SQLException
     {
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
     }
 
     @Override
@@ -36,6 +36,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(3, foodSellerId);
 
             statement.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
         }
 
     }
@@ -50,6 +52,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(4, foodSellerId);
 
             statement.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -61,6 +65,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(2, foodSellerId);
             statement.setInt(3, customerId);
             statement.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -70,6 +76,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             PreparedStatement statement = connection.prepareStatement("delete from comment where id = ?");
             statement.setInt(1, commentId);
             statement.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
         }
 
     }
@@ -94,7 +102,10 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
                 comments.add(comment);
             }
             return comments;
+        }catch(Exception e){
+            e.printStackTrace();
         }
+        return null;
     }
 
     @Override
@@ -109,6 +120,10 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             }
             return rate;
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     @Override
@@ -124,5 +139,9 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             }
             return rate;
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }

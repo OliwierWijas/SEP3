@@ -25,7 +25,7 @@ public class ReservationDAO implements ReservationDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
   }
 
   @Override public void createReservation(int customerId, int foodOfferId)
@@ -38,6 +38,9 @@ public class ReservationDAO implements ReservationDAOInterface
       statement.setInt(2, foodOfferId);
       statement.executeUpdate();
     }
+    catch(Exception e){
+      e.printStackTrace();
+    }
   }
 
   @Override public void deleteReservation(int foodOfferId) throws SQLException
@@ -48,6 +51,9 @@ public class ReservationDAO implements ReservationDAOInterface
       statement.setInt(1, foodOfferId);
       statement.setInt(2, foodOfferId);
       statement.executeUpdate();
+    }
+    catch(Exception e){
+      e.printStackTrace();
     }
   }
 
@@ -76,6 +82,10 @@ public class ReservationDAO implements ReservationDAOInterface
       }
       return reservationsDtos;
     }
+    catch(Exception e){
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
@@ -103,6 +113,10 @@ public class ReservationDAO implements ReservationDAOInterface
       }
       return reservationsDtos;
     }
+    catch(Exception e){
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
@@ -131,6 +145,10 @@ public class ReservationDAO implements ReservationDAOInterface
       }
       return reservationDtos;
     }
+    catch(Exception e){
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
@@ -159,6 +177,10 @@ public class ReservationDAO implements ReservationDAOInterface
       }
       return reservationDtos;
     }
+    catch(Exception e){
+      e.printStackTrace();
+    }
+    return  null;
   }
 
 

@@ -22,7 +22,7 @@ public class LoginDAO implements LoginDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
   }
 
   @Override public UserBasicDto login(String email, String password)
@@ -65,8 +65,10 @@ public class LoginDAO implements LoginDAOInterface
           }
         }
       }
-      return dto;
+    }catch(Exception e){
+      e.printStackTrace();
     }
+    return dto;
   }
 
 }
