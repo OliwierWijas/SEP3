@@ -182,13 +182,4 @@ public class ReservationDAO implements ReservationDAOInterface
     }
     return  null;
   }
-
-
-  public static void main(String[] args) throws SQLException
-  {
-    ReservationDAO reservationDAO = ReservationDAO.getInstance();
-    //customerDAO.CreateCustomer("simonita", "drugs", "458283493", "simonka@gmai.com", "Password123");
-    //reservationDAO.makeReservation(4, 1);
-    //reservationDAO.cancelReservation(1);
-  }
 }

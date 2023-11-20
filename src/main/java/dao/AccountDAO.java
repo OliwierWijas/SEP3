@@ -20,7 +20,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
   @Override public void createCustomer(String firstName, String lastName,
