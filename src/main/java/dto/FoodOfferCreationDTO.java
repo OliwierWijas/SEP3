@@ -1,6 +1,6 @@
 package dto;
 
-import shared.Date;
+import shared.MyDate;
 
 public class FoodOfferCreationDTO
 {
@@ -8,11 +8,11 @@ public class FoodOfferCreationDTO
   private String title;
   private String description;
   private double price;
-  private Date startPickUpTime;
-  private Date endPickUpTime;
+  private MyDate startPickUpTime;
+  private MyDate endPickUpTime;
 
   public FoodOfferCreationDTO(int foodSellerId, String title, String description,
-      double price, Date startPickUpTime, Date endPickUpTime)
+      double price, MyDate startPickUpTime, MyDate endPickUpTime)
   {
     this.foodSellerId = foodSellerId;
     this.title = title;
@@ -42,12 +42,12 @@ public class FoodOfferCreationDTO
     return price;
   }
 
-  public Date getStartPickUpTime()
+  public MyDate getStartPickUpTime()
   {
     return startPickUpTime;
   }
 
-  public Date getEndPickUpTime()
+  public MyDate getEndPickUpTime()
   {
     return endPickUpTime;
   }

@@ -8,7 +8,7 @@ import dto.ReadFoodOffersDTO;
 import foodOffer.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
-import shared.Date;
+import shared.MyDate;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
   {
     try
     {
-      FoodOfferCreationDTO dto = new FoodOfferCreationDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
+      FoodOfferCreationDTO dto = new FoodOfferCreationDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), MyDate.class), gson.fromJson(request.getEndPickUpTime(), MyDate.class));
       dao.createFoodOffer(dto);
       FoodOfferEmptyResponse response = FoodOfferEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
@@ -82,7 +82,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
   {
     try
     {
-      FoodOfferUpdateDTO dto = new FoodOfferUpdateDTO(request.getFoodOfferId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
+      FoodOfferUpdateDTO dto = new FoodOfferUpdateDTO(request.getFoodOfferId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), MyDate.class), gson.fromJson(request.getEndPickUpTime(), MyDate.class));
       dao.updateFoodOffer(dto);
       FoodOfferEmptyResponse response = FoodOfferEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);

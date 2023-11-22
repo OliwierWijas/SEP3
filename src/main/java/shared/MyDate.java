@@ -1,6 +1,6 @@
 package shared;
 
-public class Date
+public class MyDate
 {
   private int year;
   private int month;
@@ -8,10 +8,10 @@ public class Date
   private int hour;
   private int minute;
 
-  public Date(int year, int month, int day, int hour, int minute)
+  public MyDate(int year, int month, int day, int hour, int minute)
   {
-    this.year = year - 1900;
-    this.month = month - 1;
+    this.year = year;
+    this.month = month;
     this.day = day;
     this.hour = hour;
     this.minute = minute;
@@ -19,12 +19,12 @@ public class Date
 
   public int getYear()
   {
-    return year;
+    return year - 1900;
   }
 
   public int getMonth()
   {
-    return month;
+    return month - 1;
   }
 
   public int getDay()

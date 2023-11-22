@@ -3,6 +3,7 @@ package dao;
 import dto.FoodOfferCreationDTO;
 import dto.FoodOfferUpdateDTO;
 import dto.ReadFoodOffersDTO;
+import shared.MyDate;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -37,13 +38,13 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.setString(2, dto.getDescription());
       statement.setDouble(3, dto.getPrice());
 
-      shared.Date date = dto.getStartPickUpTime();
-      Timestamp start = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+      MyDate myDate = dto.getStartPickUpTime();
+      Timestamp start = new Timestamp(myDate.getYear(), myDate.getMonth(), myDate.getDay(), myDate.getHour(), myDate.getMinute(), 0, 0);
 
       statement.setTimestamp(4, start);
 
-      date = dto.getEndPickUpTime();
-      Timestamp end = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+      myDate = dto.getEndPickUpTime();
+      Timestamp end = new Timestamp(myDate.getYear(), myDate.getMonth(), myDate.getDay(), myDate.getHour(), myDate.getMinute(), 0, 0);
 
       statement.setTimestamp(5, end);
       statement.setInt(6, dto.getFoodSellerId());
@@ -66,12 +67,15 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         String title = resultSet.getString("title");
         String description = resultSet.getString("description");
         double price = resultSet.getDouble("price");
-        Date startPickUpTime = resultSet.getDate("startpickuptime");
-        Date endPickUpTime = resultSet.getDate("endpickuptime");
+        Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
+        Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
         String foodSellerName = resultSet.getString("name");
         String foodSellerAddress = resultSet.getString("address");
 
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSellerId, title, description, price, startPickUpTime, endPickUpTime, false, false);
+        MyDate start = new MyDate(startPickUpTime.getYear(), startPickUpTime.getMonth(), startPickUpTime.getDay(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
+        MyDate end = new MyDate(endPickUpTime.getYear(), endPickUpTime.getMonth(), endPickUpTime.getDay(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
+
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSellerId, title, description, price, start, end, false, false);
         dto.setFoodSellerName(foodSellerName);
         dto.setFoodSellerAddress(foodSellerAddress);
         foodOffersDTOS.add(dto);
@@ -97,10 +101,13 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         String title = resultSet.getString("title");
         String description = resultSet.getString("description");
         double price = resultSet.getDouble("price");
-        Date startPickUpTime = resultSet.getDate("startpickuptime");
-        Date endPickUpTime = resultSet.getDate("endpickuptime");
+        Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
+        Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
 
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSellerId, title, description,price,  startPickUpTime, endPickUpTime, false, false);
+        MyDate start = new MyDate(startPickUpTime.getYear(), startPickUpTime.getMonth(), startPickUpTime.getDay(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
+        MyDate end = new MyDate(endPickUpTime.getYear(), endPickUpTime.getMonth(), endPickUpTime.getDay(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
+
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSellerId, title, description,price,  start, end, false, false);
         foodOffers.add(dto);
       }
       return foodOffers;
@@ -118,13 +125,13 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.setString(2, dto.getDescription());
       statement.setDouble(3, dto.getPrice());
 
-      shared.Date date = dto.getStartPickUpTime();
-      Timestamp start = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+      MyDate myDate = dto.getStartPickUpTime();
+      Timestamp start = new Timestamp(myDate.getYear(), myDate.getMonth(), myDate.getDay(), myDate.getHour(), myDate.getMinute(), 0, 0);
 
       statement.setTimestamp(4, start);
 
-      date = dto.getEndPickUpTime();
-      Timestamp end = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+      myDate = dto.getEndPickUpTime();
+      Timestamp end = new Timestamp(myDate.getYear(), myDate.getMonth(), myDate.getDay(), myDate.getHour(), myDate.getMinute(), 0, 0);
 
       statement.setTimestamp(5, end);
       statement.setInt(6, dto.getFoodOfferId());
