@@ -15,7 +15,7 @@ public  final class UpdateFoodOfferRequest extends
     super(builder);
   }
   private UpdateFoodOfferRequest() {
-    foodSellerId_ = 0;
+    foodOfferId_ = 0;
     title_ = "";
     description_ = "";
     price_ = 0D;
@@ -50,7 +50,7 @@ public  final class UpdateFoodOfferRequest extends
           }
           case 8: {
 
-            foodSellerId_ = input.readInt32();
+            foodOfferId_ = input.readInt32();
             break;
           }
           case 18: {
@@ -105,13 +105,13 @@ public  final class UpdateFoodOfferRequest extends
             foodOffer.UpdateFoodOfferRequest.class, foodOffer.UpdateFoodOfferRequest.Builder.class);
   }
 
-  public static final int FOODSELLERID_FIELD_NUMBER = 1;
-  private int foodSellerId_;
+  public static final int FOODOFFERID_FIELD_NUMBER = 1;
+  private int foodOfferId_;
   /**
-   * <code>int32 foodSellerId = 1;</code>
+   * <code>int32 foodOfferId = 1;</code>
    */
-  public int getFoodSellerId() {
-    return foodSellerId_;
+  public int getFoodOfferId() {
+    return foodOfferId_;
   }
 
   public static final int TITLE_FIELD_NUMBER = 2;
@@ -271,8 +271,8 @@ public  final class UpdateFoodOfferRequest extends
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (foodSellerId_ != 0) {
-      output.writeInt32(1, foodSellerId_);
+    if (foodOfferId_ != 0) {
+      output.writeInt32(1, foodOfferId_);
     }
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
@@ -296,9 +296,9 @@ public  final class UpdateFoodOfferRequest extends
     if (size != -1) return size;
 
     size = 0;
-    if (foodSellerId_ != 0) {
+    if (foodOfferId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, foodSellerId_);
+        .computeInt32Size(1, foodOfferId_);
     }
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
@@ -332,8 +332,8 @@ public  final class UpdateFoodOfferRequest extends
     foodOffer.UpdateFoodOfferRequest other = (foodOffer.UpdateFoodOfferRequest) obj;
 
     boolean result = true;
-    result = result && (getFoodSellerId()
-        == other.getFoodSellerId());
+    result = result && (getFoodOfferId()
+        == other.getFoodOfferId());
     result = result && getTitle()
         .equals(other.getTitle());
     result = result && getDescription()
@@ -356,8 +356,8 @@ public  final class UpdateFoodOfferRequest extends
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FOODSELLERID_FIELD_NUMBER;
-    hash = (53 * hash) + getFoodSellerId();
+    hash = (37 * hash) + FOODOFFERID_FIELD_NUMBER;
+    hash = (53 * hash) + getFoodOfferId();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -498,7 +498,7 @@ public  final class UpdateFoodOfferRequest extends
     }
     public Builder clear() {
       super.clear();
-      foodSellerId_ = 0;
+      foodOfferId_ = 0;
 
       title_ = "";
 
@@ -532,7 +532,7 @@ public  final class UpdateFoodOfferRequest extends
 
     public foodOffer.UpdateFoodOfferRequest buildPartial() {
       foodOffer.UpdateFoodOfferRequest result = new foodOffer.UpdateFoodOfferRequest(this);
-      result.foodSellerId_ = foodSellerId_;
+      result.foodOfferId_ = foodOfferId_;
       result.title_ = title_;
       result.description_ = description_;
       result.price_ = price_;
@@ -579,8 +579,8 @@ public  final class UpdateFoodOfferRequest extends
 
     public Builder mergeFrom(foodOffer.UpdateFoodOfferRequest other) {
       if (other == foodOffer.UpdateFoodOfferRequest.getDefaultInstance()) return this;
-      if (other.getFoodSellerId() != 0) {
-        setFoodSellerId(other.getFoodSellerId());
+      if (other.getFoodOfferId() != 0) {
+        setFoodOfferId(other.getFoodOfferId());
       }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
@@ -627,28 +627,28 @@ public  final class UpdateFoodOfferRequest extends
       return this;
     }
 
-    private int foodSellerId_ ;
+    private int foodOfferId_ ;
     /**
-     * <code>int32 foodSellerId = 1;</code>
+     * <code>int32 foodOfferId = 1;</code>
      */
-    public int getFoodSellerId() {
-      return foodSellerId_;
+    public int getFoodOfferId() {
+      return foodOfferId_;
     }
     /**
-     * <code>int32 foodSellerId = 1;</code>
+     * <code>int32 foodOfferId = 1;</code>
      */
-    public Builder setFoodSellerId(int value) {
+    public Builder setFoodOfferId(int value) {
       
-      foodSellerId_ = value;
+      foodOfferId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 foodSellerId = 1;</code>
+     * <code>int32 foodOfferId = 1;</code>
      */
-    public Builder clearFoodSellerId() {
+    public Builder clearFoodOfferId() {
       
-      foodSellerId_ = 0;
+      foodOfferId_ = 0;
       onChanged();
       return this;
     }

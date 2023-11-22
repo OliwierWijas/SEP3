@@ -2,7 +2,7 @@ package dto;
 
 import shared.Date;
 
-public class FoodOfferBasicDTO
+public class FoodOfferCreationDTO
 {
   private int foodSellerId;
   private String title;
@@ -11,7 +11,7 @@ public class FoodOfferBasicDTO
   private Date startPickUpTime;
   private Date endPickUpTime;
 
-  public FoodOfferBasicDTO(int foodSellerId, String title, String description,
+  public FoodOfferCreationDTO(int foodSellerId, String title, String description,
       double price, Date startPickUpTime, Date endPickUpTime)
   {
     this.foodSellerId = foodSellerId;

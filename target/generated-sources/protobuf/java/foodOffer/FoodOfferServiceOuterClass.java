@@ -64,27 +64,27 @@ public final class FoodOfferServiceOuterClass {
       "\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 \001(\t" +
       "\022\025\n\rendPickUpTime\030\006 \001(\t\" \n\036ReadAvailable" +
       "FoodOffersRequest\";\n#ReadFoodOffersByFoo" +
-      "dSellerIdRequest\022\024\n\014foodSellerId\030\001 \001(\005\"\221" +
-      "\001\n\026UpdateFoodOfferRequest\022\024\n\014foodSellerI" +
-      "d\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 " +
-      "\001(\t\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 ",
-      "\001(\t\022\025\n\rendPickUpTime\030\006 \001(\t\"-\n\026DeleteFood" +
-      "OfferRequest\022\023\n\013foodOfferId\030\001 \001(\005\"\030\n\026Foo" +
-      "dOfferEmptyResponse\"*\n\032ReadFoodOffersLis" +
-      "tResponse\022\014\n\004list\030\001 \001(\t2\201\004\n\020FoodOfferSer" +
-      "vice\022W\n\017createFoodOffer\022!.foodOffer.Crea" +
-      "teFoodOfferRequest\032!.foodOffer.FoodOffer" +
-      "EmptyResponse\022k\n\027readAvailableFoodOffers" +
-      "\022).foodOffer.ReadAvailableFoodOffersRequ" +
-      "est\032%.foodOffer.ReadFoodOffersListRespon" +
-      "se\022u\n\034readFoodOffersByFoodSellerId\022..foo",
-      "dOffer.ReadFoodOffersByFoodSellerIdReque" +
+      "dSellerIdRequest\022\024\n\014foodSellerId\030\001 \001(\005\"\220" +
+      "\001\n\026UpdateFoodOfferRequest\022\023\n\013foodOfferId" +
+      "\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 \001" +
+      "(\t\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 \001",
+      "(\t\022\025\n\rendPickUpTime\030\006 \001(\t\"-\n\026DeleteFoodO" +
+      "fferRequest\022\023\n\013foodOfferId\030\001 \001(\005\"\030\n\026Food" +
+      "OfferEmptyResponse\"*\n\032ReadFoodOffersList" +
+      "Response\022\014\n\004list\030\001 \001(\t2\201\004\n\020FoodOfferServ" +
+      "ice\022W\n\017createFoodOffer\022!.foodOffer.Creat" +
+      "eFoodOfferRequest\032!.foodOffer.FoodOfferE" +
+      "mptyResponse\022k\n\027readAvailableFoodOffers\022" +
+      ").foodOffer.ReadAvailableFoodOffersReque" +
       "st\032%.foodOffer.ReadFoodOffersListRespons" +
-      "e\022W\n\017updateFoodOffer\022!.foodOffer.UpdateF" +
-      "oodOfferRequest\032!.foodOffer.FoodOfferEmp" +
-      "tyResponse\022W\n\017deleteFoodOffer\022!.foodOffe" +
-      "r.DeleteFoodOfferRequest\032!.foodOffer.Foo" +
-      "dOfferEmptyResponseB\002P\001b\006proto3"
+      "e\022u\n\034readFoodOffersByFoodSellerId\022..food",
+      "Offer.ReadFoodOffersByFoodSellerIdReques" +
+      "t\032%.foodOffer.ReadFoodOffersListResponse" +
+      "\022W\n\017updateFoodOffer\022!.foodOffer.UpdateFo" +
+      "odOfferRequest\032!.foodOffer.FoodOfferEmpt" +
+      "yResponse\022W\n\017deleteFoodOffer\022!.foodOffer" +
+      ".DeleteFoodOfferRequest\032!.foodOffer.Food" +
+      "OfferEmptyResponseB\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -121,7 +121,7 @@ public final class FoodOfferServiceOuterClass {
     internal_static_foodOffer_UpdateFoodOfferRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_UpdateFoodOfferRequest_descriptor,
-        new java.lang.String[] { "FoodSellerId", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", });
+        new java.lang.String[] { "FoodOfferId", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", });
     internal_static_foodOffer_DeleteFoodOfferRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_foodOffer_DeleteFoodOfferRequest_fieldAccessorTable = new

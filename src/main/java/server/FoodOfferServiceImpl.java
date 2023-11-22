@@ -2,7 +2,8 @@ package server;
 
 import com.google.gson.Gson;
 import dao.FoodOfferDAOInterface;
-import dto.FoodOfferBasicDTO;
+import dto.FoodOfferCreationDTO;
+import dto.FoodOfferUpdateDTO;
 import dto.ReadFoodOffersDTO;
 import foodOffer.*;
 import io.grpc.Status;
@@ -28,7 +29,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
   {
     try
     {
-      FoodOfferBasicDTO dto = new FoodOfferBasicDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
+      FoodOfferCreationDTO dto = new FoodOfferCreationDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
       dao.createFoodOffer(dto);
       FoodOfferEmptyResponse response = FoodOfferEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
@@ -81,7 +82,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
   {
     try
     {
-      FoodOfferBasicDTO dto = new FoodOfferBasicDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
+      FoodOfferUpdateDTO dto = new FoodOfferUpdateDTO(request.getFoodOfferId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), Date.class), gson.fromJson(request.getEndPickUpTime(), Date.class));
       dao.updateFoodOffer(dto);
       FoodOfferEmptyResponse response = FoodOfferEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);

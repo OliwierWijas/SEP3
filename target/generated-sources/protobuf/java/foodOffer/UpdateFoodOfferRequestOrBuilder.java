@@ -8,9 +8,9 @@ public interface UpdateFoodOfferRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 foodSellerId = 1;</code>
+   * <code>int32 foodOfferId = 1;</code>
    */
-  int getFoodSellerId();
+  int getFoodOfferId();
 
   /**
    * <code>string title = 2;</code>

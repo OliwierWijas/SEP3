@@ -21,7 +21,7 @@ message ReadFoodOffersByFoodSellerIdRequest
 
 message UpdateFoodOfferRequest
 {
-  int32 foodSellerId = 1;
+  int32 foodOfferId = 1;
   string title = 2;
   string description = 3;
   double price = 4;

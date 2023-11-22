@@ -1,15 +1,19 @@
 foodOffer\ReadFoodOffersListResponse.class
+dto\FoodOfferUpdateDTO.class
 foodOffer\ReadAvailableFoodOffersRequest$Builder.class
+dto\FoodSellerCreationDTO.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest$1.class
+dto\FoodOfferCreationDTO.class
 foodOffer\UpdateFoodOfferRequest$Builder.class
 foodOffer\DeleteFoodOfferRequest.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequestOrBuilder.class
-dto\FoodOfferBasicDTO.class
 foodOffer\ReadFoodOffersListResponse$1.class
+dto\RatingBasicDTO.class
 foodOffer\UpdateFoodOfferRequest.class
 foodOffer\ReadAvailableFoodOffersRequest.class
 foodOffer\ReadFoodOffersListResponse$Builder.class
 foodOffer\DeleteFoodOfferRequest$Builder.class
+dto\CustomerCreationDTO.class
 foodOffer\ReadAvailableFoodOffersRequestOrBuilder.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest.class
 foodOffer\DeleteFoodOfferRequestOrBuilder.class
@@ -17,5 +21,6 @@ foodOffer\ReadAvailableFoodOffersRequest$1.class
 foodOffer\ReadFoodOffersListResponseOrBuilder.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest$Builder.class
 foodOffer\DeleteFoodOfferRequest$1.class
+dto\CommentBasicDTO.class
 foodOffer\UpdateFoodOfferRequest$1.class
 foodOffer\UpdateFoodOfferRequestOrBuilder.class

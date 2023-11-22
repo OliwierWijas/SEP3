@@ -1,6 +1,7 @@
 package dao;
 
-import dto.FoodOfferBasicDTO;
+import dto.FoodOfferCreationDTO;
+import dto.FoodOfferUpdateDTO;
 import dto.ReadFoodOffersDTO;
 
 import java.sql.*;
@@ -27,7 +28,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createFoodOffer(FoodOfferBasicDTO dto) throws SQLException
+  @Override public void createFoodOffer(FoodOfferCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -110,7 +111,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public void updateFoodOffer(FoodOfferBasicDTO dto) throws SQLException {
+  public void updateFoodOffer(FoodOfferUpdateDTO dto) throws SQLException {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("UPDATE foodoffer SET title = ?, description = ?, price = ?, startpickuptime = ?, endpickuptime = ? WHERE id = ?");
       statement.setString(1, dto.getTitle());
@@ -126,7 +127,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       Timestamp end = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
 
       statement.setTimestamp(5, end);
-      statement.setInt(6, dto.getFoodSellerId());
+      statement.setInt(6, dto.getFoodOfferId());
       statement.executeUpdate();
 
     }catch(Exception e){
