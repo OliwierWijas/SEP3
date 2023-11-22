@@ -45,7 +45,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         statement1.executeUpdate();
       }
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -71,7 +71,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         statement1.executeUpdate();
       }
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -85,7 +85,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(2, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -99,7 +99,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(2, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -113,7 +113,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(2, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -127,7 +127,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(2, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -141,7 +141,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(2, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -153,7 +153,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(1, accountId);
       statement.executeUpdate();
     }catch(Exception e){
-      throw  new RuntimeException(e.getMessage());
+      throw new RuntimeException(e.getMessage());
     }
   }
 }

@@ -12,9 +12,9 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
 {
   private CustomerDAOInterface dao;
 
-  public CustomerServiceImpl() throws SQLException
+  public CustomerServiceImpl(CustomerDAOInterface dao) throws SQLException
   {
-    this.dao = AccountDAO.getInstance();
+    this.dao = dao;
   }
 
   @Override public void createCustomer(CreateCustomerRequest request, StreamObserver<CustomerEmptyResponse> responseObserver)

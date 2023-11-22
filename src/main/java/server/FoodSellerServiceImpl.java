@@ -12,9 +12,9 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
 {
   private FoodSellerDAOInterface dao;
 
-  public FoodSellerServiceImpl() throws SQLException
+  public FoodSellerServiceImpl(FoodSellerDAOInterface dao) throws SQLException
   {
-    this.dao = AccountDAO.getInstance();
+    this.dao = dao;
   }
 
   @Override public void createFoodSeller(CreateFoodSellerRequest request,

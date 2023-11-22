@@ -15,9 +15,9 @@ public class LoginServiceImpl extends LoginServiceGrpc.LoginServiceImplBase
 {
   private LoginDAOInterface dao;
 
-  public LoginServiceImpl() throws SQLException
+  public LoginServiceImpl(LoginDAOInterface dao) throws SQLException
   {
-    this.dao = LoginDAO.getInstance();
+    this.dao = dao;
   }
 
   @Override public void login(LoginRequest request,

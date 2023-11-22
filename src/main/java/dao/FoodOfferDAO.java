@@ -1,5 +1,6 @@
 package dao;
 
+import dto.FoodOfferBasicDTO;
 import dto.ReadFoodOffersDTO;
 
 import java.sql.*;
@@ -23,22 +24,28 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createFoodOffer(int foodSellerId, String title,
-                                        String description, double price, Date startPickUpTime,
-                                        Date endPickUpTime) throws SQLException
+  @Override public void createFoodOffer(FoodOfferBasicDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("INSERT INTO FoodOffer (title, description, price, startPickUpTime, endPickUpTime, foodSellerId) VALUES (?,?,?,?,?,?);");
-      statement.setString(1, title);
-      statement.setString(2, description);
-      statement.setDouble(3, price);
-      statement.setDate(4, startPickUpTime);
-      statement.setDate(5, endPickUpTime);
-      statement.setInt(6, foodSellerId);
+      statement.setString(1, dto.getTitle());
+      statement.setString(2, dto.getDescription());
+      statement.setDouble(3, dto.getPrice());
+
+      shared.Date date = dto.getStartPickUpTime();
+      Timestamp start = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+
+      statement.setTimestamp(4, start);
+
+      date = dto.getEndPickUpTime();
+      Timestamp end = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+
+      statement.setTimestamp(5, end);
+      statement.setInt(6, dto.getFoodSellerId());
       statement.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
@@ -103,15 +110,23 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public void updateFoodOffer(int foodOfferId, String title, String description, double price, Date startPickUpTime, Date endPickUpTime) throws SQLException {
+  public void updateFoodOffer(FoodOfferBasicDTO dto) throws SQLException {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("UPDATE foodoffer SET title = ?, description = ?, price = ?, startpickuptime = ?, endpickuptime = ? WHERE id = ?");
-      statement.setString(1, title);
-      statement.setString(2, description);
-      statement.setDouble(3, price);
-      statement.setDate(4, startPickUpTime);
-      statement.setDate(5, endPickUpTime);
-      statement.setInt(6, foodOfferId);
+      statement.setString(1, dto.getTitle());
+      statement.setString(2, dto.getDescription());
+      statement.setDouble(3, dto.getPrice());
+
+      shared.Date date = dto.getStartPickUpTime();
+      Timestamp start = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+
+      statement.setTimestamp(4, start);
+
+      date = dto.getEndPickUpTime();
+      Timestamp end = new Timestamp(date.getYear(), date.getMonth(), date.getDay(), date.getHour(), date.getMinute(), 0, 0);
+
+      statement.setTimestamp(5, end);
+      statement.setInt(6, dto.getFoodSellerId());
       statement.executeUpdate();
 
     }catch(Exception e){
