@@ -1,5 +1,8 @@
 package dao;
 
+import dto.CustomerCreationDTO;
+import dto.FoodSellerCreationDTO;
+
 import java.sql.*;
 
 public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
@@ -23,15 +26,14 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createCustomer(String firstName, String lastName,
-      String phoneNumber, String email, String password) throws SQLException
+  @Override public void createCustomer(CustomerCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password, type) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setString(1, email);
-      statement.setString(2, phoneNumber);
-      statement.setString(3, password);
+      statement.setString(1, dto.getEmail());
+      statement.setString(2, dto.getPhoneNumber());
+      statement.setString(3, dto.getPassword());
       statement.setString(4, "customer");
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
@@ -40,8 +42,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         int id = keys.getInt(1);
         PreparedStatement statement1 = connection.prepareStatement("INSERT INTO Customer(accountId, firstName, lastName) VALUES (?,?,?);");
         statement1.setInt(1, id);
-        statement1.setString(2, firstName);
-        statement1.setString(3, lastName);
+        statement1.setString(2, dto.getFirstName());
+        statement1.setString(3, dto.getLastName());
         statement1.executeUpdate();
       }
     }catch(Exception e){
@@ -49,15 +51,14 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void createFoodSeller(String name, String address,
-      String phoneNumber, String email, String password) throws SQLException
+  @Override public void createFoodSeller(FoodSellerCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Account (email, phoneNumber, password, type) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
-      statement.setString(1, email);
-      statement.setString(2, phoneNumber);
-      statement.setString(3, password);
+      statement.setString(1, dto.getEmail());
+      statement.setString(2,dto.getPhoneNumber());
+      statement.setString(3, dto.getPassword());
       statement.setString(4, "foodseller");
       statement.executeUpdate();
       ResultSet keys = statement.getGeneratedKeys();
@@ -66,8 +67,8 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         int id = keys.getInt(1);
         PreparedStatement statement1 = connection.prepareStatement("INSERT INTO FoodSeller(accountId, name, address) VALUES (?,?,?);");
         statement1.setInt(1, id);
-        statement1.setString(2, name);
-        statement1.setString(3, address);
+        statement1.setString(2, dto.getName());
+        statement1.setString(3, dto.getAddress());
         statement1.executeUpdate();
       }
     }catch(Exception e){

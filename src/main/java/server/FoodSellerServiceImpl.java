@@ -2,6 +2,7 @@ package server;
 
 import dao.AccountDAO;
 import dao.FoodSellerDAOInterface;
+import dto.FoodSellerCreationDTO;
 import foodSeller.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -22,7 +23,8 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
   {
     try
     {
-      dao.createFoodSeller(request.getName(), request.getAddress(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      FoodSellerCreationDTO dto = new FoodSellerCreationDTO(request.getName(), request.getAddress(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      dao.createFoodSeller(dto);
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();

@@ -3,6 +3,7 @@ package server;
 import customer.*;
 import dao.AccountDAO;
 import dao.CustomerDAOInterface;
+import dto.CustomerCreationDTO;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
@@ -21,7 +22,8 @@ public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImpl
   {
     try
     {
-      dao.createCustomer(request.getFirstName(), request.getLastName(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      CustomerCreationDTO dto = new CustomerCreationDTO(request.getFirstName(), request.getLastName(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      dao.createCustomer(dto);
       CustomerEmptyResponse response = CustomerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();

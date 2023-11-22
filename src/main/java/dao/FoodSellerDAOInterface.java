@@ -1,12 +1,12 @@
 package dao;
 
+import dto.FoodSellerCreationDTO;
+
 import java.sql.SQLException;
 
 public interface FoodSellerDAOInterface
 {
-  void createFoodSeller(String name, String address, String phoneNumber,
-      String email, String password)
-      throws SQLException;
+  void createFoodSeller(FoodSellerCreationDTO dto) throws SQLException;
   void updateName(int accountId, String name) throws SQLException;
   void updateAddress(int accountId, String address) throws SQLException;
   void updateEmail(int accountId, String email) throws SQLException;

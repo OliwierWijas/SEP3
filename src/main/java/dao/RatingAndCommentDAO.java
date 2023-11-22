@@ -1,5 +1,7 @@
 package dao;
 
+import dto.CommentBasicDTO;
+import dto.RatingBasicDTO;
 import dto.ReadCommentDTO;
 
 import java.sql.*;
@@ -28,12 +30,12 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void createRating(int foodSellerId, int customerId, int rate) throws SQLException {
+    public void createRating(RatingBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("insert into rate(rate, customerid, foodsellerid) values(?, ?, ?)");
-            statement.setInt(1, rate);
-            statement.setInt(2, customerId);
-            statement.setInt(3, foodSellerId);
+            statement.setInt(1, dto.getRate());
+            statement.setInt(2, dto.getCustomerId());
+            statement.setInt(3, dto.getFoodSellerId());
 
             statement.executeUpdate();
         }catch(Exception e){
@@ -43,13 +45,13 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void createComment(int foodSellerId, int customerId, String comment) throws SQLException {
+    public void createComment(CommentBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("insert into comment(date, text, customerid, foodsellerid) values(?, ?, ?, ?)");
             statement.setDate(1, Date.valueOf(LocalDate.now()));
-            statement.setString(2, comment);
-            statement.setInt(3, customerId);
-            statement.setInt(4, foodSellerId);
+            statement.setString(2, dto.getComment());
+            statement.setInt(3, dto.getCustomerId());
+            statement.setInt(4, dto.getFoodSellerId());
 
             statement.executeUpdate();
         }catch(Exception e){
@@ -58,12 +60,12 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void updateRating(int foodSellerId, int customerId, int rate) throws SQLException {
+    public void updateRating(RatingBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("update rate set rate = ? where foodsellerid = ? and customerid = ?");
-            statement.setInt(1, rate);
-            statement.setInt(2, foodSellerId);
-            statement.setInt(3, customerId);
+            statement.setInt(1, dto.getRate());
+            statement.setInt(2, dto.getFoodSellerId());
+            statement.setInt(3, dto.getCustomerId());
             statement.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
