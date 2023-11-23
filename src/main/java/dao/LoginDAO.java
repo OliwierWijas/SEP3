@@ -25,7 +25,7 @@ public class LoginDAO implements LoginDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public UserBasicDto login(String email, String password)
+  @Override public synchronized UserBasicDto login(String email, String password)
       throws SQLException
   {
     UserBasicDto dto = null;

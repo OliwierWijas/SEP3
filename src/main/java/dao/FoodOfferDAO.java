@@ -29,7 +29,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createFoodOffer(FoodOfferCreationDTO dto) throws SQLException
+  @Override public synchronized void createFoodOffer(FoodOfferCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -55,7 +55,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public ArrayList<ReadFoodOffersDTO> readAvailableFoodOffers() throws SQLException {
+  public synchronized ArrayList<ReadFoodOffersDTO> readAvailableFoodOffers() throws SQLException {
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM FoodOffer JOIN foodseller ON foodoffer.foodsellerid = foodseller.accountid WHERE iscompleted = false and isreserved = false");
       ResultSet resultSet = statement.executeQuery();
@@ -88,7 +88,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public ArrayList<ReadFoodOffersDTO> readFoodOffersByFoodSellerId(int foodSellerId) throws SQLException {
+  public synchronized ArrayList<ReadFoodOffersDTO> readFoodOffersByFoodSellerId(int foodSellerId) throws SQLException {
     try (Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM foodoffer WHERE foodsellerid = ? AND isreserved = false AND iscompleted = false");
       statement.setInt(1, foodSellerId);
@@ -118,7 +118,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public void updateFoodOffer(FoodOfferUpdateDTO dto) throws SQLException {
+  public synchronized void updateFoodOffer(FoodOfferUpdateDTO dto) throws SQLException {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("UPDATE foodoffer SET title = ?, description = ?, price = ?, startpickuptime = ?, endpickuptime = ? WHERE id = ?");
       statement.setString(1, dto.getTitle());
@@ -143,7 +143,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   }
 
   @Override
-  public void deleteFoodOffer(int foodOfferId) throws SQLException {
+  public synchronized void deleteFoodOffer(int foodOfferId) throws SQLException {
     try(Connection connection = getConnection()){
       PreparedStatement statement = connection.prepareStatement("DELETE FROM foodoffer WHERE id = ?");
       statement.setInt(1, foodOfferId);

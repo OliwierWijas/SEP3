@@ -26,7 +26,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createCustomer(CustomerCreationDTO dto) throws SQLException
+  @Override public synchronized void createCustomer(CustomerCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -51,7 +51,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void createFoodSeller(FoodSellerCreationDTO dto) throws SQLException
+  @Override public synchronized void createFoodSeller(FoodSellerCreationDTO dto) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -76,7 +76,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void updateName(int accountId, String name)
+  @Override public synchronized void updateName(int accountId, String name)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -90,7 +90,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void updateAddress(int accountId, String address)
+  @Override public synchronized void updateAddress(int accountId, String address)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -104,7 +104,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void updateEmail(int accountId, String email)
+  @Override public synchronized void updateEmail(int accountId, String email)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -118,7 +118,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void updatePassword(int accountId, String password)
+  @Override public synchronized void updatePassword(int accountId, String password)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -132,7 +132,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void updatePhoneNumber(int accountId, String phoneNumber)
+  @Override public synchronized void updatePhoneNumber(int accountId, String phoneNumber)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -146,7 +146,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public void deleteAccount(int accountId) throws SQLException
+  @Override public synchronized void deleteAccount(int accountId) throws SQLException
   {
     try (Connection connection = getConnection())
     {

@@ -30,7 +30,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void createRating(RatingBasicDTO dto) throws SQLException {
+    public synchronized void createRating(RatingBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("insert into rate(rate, customerid, foodsellerid) values(?, ?, ?)");
             statement.setInt(1, dto.getRate());
@@ -45,7 +45,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void createComment(CommentBasicDTO dto) throws SQLException {
+    public synchronized void createComment(CommentBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("insert into comment(date, text, customerid, foodsellerid) values(?, ?, ?, ?)");
             statement.setDate(1, Date.valueOf(LocalDate.now()));
@@ -60,7 +60,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void updateRating(RatingBasicDTO dto) throws SQLException {
+    public synchronized void updateRating(RatingBasicDTO dto) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("update rate set rate = ? where foodsellerid = ? and customerid = ?");
             statement.setInt(1, dto.getRate());
@@ -73,7 +73,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public void deleteComment(int commentId) throws SQLException {
+    public synchronized void deleteComment(int commentId) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("delete from comment where id = ?");
             statement.setInt(1, commentId);
@@ -85,7 +85,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public ArrayList<ReadCommentDTO> readCommentsByFoodSellerId(int foodSellerId) throws SQLException {
+    public synchronized ArrayList<ReadCommentDTO> readCommentsByFoodSellerId(int foodSellerId) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("select * from comment join customer on comment.customerid = customer.accountid where foodsellerid =?");
             statement.setInt(1, foodSellerId);
@@ -111,7 +111,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public double readAverageRatingByFoodSellerId(int foodSellerId) throws SQLException {
+    public synchronized double readAverageRatingByFoodSellerId(int foodSellerId) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("select avg(rate) from rate where foodsellerid = ?");
             statement.setInt(1, foodSellerId);
@@ -129,7 +129,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
     }
 
     @Override
-    public int readRating(int customerId, int foodSellerId) throws SQLException {
+    public synchronized int readRating(int customerId, int foodSellerId) throws SQLException {
         try(Connection connection = getConnection()){
             PreparedStatement statement = connection.prepareStatement("select rate from rate where customerid = ? and foodsellerid = ?");
             statement.setInt(1, customerId);

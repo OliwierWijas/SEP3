@@ -35,7 +35,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
         responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
@@ -53,7 +53,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
@@ -71,7 +71,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
@@ -88,7 +88,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
@@ -104,7 +104,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }  }

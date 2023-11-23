@@ -28,7 +28,7 @@ public class ReservationDAO implements ReservationDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public void createReservation(int customerId, int foodOfferId)
+  @Override public synchronized void createReservation(int customerId, int foodOfferId)
       throws SQLException
   {
     try (Connection connection = getConnection())
@@ -43,7 +43,7 @@ public class ReservationDAO implements ReservationDAOInterface
     }
   }
 
-  @Override public void deleteReservation(int foodOfferId) throws SQLException
+  @Override public synchronized void deleteReservation(int foodOfferId) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -58,7 +58,7 @@ public class ReservationDAO implements ReservationDAOInterface
   }
 
   @Override
-  public ArrayList<ReadCustomerReservationDTO> readCustomerReservations(int customerId) throws SQLException {
+  public synchronized ArrayList<ReadCustomerReservationDTO> readCustomerReservations(int customerId) throws SQLException {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ? AND isCompleted = false");
@@ -88,8 +88,8 @@ public class ReservationDAO implements ReservationDAOInterface
     return null;
   }
 
-  @Override
-  public ArrayList<ReadCustomerReservationDTO> readCompletedCustomerReservations(int customerId) throws SQLException {
+  //@Override
+  public synchronized ArrayList<ReadCustomerReservationDTO> readCompletedCustomerReservations(int customerId) throws SQLException {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ? AND isCompleted = true");
@@ -120,7 +120,7 @@ public class ReservationDAO implements ReservationDAOInterface
   }
 
   @Override
-  public ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(int foodSellerId) throws SQLException {
+  public synchronized ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(int foodSellerId) throws SQLException {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ? AND foodOffer.isCompleted = false");
@@ -151,8 +151,8 @@ public class ReservationDAO implements ReservationDAOInterface
     return null;
   }
 
-  @Override
-  public ArrayList<ReadFoodSellerReservationDTO> readCompletedFoodSellerReservations(int foodSellerId) throws SQLException {
+  //@Override
+  public synchronized ArrayList<ReadFoodSellerReservationDTO> readCompletedFoodSellerReservations(int foodSellerId) throws SQLException {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ? AND foodOffer.isCompleted = true");
