@@ -2,6 +2,7 @@ package dao;
 
 import dto.ReadCustomerReservationDTO;
 import dto.ReadFoodSellerReservationDTO;
+import dto.ReservationCreationDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,14 +29,14 @@ public class ReservationDAO implements ReservationDAOInterface
     return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
-  @Override public synchronized void createReservation(int customerId, int foodOfferId)
+  @Override public synchronized void createReservation(ReservationCreationDTO dto)
       throws SQLException
   {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(customerId, foodOfferId) VALUES (?,?)");
-      statement.setInt(1, customerId);
-      statement.setInt(2, foodOfferId);
+      statement.setInt(1, dto.getCustomerId());
+      statement.setInt(2, dto.getFoodOfferId());
       statement.executeUpdate();
     }
     catch(Exception e){

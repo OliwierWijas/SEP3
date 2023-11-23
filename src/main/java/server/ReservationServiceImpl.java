@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dao.ReservationDAOInterface;
 import dto.ReadCustomerReservationDTO;
 import dto.ReadFoodSellerReservationDTO;
+import dto.ReservationCreationDTO;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import reservation.*;
@@ -26,7 +27,8 @@ public class ReservationServiceImpl extends ReservationServiceGrpc.ReservationSe
   {
     try
     {
-      dao.createReservation(request.getCustomerId(), request.getFoodOfferId());
+      ReservationCreationDTO dto = new ReservationCreationDTO(request.getCustomerId(), request.getFoodOfferId());
+      dao.createReservation(dto);
       ReservationEmptyResponse response = ReservationEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
