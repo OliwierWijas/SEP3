@@ -77,7 +77,8 @@ public class ReservationDAO implements ReservationDAOInterface
         int foodSellerId= resultSet.getInt("accountid");
         String foodSellerName = resultSet.getString("name");
         String address = resultSet.getString("address");
-        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, startPickUpTime, endPickUpTime, reservationNumber, foodSellerId, foodSellerName, address);
+        boolean isCompleted = resultSet.getBoolean("isCompleted");
+        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, startPickUpTime, endPickUpTime, reservationNumber, foodSellerId, foodSellerName, address, isCompleted);
         reservationsDtos.add(dto);
       }
       return reservationsDtos;
@@ -108,7 +109,7 @@ public class ReservationDAO implements ReservationDAOInterface
         int foodSellerId= resultSet.getInt("accountid");
         String foodSellerName = resultSet.getString("name");
         String address = resultSet.getString("address");
-        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, startPickUpTime, endPickUpTime, reservationNumber, foodSellerId, foodSellerName, address);
+        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, startPickUpTime, endPickUpTime, reservationNumber, foodSellerId, foodSellerName, address, false);
         reservationsDtos.add(dto);
       }
       return reservationsDtos;
@@ -139,8 +140,9 @@ public class ReservationDAO implements ReservationDAOInterface
         int customerId = resultSet.getInt("customerid");
         String customerFirstName = resultSet.getString("firstname");
         String customerLastName = resultSet.getString("lastname");
+        boolean isCompleted = resultSet.getBoolean("isCompleted");
 
-        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, startPickUpTime, endPickUpTime, reservationNumber, customerId, customerFirstName, customerLastName);
+        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, startPickUpTime, endPickUpTime, reservationNumber, customerId, customerFirstName, customerLastName, isCompleted);
         reservationDtos.add(dto);
       }
       return reservationDtos;
@@ -172,7 +174,7 @@ public class ReservationDAO implements ReservationDAOInterface
         String customerFirstName = resultSet.getString("firstname");
         String customerLastName = resultSet.getString("lastname");
 
-        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, startPickUpTime, endPickUpTime, reservationNumber, customerId, customerFirstName, customerLastName);
+        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, startPickUpTime, endPickUpTime, reservationNumber, customerId, customerFirstName, customerLastName, false);
         reservationDtos.add(dto);
       }
       return reservationDtos;
