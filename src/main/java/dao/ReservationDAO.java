@@ -61,7 +61,7 @@ public class ReservationDAO implements ReservationDAOInterface
   public synchronized ArrayList<ReadCustomerReservationDTO> readCustomerReservations(int customerId) throws SQLException {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ? AND isCompleted = false");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ?");
       statement.setInt(1, customerId);
       ResultSet resultSet = statement.executeQuery();
 
@@ -123,7 +123,7 @@ public class ReservationDAO implements ReservationDAOInterface
   public synchronized ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(int foodSellerId) throws SQLException {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ? AND foodOffer.isCompleted = false");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ?");
       statement.setInt(1, foodSellerId);
       ResultSet resultSet = statement.executeQuery();
 
