@@ -40,6 +40,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
 
     }
@@ -55,7 +56,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
 
             statement.executeUpdate();
         }catch(Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -68,7 +69,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(3, dto.getCustomerId());
             statement.executeUpdate();
         }catch(Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -79,7 +80,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(1, commentId);
             statement.executeUpdate();
         }catch(Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
 
     }
@@ -105,9 +106,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             }
             return comments;
         }catch(Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
-        return null;
     }
 
     @Override
@@ -123,9 +123,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             return rate;
         }
         catch(Exception e){
-            e.printStackTrace();
+            throw new RuntimeException(e.getMessage());
         }
-        return 0;
     }
 
     @Override
@@ -142,8 +141,6 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             return rate;
         }
         catch(Exception e){
-            e.printStackTrace();
-        }
-        return 0;
+            throw new RuntimeException(e.getMessage());        }
     }
 }

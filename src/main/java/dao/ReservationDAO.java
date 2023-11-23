@@ -39,21 +39,19 @@ public class ReservationDAO implements ReservationDAOInterface
       statement.executeUpdate();
     }
     catch(Exception e){
-      e.printStackTrace();
-    }
+      throw new RuntimeException(e.getMessage());    }
   }
 
-  @Override public synchronized void deleteReservation(int foodOfferId) throws SQLException
+  @Override public synchronized void deleteReservation(int reservationNumber) throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("DELETE FROM reservation WHERE foodOfferId = ? AND (SELECT isCompleted FROM foodOffer WHERE id = ?) = FALSE");
-      statement.setInt(1, foodOfferId);
-      statement.setInt(2, foodOfferId);
-      statement.executeUpdate();
+      PreparedStatement statement = connection.prepareStatement("delete from reservation where reservationnumber = ?;");
+      statement.setInt(1, reservationNumber);
+      statement.executeQuery();
     }
     catch(Exception e){
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -84,9 +82,8 @@ public class ReservationDAO implements ReservationDAOInterface
       return reservationsDtos;
     }
     catch(Exception e){
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return null;
   }
 
   //@Override
@@ -115,9 +112,8 @@ public class ReservationDAO implements ReservationDAOInterface
       return reservationsDtos;
     }
     catch(Exception e){
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return null;
   }
 
   @Override
@@ -148,9 +144,26 @@ public class ReservationDAO implements ReservationDAOInterface
       return reservationDtos;
     }
     catch(Exception e){
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return null;
+  }
+
+  @Override public void completeReservation(int reservationNumber)
+      throws SQLException
+  {
+    try(Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT foodofferid FROM reservation WHERE reservationnumber = ?;");
+      statement.setInt(1, reservationNumber);
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next())
+      {
+        int foodOfferId = resultSet.getInt(1);
+        PreparedStatement statement1 = connection.prepareStatement("UPDATE foodoffer SET iscompleted = true WHERE id = ?;");
+        statement1.setInt(1, foodOfferId);
+        statement1.executeUpdate();
+      }
+    }
   }
 
   //@Override
@@ -180,8 +193,7 @@ public class ReservationDAO implements ReservationDAOInterface
       return reservationDtos;
     }
     catch(Exception e){
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return  null;
   }
 }

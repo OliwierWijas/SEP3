@@ -8,7 +8,6 @@ import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import reservation.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ReservationServiceImpl extends ReservationServiceGrpc.ReservationServiceImplBase
@@ -43,7 +42,7 @@ public class ReservationServiceImpl extends ReservationServiceGrpc.ReservationSe
   {
     try
     {
-      dao.deleteReservation(request.getFoodOfferId());
+      dao.deleteReservation(request.getReservationNumber());
       ReservationEmptyResponse response = ReservationEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
@@ -81,6 +80,22 @@ public class ReservationServiceImpl extends ReservationServiceGrpc.ReservationSe
       ArrayList<ReadFoodSellerReservationDTO> foodSellerReservations = dao.readFoodSellerReservations(request.getFoodSellerId());
       String string = gson.toJson(foodSellerReservations);
       ReadReservationsListResponse response = ReadReservationsListResponse.newBuilder().setList(string).build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }
+    catch (Exception e)
+    {
+      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+    }
+  }
+
+  @Override public void completeReservation(CompleteReservationRequest request,
+      StreamObserver<ReservationEmptyResponse> responseObserver)
+  {
+    try
+    {
+      dao.completeReservation(request.getReservationNumber());
+      ReservationEmptyResponse response = ReservationEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }

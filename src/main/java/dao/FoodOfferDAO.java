@@ -51,6 +51,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -83,8 +84,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       return foodOffersDTOS;
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return null;
   }
 
   @Override
@@ -113,8 +114,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       return foodOffers;
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-    return null;
   }
 
   @Override
@@ -139,6 +140,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 
@@ -150,6 +152,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       statement.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
   }
 }

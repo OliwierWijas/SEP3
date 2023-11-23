@@ -67,6 +67,7 @@ public class LoginDAO implements LoginDAOInterface
       }
     }catch(Exception e){
       e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
     return dto;
   }

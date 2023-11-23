@@ -10,7 +10,7 @@ message CreateReservationRequest
 
 message DeleteReservationRequest
 {
-  int32 foodOfferId = 1;
+  int32 reservationNumber = 1;
 }
 
 message ReadCustomerReservationsRequest
@@ -21,6 +21,11 @@ message ReadCustomerReservationsRequest
 message ReadFoodSellerReservationsRequest
 {
   int32 foodSellerId = 1;
+}
+
+message CompleteReservationRequest
+{
+  int32 reservationNumber = 1;
 }
 
 message ReservationEmptyResponse {}
@@ -36,4 +41,5 @@ service ReservationService
   rpc deleteReservation(DeleteReservationRequest) returns (ReservationEmptyResponse);
   rpc readCustomerReservations(ReadCustomerReservationsRequest) returns (ReadReservationsListResponse);
   rpc readFoodSellerReservations(ReadFoodSellerReservationsRequest) returns(ReadReservationsListResponse);
+  rpc completeReservation(CompleteReservationRequest) returns (ReservationEmptyResponse);
 }
