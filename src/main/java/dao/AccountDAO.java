@@ -2,6 +2,7 @@ package dao;
 
 import dto.CustomerCreationDTO;
 import dto.FoodSellerCreationDTO;
+import dto.ReadFoodSellerDTO;
 
 import java.sql.*;
 
@@ -23,7 +24,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "I");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "Sql3486");
   }
 
   @Override public synchronized void createCustomer(CustomerCreationDTO dto) throws SQLException
@@ -104,8 +105,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public synchronized void updateEmail(int accountId, String email)
-      throws SQLException
+  @Override public synchronized void updateEmail(int accountId, String email) throws SQLException
   {
     try (Connection connection = getConnection())
     {
@@ -156,5 +156,27 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }catch(Exception e){
       throw new RuntimeException(e.getMessage());
     }
+  }
+
+  @Override
+  public ReadFoodSellerDTO getFoodSellerById(int accountId) throws SQLException {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Account JOIN FoodSeller ON account.id = foodseller.accountid WHERE account.id = ?");
+      statement.setInt(1, accountId);
+      ResultSet resultSet = statement.executeQuery();
+      if(resultSet.next()){
+        String email = resultSet.getString(2);
+        String phoneNumber = resultSet.getString(3);
+        String name = resultSet.getString(7);
+        String address = resultSet.getString(8);
+
+        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
+        return dto;
+      }
+    }catch(Exception e){
+      throw new RuntimeException(e.getMessage());
+    }
+    return null;
   }
 }

@@ -1,6 +1,8 @@
 package dao;
 
 import dto.FoodSellerCreationDTO;
+import dto.ReadFoodSellerDTO;
+import dto.ReadRatingDTO;
 
 import java.sql.SQLException;
 
@@ -13,4 +15,5 @@ public interface FoodSellerDAOInterface
   void updatePassword(int accountId, String password) throws SQLException;
   void updatePhoneNumber(int accountId, String phoneNumber) throws SQLException;
   void deleteAccount(int accountId) throws SQLException;
+  ReadFoodSellerDTO getFoodSellerById(int accountId) throws SQLException;
 }

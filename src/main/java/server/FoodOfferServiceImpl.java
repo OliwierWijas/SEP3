@@ -107,5 +107,6 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     catch (Exception e)
     {
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
-    }  }
+    }
+  }
 }

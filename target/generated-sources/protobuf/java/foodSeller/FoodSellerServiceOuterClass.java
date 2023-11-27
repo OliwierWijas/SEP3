@@ -50,10 +50,20 @@ public final class FoodSellerServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodSeller_DeleteFoodSellerAccountRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodSeller_GetFoodSellerByIdRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodSeller_GetFoodSellerByIdRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_foodSeller_FoodSellerEmptyResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodSeller_FoodSellerEmptyResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodSeller_GetFoodSellerByIdResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodSeller_GetFoodSellerByIdResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -76,26 +86,32 @@ public final class FoodSellerServiceOuterClass {
       "countId\030\001 \001(\005\022\r\n\005email\030\002 \001(\t\"F\n\037UpdateFo" +
       "odSellerPasswordRequest\022\021\n\taccountId\030\001 \001" +
       "(\005\022\020\n\010password\030\002 \001(\t\"3\n\036DeleteFoodSeller" +
-      "AccountRequest\022\021\n\taccountId\030\001 \001(\005\"\031\n\027Foo" +
-      "dSellerEmptyResponse2\275\005\n\021FoodSellerServi" +
-      "ce\022\\\n\020CreateFoodSeller\022#.foodSeller.Crea" +
-      "teFoodSellerRequest\032#.foodSeller.FoodSel" +
-      "lerEmptyResponse\022Z\n\nUpdateName\022\'.foodSel" +
-      "ler.UpdateFoodSellerNameRequest\032#.foodSe" +
-      "ller.FoodSellerEmptyResponse\022`\n\rUpdateAd",
-      "dress\022*.foodSeller.UpdateFoodSellerAddre" +
-      "ssRequest\032#.foodSeller.FoodSellerEmptyRe" +
-      "sponse\022\\\n\013UpdateEmail\022(.foodSeller.Updat" +
-      "eFoodSellerEmailRequest\032#.foodSeller.Foo" +
-      "dSellerEmptyResponse\022b\n\016UpdatePassword\022+" +
-      ".foodSeller.UpdateFoodSellerPasswordRequ" +
-      "est\032#.foodSeller.FoodSellerEmptyResponse" +
-      "\022h\n\021UpdatePhoneNumber\022..foodSeller.Updat" +
-      "eFoodSellerPhoneNumberRequest\032#.foodSell" +
-      "er.FoodSellerEmptyResponse\022`\n\rDeleteAcco",
-      "unt\022*.foodSeller.DeleteFoodSellerAccount" +
-      "Request\032#.foodSeller.FoodSellerEmptyResp" +
-      "onseB\002P\001b\006proto3"
+      "AccountRequest\022\021\n\taccountId\030\001 \001(\005\"-\n\030Get" +
+      "FoodSellerByIdRequest\022\021\n\taccountId\030\001 \001(\005" +
+      "\"\031\n\027FoodSellerEmptyResponse\"q\n\031GetFoodSe" +
+      "llerByIdResponse\022\021\n\taccountId\030\001 \001(\005\022\r\n\005e" +
+      "mail\030\002 \001(\t\022\023\n\013phoneNumber\030\003 \001(\t\022\014\n\004name\030" +
+      "\004 \001(\t\022\017\n\007address\030\005 \001(\t2\237\006\n\021FoodSellerSer" +
+      "vice\022\\\n\020CreateFoodSeller\022#.foodSeller.Cr",
+      "eateFoodSellerRequest\032#.foodSeller.FoodS" +
+      "ellerEmptyResponse\022Z\n\nUpdateName\022\'.foodS" +
+      "eller.UpdateFoodSellerNameRequest\032#.food" +
+      "Seller.FoodSellerEmptyResponse\022`\n\rUpdate" +
+      "Address\022*.foodSeller.UpdateFoodSellerAdd" +
+      "ressRequest\032#.foodSeller.FoodSellerEmpty" +
+      "Response\022\\\n\013UpdateEmail\022(.foodSeller.Upd" +
+      "ateFoodSellerEmailRequest\032#.foodSeller.F" +
+      "oodSellerEmptyResponse\022b\n\016UpdatePassword" +
+      "\022+.foodSeller.UpdateFoodSellerPasswordRe",
+      "quest\032#.foodSeller.FoodSellerEmptyRespon" +
+      "se\022h\n\021UpdatePhoneNumber\022..foodSeller.Upd" +
+      "ateFoodSellerPhoneNumberRequest\032#.foodSe" +
+      "ller.FoodSellerEmptyResponse\022`\n\rDeleteAc" +
+      "count\022*.foodSeller.DeleteFoodSellerAccou" +
+      "ntRequest\032#.foodSeller.FoodSellerEmptyRe" +
+      "sponse\022`\n\021GetFoodSellerById\022$.foodSeller" +
+      ".GetFoodSellerByIdRequest\032%.foodSeller.G" +
+      "etFoodSellerByIdResponseB\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -151,12 +167,24 @@ public final class FoodSellerServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodSeller_DeleteFoodSellerAccountRequest_descriptor,
         new java.lang.String[] { "AccountId", });
-    internal_static_foodSeller_FoodSellerEmptyResponse_descriptor =
+    internal_static_foodSeller_GetFoodSellerByIdRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
+    internal_static_foodSeller_GetFoodSellerByIdRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodSeller_GetFoodSellerByIdRequest_descriptor,
+        new java.lang.String[] { "AccountId", });
+    internal_static_foodSeller_FoodSellerEmptyResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_foodSeller_FoodSellerEmptyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodSeller_FoodSellerEmptyResponse_descriptor,
         new java.lang.String[] { });
+    internal_static_foodSeller_GetFoodSellerByIdResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_foodSeller_GetFoodSellerByIdResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodSeller_GetFoodSellerByIdResponse_descriptor,
+        new java.lang.String[] { "AccountId", "Email", "PhoneNumber", "Name", "Address", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

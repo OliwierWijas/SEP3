@@ -76,4 +76,5 @@ public class ReadFoodSellerReservationDTO {
     public String getCustomerLastName() {
         return customerLastName;
     }
+
 }

@@ -26,7 +26,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
   }
 
   @Override public synchronized void createFoodOffer(FoodOfferCreationDTO dto) throws SQLException
@@ -91,7 +91,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   @Override
   public synchronized ArrayList<ReadFoodOffersDTO> readFoodOffersByFoodSellerId(int foodSellerId) throws SQLException {
     try (Connection connection = getConnection()){
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM foodoffer WHERE foodsellerid = ? AND isreserved = false AND iscompleted = false");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM foodoffer WHERE foodsellerid = ?");
       statement.setInt(1, foodSellerId);
       ResultSet resultSet = statement.executeQuery();
 
@@ -107,8 +107,9 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
         MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
-
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSellerId, title, description,price,  start, end, false, false);
+        boolean isReserved = resultSet.getBoolean("isreserved");
+        boolean isCompleted = resultSet.getBoolean("iscompleted");
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSellerId, title, description,price,  start, end, isReserved, isCompleted);
         foodOffers.add(dto);
       }
       return foodOffers;

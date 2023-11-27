@@ -3,6 +3,7 @@ package server;
 import dao.AccountDAO;
 import dao.FoodSellerDAOInterface;
 import dto.FoodSellerCreationDTO;
+import dto.ReadFoodSellerDTO;
 import foodSeller.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -112,5 +113,18 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       responseObserver.onCompleted();
     }catch (SQLException e) {
       responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
-    }  }
+    }
+  }
+
+  @Override
+  public void getFoodSellerById(GetFoodSellerByIdRequest request, StreamObserver<GetFoodSellerByIdResponse> responseObserver) {
+    try{
+      ReadFoodSellerDTO dto = dao.getFoodSellerById(request.getAccountId());
+      GetFoodSellerByIdResponse response = GetFoodSellerByIdResponse.newBuilder().setAccountId(dto.getAccountId()).setEmail(dto.getEmail()).setPhoneNumber(dto.getPhoneNumber()).setName(dto.getName()).setAddress(dto.getAddress()).build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }catch (SQLException e) {
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
+    }
+  }
 }
