@@ -1,9 +1,6 @@
 package server;
 
-import dao.AccountDAO;
-import dao.FoodOfferDAO;
-import dao.LoginDAO;
-import dao.ReservationDAO;
+import dao.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.ServerCredentials;
@@ -23,6 +20,7 @@ public class ServerStart
         .addService(new LoginServiceImpl(LoginDAO.getInstance()))
         .addService(new FoodOfferServiceImpl(FoodOfferDAO.getInstance()))
         .addService(new ReservationServiceImpl(ReservationDAO.getInstance()))
+        .addService(new RatingAndCommentServiceImpl(RatingAndCommentDAO.getInstance()))
         .build();
     server.start();
     System.out.println("Server ready for incoming requests at port : " + server.getPort() + ".");

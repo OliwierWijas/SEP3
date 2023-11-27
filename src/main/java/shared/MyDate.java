@@ -19,12 +19,12 @@ public class MyDate
 
   public int getYear()
   {
-    return year - 1900;
+    return year;
   }
 
   public int getMonth()
   {
-    return month - 1;
+    return month;
   }
 
   public int getDay()
@@ -40,5 +40,10 @@ public class MyDate
   public int getMinute()
   {
     return minute;
+  }
+
+  public String ToString()
+  {
+    return day+"/"+month+"/"+year;
   }
 }

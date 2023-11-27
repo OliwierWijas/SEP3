@@ -35,4 +35,12 @@ public class ReadFoodOffersDTO
     public void setFoodSellerAddress(String foodSellerAddress) {
         this.foodSellerAddress = foodSellerAddress;
     }
+
+    public MyDate getStartPickUpTime() {
+        return startPickUpTime;
+    }
+
+    public MyDate getEndPickUpTime() {
+        return endPickUpTime;
+    }
 }
