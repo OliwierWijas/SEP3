@@ -1,5 +1,7 @@
 package dto;
 
+import shared.MyDate;
+
 import java.util.Date;
 
 public class ReadCommentDTO
@@ -9,10 +11,10 @@ public class ReadCommentDTO
   private int foodSellerId;
   private String customerFirstName;
   private String customerLastName;
-  private Date date;
+  private MyDate date;
   private String content;
 
-  public ReadCommentDTO(int id, int customerId, int foodSellerId, String customerFirstName, String customerLastName, Date date, String content) {
+  public ReadCommentDTO(int id, int customerId, int foodSellerId, String customerFirstName, String customerLastName, MyDate date, String content) {
     this.id = id;
     this.customerId = customerId;
     this.foodSellerId = foodSellerId;
@@ -52,12 +54,12 @@ public class ReadCommentDTO
     this.foodSellerId = foodSellerId;
   }
 
-  public Date getDate()
+  public MyDate getDate()
   {
     return date;
   }
 
-  public void setDate(Date date)
+  public void setDate(MyDate date)
   {
     this.date = date;
   }

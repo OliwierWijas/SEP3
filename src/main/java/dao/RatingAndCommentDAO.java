@@ -4,6 +4,7 @@ import dto.CommentBasicDTO;
 import dto.RatingBasicDTO;
 import dto.ReadCommentDTO;
 import dto.ReadRatingDTO;
+import shared.MyDate;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -100,9 +101,10 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
                 String customerFirstName = resultSet.getString("firstname");
                 String customerLastName = resultSet.getString("lastname");
                 Date date = resultSet.getDate("date");
+                MyDate myDate = new MyDate(date.getYear()+1900, date.getMonth()+1, date.getDate(), 0,0);
                 String content = resultSet.getString("text");
 
-                ReadCommentDTO comment = new ReadCommentDTO(id, customerId, foodSellerId, customerFirstName, customerLastName, date, content);
+                ReadCommentDTO comment = new ReadCommentDTO(id, customerId, foodSellerId, customerFirstName, customerLastName, myDate, content);
                 comments.add(comment);
             }
             return comments;

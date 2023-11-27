@@ -1,5 +1,7 @@
 package dto;
 
+import shared.MyDate;
+
 import java.util.Date;
 
 public class ReadFoodSellerReservationDTO {
@@ -8,15 +10,15 @@ public class ReadFoodSellerReservationDTO {
     private String title;
     private String description;
     private double price;
-    private Date startPickUpTime;
-    private Date endPickUpTime;
+    private MyDate startPickUpTime;
+    private MyDate endPickUpTime;
     private int reservationNumber;
     private int customerId;
     private String customerFirstName;
     private String customerLastName;
     private boolean isCompleted;
 
-    public ReadFoodSellerReservationDTO(int id, String title, String description, double price, Date startPickUpTime, Date endPickUpTime, int reservationNumber, int customerId, String customerFirstName, String customerLastName, boolean isCompleted) {
+    public ReadFoodSellerReservationDTO(int id, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, int reservationNumber, int customerId, String customerFirstName, String customerLastName, boolean isCompleted) {
         this.foodOfferId = id;
         this.title = title;
         this.description = description;
@@ -51,11 +53,11 @@ public class ReadFoodSellerReservationDTO {
         return price;
     }
 
-    public Date getStartPickUpTime() {
+    public MyDate getStartPickUpTime() {
         return startPickUpTime;
     }
 
-    public Date getEndPickUpTime() {
+    public MyDate getEndPickUpTime() {
         return endPickUpTime;
     }
 
