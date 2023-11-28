@@ -33,6 +33,8 @@ public class RatingAndCommentServiceImpl extends RatingAndCommentServiceGrpc.Rat
         }
         catch (Exception e)
         {
+            if(e.getMessage().contains("duplicate key value violates unique constraint \"rate_pkey\""))
+                responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User already rated the Food Seller.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
             responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
         }
     }
