@@ -28,6 +28,42 @@ public class ReadFoodOffersDTO
         this.isCompleted = isCompleted;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getFoodSellerId() {
+        return foodSellerId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getFoodSellerName() {
+        return foodSellerName;
+    }
+
+    public String getFoodSellerAddress() {
+        return foodSellerAddress;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
     public void setFoodSellerName(String foodSellerName) {
         this.foodSellerName = foodSellerName;
     }
@@ -42,5 +78,22 @@ public class ReadFoodOffersDTO
 
     public MyDate getEndPickUpTime() {
         return endPickUpTime;
+    }
+
+    @Override
+    public String toString() {
+        return "ReadFoodOffersDTO{" +
+                "id=" + id +
+                ", foodSellerId=" + foodSellerId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", startPickUpTime=" + startPickUpTime +
+                ", endPickUpTime=" + endPickUpTime +
+                ", foodSellerName='" + foodSellerName + '\'' +
+                ", foodSellerAddress='" + foodSellerAddress + '\'' +
+                ", isReserved=" + isReserved +
+                ", isCompleted=" + isCompleted +
+                '}';
     }
 }

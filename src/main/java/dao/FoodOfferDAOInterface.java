@@ -3,6 +3,7 @@ package dao;
 import dto.FoodOfferCreationDTO;
 import dto.FoodOfferUpdateDTO;
 import dto.ReadFoodOffersDTO;
+import dto.ReadFoodSellerDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,4 +15,5 @@ public interface FoodOfferDAOInterface
   ArrayList<ReadFoodOffersDTO> readFoodOffersByFoodSellerId(int foodSellerId) throws SQLException;
   void updateFoodOffer(FoodOfferUpdateDTO dto) throws SQLException;
   void deleteFoodOffer(int foodOfferId) throws SQLException;
+  ReadFoodOffersDTO readFoodOfferById(int id) throws SQLException;
 }

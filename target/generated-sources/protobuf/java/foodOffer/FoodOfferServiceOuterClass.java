@@ -30,6 +30,11 @@ public final class FoodOfferServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodOffer_ReadFoodOffersByFoodSellerIdRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodOffer_ReadFoodOfferByIdRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodOffer_ReadFoodOfferByIdRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_foodOffer_UpdateFoodOfferRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -49,6 +54,11 @@ public final class FoodOfferServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_foodOffer_ReadFoodOffersListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_foodOffer_ReadFoodOfferByIdResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_foodOffer_ReadFoodOfferByIdResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -64,27 +74,37 @@ public final class FoodOfferServiceOuterClass {
       "\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 \001(\t" +
       "\022\025\n\rendPickUpTime\030\006 \001(\t\" \n\036ReadAvailable" +
       "FoodOffersRequest\";\n#ReadFoodOffersByFoo" +
-      "dSellerIdRequest\022\024\n\014foodSellerId\030\001 \001(\005\"\220" +
+      "dSellerIdRequest\022\024\n\014foodSellerId\030\001 \001(\005\"&" +
+      "\n\030ReadFoodOfferByIdRequest\022\n\n\002id\030\001 \001(\005\"\220" +
       "\001\n\026UpdateFoodOfferRequest\022\023\n\013foodOfferId" +
-      "\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 \001" +
-      "(\t\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 \001",
+      "\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\022\023\n\013description\030\003 \001",
+      "(\t\022\r\n\005price\030\004 \001(\001\022\027\n\017startPickUpTime\030\005 \001" +
       "(\t\022\025\n\rendPickUpTime\030\006 \001(\t\"-\n\026DeleteFoodO" +
       "fferRequest\022\023\n\013foodOfferId\030\001 \001(\005\"\030\n\026Food" +
       "OfferEmptyResponse\"*\n\032ReadFoodOffersList" +
-      "Response\022\014\n\004list\030\001 \001(\t2\201\004\n\020FoodOfferServ" +
-      "ice\022W\n\017createFoodOffer\022!.foodOffer.Creat" +
-      "eFoodOfferRequest\032!.foodOffer.FoodOfferE" +
-      "mptyResponse\022k\n\027readAvailableFoodOffers\022" +
-      ").foodOffer.ReadAvailableFoodOffersReque" +
-      "st\032%.foodOffer.ReadFoodOffersListRespons" +
-      "e\022u\n\034readFoodOffersByFoodSellerId\022..food",
-      "Offer.ReadFoodOffersByFoodSellerIdReques" +
-      "t\032%.foodOffer.ReadFoodOffersListResponse" +
-      "\022W\n\017updateFoodOffer\022!.foodOffer.UpdateFo" +
-      "odOfferRequest\032!.foodOffer.FoodOfferEmpt" +
-      "yResponse\022W\n\017deleteFoodOffer\022!.foodOffer" +
-      ".DeleteFoodOfferRequest\032!.foodOffer.Food" +
-      "OfferEmptyResponseB\002P\001b\006proto3"
+      "Response\022\014\n\004list\030\001 \001(\t\"\374\001\n\031ReadFoodOffer" +
+      "ByIdResponse\022\n\n\002id\030\001 \001(\005\022\024\n\014foodSellerId" +
+      "\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004 \001" +
+      "(\t\022\r\n\005price\030\005 \001(\001\022\027\n\017startPickUpTime\030\006 \001" +
+      "(\t\022\025\n\rendPickUpTime\030\007 \001(\t\022\026\n\016foodSellerN" +
+      "ame\030\010 \001(\t\022\031\n\021foodSellerAddress\030\t \001(\t\022\022\n\n",
+      "isReserved\030\n \001(\010\022\023\n\013isCompleted\030\013 \001(\0102\341\004" +
+      "\n\020FoodOfferService\022W\n\017createFoodOffer\022!." +
+      "foodOffer.CreateFoodOfferRequest\032!.foodO" +
+      "ffer.FoodOfferEmptyResponse\022k\n\027readAvail" +
+      "ableFoodOffers\022).foodOffer.ReadAvailable" +
+      "FoodOffersRequest\032%.foodOffer.ReadFoodOf" +
+      "fersListResponse\022u\n\034readFoodOffersByFood" +
+      "SellerId\022..foodOffer.ReadFoodOffersByFoo" +
+      "dSellerIdRequest\032%.foodOffer.ReadFoodOff" +
+      "ersListResponse\022W\n\017updateFoodOffer\022!.foo",
+      "dOffer.UpdateFoodOfferRequest\032!.foodOffe" +
+      "r.FoodOfferEmptyResponse\022W\n\017deleteFoodOf" +
+      "fer\022!.foodOffer.DeleteFoodOfferRequest\032!" +
+      ".foodOffer.FoodOfferEmptyResponse\022^\n\021rea" +
+      "dFoodOfferById\022#.foodOffer.ReadFoodOffer" +
+      "ByIdRequest\032$.foodOffer.ReadFoodOfferByI" +
+      "dResponseB\002P\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -116,30 +136,42 @@ public final class FoodOfferServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_ReadFoodOffersByFoodSellerIdRequest_descriptor,
         new java.lang.String[] { "FoodSellerId", });
-    internal_static_foodOffer_UpdateFoodOfferRequest_descriptor =
+    internal_static_foodOffer_ReadFoodOfferByIdRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_foodOffer_ReadFoodOfferByIdRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodOffer_ReadFoodOfferByIdRequest_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_foodOffer_UpdateFoodOfferRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_foodOffer_UpdateFoodOfferRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_UpdateFoodOfferRequest_descriptor,
         new java.lang.String[] { "FoodOfferId", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", });
     internal_static_foodOffer_DeleteFoodOfferRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_foodOffer_DeleteFoodOfferRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_DeleteFoodOfferRequest_descriptor,
         new java.lang.String[] { "FoodOfferId", });
     internal_static_foodOffer_FoodOfferEmptyResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_foodOffer_FoodOfferEmptyResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_FoodOfferEmptyResponse_descriptor,
         new java.lang.String[] { });
     internal_static_foodOffer_ReadFoodOffersListResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_foodOffer_ReadFoodOffersListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_ReadFoodOffersListResponse_descriptor,
         new java.lang.String[] { "List", });
+    internal_static_foodOffer_ReadFoodOfferByIdResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_foodOffer_ReadFoodOfferByIdResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_foodOffer_ReadFoodOfferByIdResponse_descriptor,
+        new java.lang.String[] { "Id", "FoodSellerId", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", "FoodSellerName", "FoodSellerAddress", "IsReserved", "IsCompleted", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

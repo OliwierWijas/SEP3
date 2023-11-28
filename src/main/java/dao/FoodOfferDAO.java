@@ -156,4 +156,35 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
       throw new RuntimeException(e.getMessage());
     }
   }
+
+  @Override
+  public ReadFoodOffersDTO readFoodOfferById(int id) throws SQLException {
+    try (Connection connection = getConnection()){
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM foodoffer JOIN foodseller on foodoffer.foodsellerid = foodseller.accountid WHERE foodoffer.id = ?");
+      statement.setInt(1, id);
+      ResultSet resultSet = statement.executeQuery();
+      if(resultSet.next()){
+        int foodSellerId = resultSet.getInt("foodsellerid");
+        String title = resultSet.getString("title");
+        String description = resultSet.getString("description");
+        double price = resultSet.getDouble("price");
+        Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
+        Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
+        String foodSellerName = resultSet.getString("name");
+        String foodSellerAddress = resultSet.getString("address");
+        MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
+        MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
+        boolean isReserved = resultSet.getBoolean("isreserved");
+        boolean isCompleted = resultSet.getBoolean("iscompleted");
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSellerId, title, description,price,  start, end, isReserved, isCompleted);
+        dto.setFoodSellerAddress(foodSellerAddress);
+        dto.setFoodSellerName(foodSellerName);
+        return dto;
+      }
+    }catch(Exception e){
+      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
+    }
+    return null;
+  }
 }

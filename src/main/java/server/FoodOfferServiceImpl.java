@@ -11,6 +11,7 @@ import io.grpc.stub.StreamObserver;
 import shared.MyDate;
 
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceImplBase
@@ -106,6 +107,26 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
+      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+    }
+  }
+
+  @Override
+  public void readFoodOfferById(ReadFoodOfferByIdRequest request, StreamObserver<ReadFoodOfferByIdResponse> responseObserver) {
+    try
+    {
+      ReadFoodOffersDTO dto = dao.readFoodOfferById(request.getId());
+      System.out.println(dto);
+      String start = gson.toJson(dto.getStartPickUpTime());
+      String end = gson.toJson(dto.getEndPickUpTime());
+      ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setFoodSellerId(dto.getId()).setFoodSellerId(dto.getFoodSellerId()).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setFoodSellerName(dto.getFoodSellerName()).setFoodSellerAddress(dto.getFoodSellerAddress()).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).build();
+      System.out.println(response);
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
       responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
   }
