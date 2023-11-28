@@ -116,11 +116,9 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     try
     {
       ReadFoodOffersDTO dto = dao.readFoodOfferById(request.getId());
-      System.out.println(dto);
       String start = gson.toJson(dto.getStartPickUpTime());
       String end = gson.toJson(dto.getEndPickUpTime());
       ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setFoodSellerId(dto.getId()).setFoodSellerId(dto.getFoodSellerId()).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setFoodSellerName(dto.getFoodSellerName()).setFoodSellerAddress(dto.getFoodSellerAddress()).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).build();
-      System.out.println(response);
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }

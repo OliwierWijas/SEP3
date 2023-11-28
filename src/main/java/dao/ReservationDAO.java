@@ -50,9 +50,10 @@ public class ReservationDAO implements ReservationDAOInterface
     {
       PreparedStatement statement = connection.prepareStatement("delete from reservation where reservationnumber = ?;");
       statement.setInt(1, reservationNumber);
-      statement.executeQuery();
+      statement.executeUpdate();
     }
     catch(Exception e){
+      e.printStackTrace();
       throw new RuntimeException(e.getMessage());
     }
   }
