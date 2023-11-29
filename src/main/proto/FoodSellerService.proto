@@ -45,6 +45,7 @@ message GetFoodSellerByIdRequest{
 message GetAllFoodSellersRequest {
 
 }
+//
 
 message FoodSellerEmptyResponse {
 }
