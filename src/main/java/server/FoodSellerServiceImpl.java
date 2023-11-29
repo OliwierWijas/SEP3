@@ -1,22 +1,28 @@
 package server;
 
+import com.google.gson.Gson;
 import dao.AccountDAO;
 import dao.FoodSellerDAOInterface;
 import dto.FoodSellerCreationDTO;
+import dto.ReadFoodOffersDTO;
 import dto.ReadFoodSellerDTO;
+import foodOffer.ReadFoodOffersListResponse;
 import foodSeller.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServiceImplBase
 {
   private FoodSellerDAOInterface dao;
+  private Gson gson;
 
   public FoodSellerServiceImpl(FoodSellerDAOInterface dao) throws SQLException
   {
     this.dao = dao;
+    gson = new Gson();
   }
 
   @Override public void createFoodSeller(CreateFoodSellerRequest request,
@@ -125,6 +131,23 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       responseObserver.onCompleted();
     }catch (SQLException e) {
       responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
+    }
+  }
+
+  @Override public void getAllFoodSellers(GetAllFoodSellersRequest request,
+      StreamObserver<GetAllFoodSellersResponse> responseObserver)
+  {
+    try
+    {
+      ArrayList<ReadFoodSellerDTO> foodSellers = dao.getAllFoodSellers();
+      String string = gson.toJson(foodSellers);
+      GetAllFoodSellersResponse response = GetAllFoodSellersResponse.newBuilder().setList(string).build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }
+    catch (Exception e)
+    {
+      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
     }
   }
 }

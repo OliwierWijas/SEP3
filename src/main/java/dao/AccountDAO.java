@@ -2,9 +2,12 @@ package dao;
 
 import dto.CustomerCreationDTO;
 import dto.FoodSellerCreationDTO;
+import dto.ReadFoodOffersDTO;
 import dto.ReadFoodSellerDTO;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
 {
@@ -178,5 +181,29 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       throw new RuntimeException(e.getMessage());
     }
     return null;
+  }
+
+  @Override public ArrayList<ReadFoodSellerDTO> getAllFoodSellers()
+      throws SQLException
+  {
+    ArrayList<ReadFoodSellerDTO> dtoList = new ArrayList<>();
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM Account JOIN FoodSeller ON account.id = foodseller.accountid");
+      ResultSet resultSet = statement.executeQuery();
+      while(resultSet.next()){
+        int accountId = resultSet.getInt(1);
+        String email = resultSet.getString(2);
+        String phoneNumber = resultSet.getString(3);
+        String name = resultSet.getString(7);
+        String address = resultSet.getString(8);
+
+        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
+        dtoList.add(dto);
+      }
+    }catch(Exception e){
+      throw new RuntimeException(e.getMessage());
+    }
+    return dtoList;
   }
 }

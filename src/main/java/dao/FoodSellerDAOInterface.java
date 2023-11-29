@@ -5,6 +5,8 @@ import dto.ReadFoodSellerDTO;
 import dto.ReadRatingDTO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public interface FoodSellerDAOInterface
 {
@@ -16,4 +18,5 @@ public interface FoodSellerDAOInterface
   void updatePhoneNumber(int accountId, String phoneNumber) throws SQLException;
   void deleteAccount(int accountId) throws SQLException;
   ReadFoodSellerDTO getFoodSellerById(int accountId) throws SQLException;
+  ArrayList<ReadFoodSellerDTO> getAllFoodSellers() throws SQLException;
 }
