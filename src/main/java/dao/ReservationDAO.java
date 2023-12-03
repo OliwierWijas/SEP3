@@ -27,7 +27,9 @@ public class ReservationDAO implements ReservationDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
+    return DriverManager.getConnection(
+        "jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase",
+        "postgres", "xf31bhl9");
   }
 
   @Override public synchronized void createReservation(ReservationCreationDTO dto)
@@ -35,39 +37,48 @@ public class ReservationDAO implements ReservationDAOInterface
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO Reservation(customerId, foodOfferId) VALUES (?,?)");
+      PreparedStatement statement = connection.prepareStatement(
+          "INSERT INTO Reservation(customerId, foodOfferId) VALUES (?,?)");
       statement.setInt(1, dto.getCustomerId());
       statement.setInt(2, dto.getFoodOfferId());
       statement.executeUpdate();
     }
-    catch(Exception e){
-      throw new RuntimeException(e.getMessage());    }
+    catch (Exception e)
+    {
+      throw new RuntimeException(e.getMessage());
+    }
   }
 
-  @Override public synchronized void deleteReservation(int reservationNumber) throws SQLException
+  @Override public synchronized void deleteReservation(int reservationNumber)
+      throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("delete from reservation where reservationnumber = ?;");
+      PreparedStatement statement = connection.prepareStatement(
+          "delete from reservation where reservationnumber = ?;");
       statement.setInt(1, reservationNumber);
       statement.executeUpdate();
     }
-    catch(Exception e){
+    catch (Exception e)
+    {
       e.printStackTrace();
       throw new RuntimeException(e.getMessage());
     }
   }
 
-  @Override
-  public synchronized ArrayList<ReadCustomerReservationDTO> readCustomerReservations(int customerId) throws SQLException {
+  @Override public synchronized ArrayList<ReadCustomerReservationDTO> readCustomerReservations(
+      int customerId) throws SQLException
+  {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ?");
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ?");
       statement.setInt(1, customerId);
       ResultSet resultSet = statement.executeQuery();
 
       ArrayList<ReadCustomerReservationDTO> reservationsDtos = new ArrayList<>();
-      while(resultSet.next()){
+      while (resultSet.next())
+      {
         int foodOfferId = resultSet.getInt("id");
         String title = resultSet.getString("title");
         String description = resultSet.getString("description");
@@ -75,68 +86,47 @@ public class ReservationDAO implements ReservationDAOInterface
         Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
         Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
 
-        MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth()+1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
-        MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth()+1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
+        MyDate start = new MyDate(startPickUpTime.getYear() + 1900,
+            startPickUpTime.getMonth() + 1, startPickUpTime.getDate(),
+            startPickUpTime.getHours(), startPickUpTime.getMinutes());
+        MyDate end = new MyDate(endPickUpTime.getYear() + 1900,
+            endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
 
         int reservationNumber = resultSet.getInt("reservationnumber");
-        int foodSellerId= resultSet.getInt("accountid");
+        int foodSellerId = resultSet.getInt("accountid");
         String foodSellerName = resultSet.getString("name");
-        String address = resultSet.getString("address");
+        String street = resultSet.getString("street");
+        int number = resultSet.getInt("number");
+        String city = resultSet.getString("city");
+        String address = street + " " + number + ", " + city;
         boolean isCompleted = resultSet.getBoolean("isCompleted");
-        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, start, end, reservationNumber, foodSellerId, foodSellerName, address, isCompleted);
+        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(
+            foodOfferId, title, description, price, start, end,
+            reservationNumber, foodSellerId, foodSellerName, address,
+            isCompleted);
         reservationsDtos.add(dto);
       }
       return reservationsDtos;
     }
-    catch(Exception e){
+    catch (Exception e)
+    {
       throw new RuntimeException(e.getMessage());
     }
   }
 
-  //@Override
-  public synchronized ArrayList<ReadCustomerReservationDTO> readCompletedCustomerReservations(int customerId) throws SQLException {
+  @Override public synchronized ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(
+      int foodSellerId) throws SQLException
+  {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION  ON foodOffer.id = reservation.foodOfferId JOIN FOODSELLER ON foodSeller.accountId = foodOffer.foodSellerid where reservation.customerId = ? AND isCompleted = true");
-      statement.setInt(1, customerId);
-      ResultSet resultSet = statement.executeQuery();
-
-      ArrayList<ReadCustomerReservationDTO> reservationsDtos = new ArrayList<>();
-      while(resultSet.next()){
-        int foodOfferId = resultSet.getInt("id");
-        String title = resultSet.getString("title");
-        String description = resultSet.getString("description");
-        double price = resultSet.getDouble("price");
-        Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
-        Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
-
-        MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth()+1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
-        MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth()+1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
-
-        int reservationNumber = resultSet.getInt("reservationnumber");
-        int foodSellerId= resultSet.getInt("accountid");
-        String foodSellerName = resultSet.getString("name");
-        String address = resultSet.getString("address");
-        ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(foodOfferId, title,description, price, start, end, reservationNumber, foodSellerId, foodSellerName, address, false);
-        reservationsDtos.add(dto);
-      }
-      return reservationsDtos;
-    }
-    catch(Exception e){
-      throw new RuntimeException(e.getMessage());
-    }
-  }
-
-  @Override
-  public synchronized ArrayList<ReadFoodSellerReservationDTO> readFoodSellerReservations(int foodSellerId) throws SQLException {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ?");
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ?");
       statement.setInt(1, foodSellerId);
       ResultSet resultSet = statement.executeQuery();
 
       ArrayList<ReadFoodSellerReservationDTO> reservationDtos = new ArrayList<>();
-      while(resultSet.next()){
+      while (resultSet.next())
+      {
         int foodOfferId = resultSet.getInt("id");
         String title = resultSet.getString("title");
         String description = resultSet.getString("description");
@@ -144,8 +134,11 @@ public class ReservationDAO implements ReservationDAOInterface
         Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
         Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
 
-        MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth()+1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
-        MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth()+1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
+        MyDate start = new MyDate(startPickUpTime.getYear() + 1900,
+            startPickUpTime.getMonth() + 1, startPickUpTime.getDate(),
+            startPickUpTime.getHours(), startPickUpTime.getMinutes());
+        MyDate end = new MyDate(endPickUpTime.getYear() + 1900,
+            endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
 
         int reservationNumber = resultSet.getInt("reservationnumber");
         int customerId = resultSet.getInt("customerid");
@@ -153,12 +146,16 @@ public class ReservationDAO implements ReservationDAOInterface
         String customerLastName = resultSet.getString("lastname");
         boolean isCompleted = resultSet.getBoolean("isCompleted");
 
-        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, start, end, reservationNumber, customerId, customerFirstName, customerLastName, isCompleted);
+        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(
+            foodOfferId, title, description, price, start, end,
+            reservationNumber, customerId, customerFirstName, customerLastName,
+            isCompleted);
         reservationDtos.add(dto);
       }
       return reservationDtos;
     }
-    catch(Exception e){
+    catch (Exception e)
+    {
       throw new RuntimeException(e.getMessage());
     }
   }
@@ -166,53 +163,20 @@ public class ReservationDAO implements ReservationDAOInterface
   @Override public void completeReservation(int reservationNumber)
       throws SQLException
   {
-    try(Connection connection = getConnection())
+    try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("SELECT foodofferid FROM reservation WHERE reservationnumber = ?;");
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT foodofferid FROM reservation WHERE reservationnumber = ?;");
       statement.setInt(1, reservationNumber);
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next())
       {
         int foodOfferId = resultSet.getInt(1);
-        PreparedStatement statement1 = connection.prepareStatement("UPDATE foodoffer SET iscompleted = true WHERE id = ?;");
+        PreparedStatement statement1 = connection.prepareStatement(
+            "UPDATE foodoffer SET iscompleted = true WHERE id = ?;");
         statement1.setInt(1, foodOfferId);
         statement1.executeUpdate();
       }
-    }
-  }
-
-  //@Override
-  public synchronized ArrayList<ReadFoodSellerReservationDTO> readCompletedFoodSellerReservations(int foodSellerId) throws SQLException {
-    try (Connection connection = getConnection())
-    {
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM FOODOFFER JOIN RESERVATION ON foodOffer.id = reservation.foodOfferId JOIN customer on reservation.customerId = customer.accountId where foodOffer.foodSellerid = ? AND foodOffer.isCompleted = true");
-      statement.setInt(1, foodSellerId);
-      ResultSet resultSet = statement.executeQuery();
-
-      ArrayList<ReadFoodSellerReservationDTO> reservationDtos = new ArrayList<>();
-      while(resultSet.next()){
-        int foodOfferId = resultSet.getInt("id");
-        String title = resultSet.getString("title");
-        String description = resultSet.getString("description");
-        double price = resultSet.getDouble("price");
-        Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
-        Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
-
-        MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth()+1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
-        MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth()+1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
-
-        int reservationNumber = resultSet.getInt("reservationnumber");
-        int customerId = resultSet.getInt("customerid");
-        String customerFirstName = resultSet.getString("firstname");
-        String customerLastName = resultSet.getString("lastname");
-
-        ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(foodOfferId, title, description, price, start, end, reservationNumber, customerId, customerFirstName, customerLastName, false);
-        reservationDtos.add(dto);
-      }
-      return reservationDtos;
-    }
-    catch(Exception e){
-      throw new RuntimeException(e.getMessage());
     }
   }
 }

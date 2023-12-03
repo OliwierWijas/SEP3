@@ -1,9 +1,6 @@
 package dao;
 
-import dto.CustomerCreationDTO;
-import dto.FoodSellerCreationDTO;
-import dto.ReadFoodOffersDTO;
-import dto.ReadFoodSellerDTO;
+import dto.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
   @Override public synchronized void createCustomer(CustomerCreationDTO dto) throws SQLException
@@ -69,10 +66,12 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       if (keys.next())
       {
         int id = keys.getInt(1);
-        PreparedStatement statement1 = connection.prepareStatement("INSERT INTO FoodSeller(accountId, name, address) VALUES (?,?,?);");
+        PreparedStatement statement1 = connection.prepareStatement("INSERT INTO FoodSeller(accountId, name, street, number, city) VALUES (?,?,?,?,?);");
         statement1.setInt(1, id);
         statement1.setString(2, dto.getName());
-        statement1.setString(3, dto.getAddress());
+        statement1.setString(3, dto.getStreet());
+        statement1.setInt(4, dto.getNumber());
+        statement1.setString(5, dto.getStreet());
         statement1.executeUpdate();
       }
     }catch(Exception e){
@@ -80,28 +79,30 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
     }
   }
 
-  @Override public synchronized void updateName(int accountId, String name)
+  @Override public synchronized void updateName(FoodSellerUpdateDTO dto)
       throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("UPDATE Account SET name = ? WHERE id = ?");
-      statement.setString(1, name);
-      statement.setInt(2, accountId);
+      PreparedStatement statement = connection.prepareStatement("UPDATE foodseller SET name = ? WHERE accountid = ?");
+      statement.setString(1, dto.getName());
+      statement.setInt(2, dto.getAccountId());
       statement.executeUpdate();
     }catch(Exception e){
       throw new RuntimeException(e.getMessage());
     }
   }
 
-  @Override public synchronized void updateAddress(int accountId, String address)
+  @Override public synchronized void updateAddress(FoodSellerUpdateDTO dto)
       throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("UPDATE Account SET address = ? WHERE id = ?");
-      statement.setString(1, address);
-      statement.setInt(2, accountId);
+      PreparedStatement statement = connection.prepareStatement("UPDATE foodseller SET street = ?, number =?, city=? WHERE accountid = ?");
+      statement.setString(1, dto.getStreet());
+      statement.setInt(2, dto.getNumber());
+      statement.setString(3, dto.getCity());
+      statement.setInt(4, dto.getAccountId());
       statement.executeUpdate();
     }catch(Exception e){
       throw new RuntimeException(e.getMessage());
@@ -157,6 +158,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       statement.setInt(1, accountId);
       statement.executeUpdate();
     }catch(Exception e){
+      e.printStackTrace();
       throw new RuntimeException(e.getMessage());
     }
   }
@@ -172,7 +174,10 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         String email = resultSet.getString(2);
         String phoneNumber = resultSet.getString(3);
         String name = resultSet.getString(7);
-        String address = resultSet.getString(8);
+        String street = resultSet.getString(8);
+        int number = resultSet.getInt(9);
+        String city = resultSet.getString(10);
+        String address = street + " " + number + ", " + city;
 
         ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
         return dto;

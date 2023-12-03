@@ -3,9 +3,6 @@ package server;
 import dao.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import io.grpc.ServerCredentials;
-import io.grpc.TlsServerCredentials;
-
 import java.io.IOException;
 import java.sql.SQLException;
 

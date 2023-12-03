@@ -18,41 +18,56 @@ public interface CreateFoodSellerRequestOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
-  java.lang.String getAddress();
+  java.lang.String getStreet();
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
   com.google.protobuf.ByteString
-      getAddressBytes();
+      getStreetBytes();
 
   /**
-   * <code>string phone_number = 3;</code>
+   * <code>int32 number = 3;</code>
+   */
+  int getNumber();
+
+  /**
+   * <code>string city = 4;</code>
+   */
+  java.lang.String getCity();
+  /**
+   * <code>string city = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getCityBytes();
+
+  /**
+   * <code>string phone_number = 5;</code>
    */
   java.lang.String getPhoneNumber();
   /**
-   * <code>string phone_number = 3;</code>
+   * <code>string phone_number = 5;</code>
    */
   com.google.protobuf.ByteString
       getPhoneNumberBytes();
 
   /**
-   * <code>string email = 4;</code>
+   * <code>string email = 6;</code>
    */
   java.lang.String getEmail();
   /**
-   * <code>string email = 4;</code>
+   * <code>string email = 6;</code>
    */
   com.google.protobuf.ByteString
       getEmailBytes();
 
   /**
-   * <code>string password = 5;</code>
+   * <code>string password = 7;</code>
    */
   java.lang.String getPassword();
   /**
-   * <code>string password = 5;</code>
+   * <code>string password = 7;</code>
    */
   com.google.protobuf.ByteString
       getPasswordBytes();

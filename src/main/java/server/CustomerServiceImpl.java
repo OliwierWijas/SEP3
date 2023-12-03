@@ -1,7 +1,6 @@
 package server;
 
 import customer.*;
-import dao.AccountDAO;
 import dao.CustomerDAOInterface;
 import dto.CustomerCreationDTO;
 import io.grpc.Status;

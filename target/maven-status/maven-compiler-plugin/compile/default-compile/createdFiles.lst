@@ -34,7 +34,6 @@ ratingAndComment\ReadAverageRatingByFoodSellerIdResponseOrBuilder.class
 login\LoginRequest$Builder.class
 dao\RatingAndCommentDAO.class
 ratingAndComment\ReadRatingResponse$Builder.class
-dao\AccountDAO.class
 ratingAndComment\ReadRatingRequest$1.class
 foodSeller\UpdateFoodSellerAddressRequest.class
 dao\ReservationDAO.class

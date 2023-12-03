@@ -16,7 +16,9 @@ public  final class UpdateFoodSellerAddressRequest extends
   }
   private UpdateFoodSellerAddressRequest() {
     accountId_ = 0;
-    address_ = "";
+    street_ = "";
+    number_ = 0;
+    city_ = "";
   }
 
   @java.lang.Override
@@ -52,7 +54,18 @@ public  final class UpdateFoodSellerAddressRequest extends
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            address_ = s;
+            street_ = s;
+            break;
+          }
+          case 24: {
+
+            number_ = input.readInt32();
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            city_ = s;
             break;
           }
         }
@@ -87,34 +100,77 @@ public  final class UpdateFoodSellerAddressRequest extends
     return accountId_;
   }
 
-  public static final int ADDRESS_FIELD_NUMBER = 2;
-  private volatile java.lang.Object address_;
+  public static final int STREET_FIELD_NUMBER = 2;
+  private volatile java.lang.Object street_;
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
-  public java.lang.String getAddress() {
-    java.lang.Object ref = address_;
+  public java.lang.String getStreet() {
+    java.lang.Object ref = street_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      address_ = s;
+      street_ = s;
       return s;
     }
   }
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getAddressBytes() {
-    java.lang.Object ref = address_;
+      getStreetBytes() {
+    java.lang.Object ref = street_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      address_ = b;
+      street_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int NUMBER_FIELD_NUMBER = 3;
+  private int number_;
+  /**
+   * <code>int32 number = 3;</code>
+   */
+  public int getNumber() {
+    return number_;
+  }
+
+  public static final int CITY_FIELD_NUMBER = 4;
+  private volatile java.lang.Object city_;
+  /**
+   * <code>string city = 4;</code>
+   */
+  public java.lang.String getCity() {
+    java.lang.Object ref = city_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      city_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string city = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getCityBytes() {
+    java.lang.Object ref = city_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      city_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -136,8 +192,14 @@ public  final class UpdateFoodSellerAddressRequest extends
     if (accountId_ != 0) {
       output.writeInt32(1, accountId_);
     }
-    if (!getAddressBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, address_);
+    if (!getStreetBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, street_);
+    }
+    if (number_ != 0) {
+      output.writeInt32(3, number_);
+    }
+    if (!getCityBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, city_);
     }
   }
 
@@ -150,8 +212,15 @@ public  final class UpdateFoodSellerAddressRequest extends
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, accountId_);
     }
-    if (!getAddressBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, address_);
+    if (!getStreetBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, street_);
+    }
+    if (number_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, number_);
+    }
+    if (!getCityBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, city_);
     }
     memoizedSize = size;
     return size;
@@ -171,8 +240,12 @@ public  final class UpdateFoodSellerAddressRequest extends
     boolean result = true;
     result = result && (getAccountId()
         == other.getAccountId());
-    result = result && getAddress()
-        .equals(other.getAddress());
+    result = result && getStreet()
+        .equals(other.getStreet());
+    result = result && (getNumber()
+        == other.getNumber());
+    result = result && getCity()
+        .equals(other.getCity());
     return result;
   }
 
@@ -185,8 +258,12 @@ public  final class UpdateFoodSellerAddressRequest extends
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ACCOUNTID_FIELD_NUMBER;
     hash = (53 * hash) + getAccountId();
-    hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
-    hash = (53 * hash) + getAddress().hashCode();
+    hash = (37 * hash) + STREET_FIELD_NUMBER;
+    hash = (53 * hash) + getStreet().hashCode();
+    hash = (37 * hash) + NUMBER_FIELD_NUMBER;
+    hash = (53 * hash) + getNumber();
+    hash = (37 * hash) + CITY_FIELD_NUMBER;
+    hash = (53 * hash) + getCity().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -318,7 +395,11 @@ public  final class UpdateFoodSellerAddressRequest extends
       super.clear();
       accountId_ = 0;
 
-      address_ = "";
+      street_ = "";
+
+      number_ = 0;
+
+      city_ = "";
 
       return this;
     }
@@ -343,7 +424,9 @@ public  final class UpdateFoodSellerAddressRequest extends
     public foodSeller.UpdateFoodSellerAddressRequest buildPartial() {
       foodSeller.UpdateFoodSellerAddressRequest result = new foodSeller.UpdateFoodSellerAddressRequest(this);
       result.accountId_ = accountId_;
-      result.address_ = address_;
+      result.street_ = street_;
+      result.number_ = number_;
+      result.city_ = city_;
       onBuilt();
       return result;
     }
@@ -388,8 +471,15 @@ public  final class UpdateFoodSellerAddressRequest extends
       if (other.getAccountId() != 0) {
         setAccountId(other.getAccountId());
       }
-      if (!other.getAddress().isEmpty()) {
-        address_ = other.address_;
+      if (!other.getStreet().isEmpty()) {
+        street_ = other.street_;
+        onChanged();
+      }
+      if (other.getNumber() != 0) {
+        setNumber(other.getNumber());
+      }
+      if (!other.getCity().isEmpty()) {
+        city_ = other.city_;
         onChanged();
       }
       onChanged();
@@ -444,71 +534,166 @@ public  final class UpdateFoodSellerAddressRequest extends
       return this;
     }
 
-    private java.lang.Object address_ = "";
+    private java.lang.Object street_ = "";
     /**
-     * <code>string address = 2;</code>
+     * <code>string street = 2;</code>
      */
-    public java.lang.String getAddress() {
-      java.lang.Object ref = address_;
+    public java.lang.String getStreet() {
+      java.lang.Object ref = street_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        address_ = s;
+        street_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string address = 2;</code>
+     * <code>string street = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getAddressBytes() {
-      java.lang.Object ref = address_;
+        getStreetBytes() {
+      java.lang.Object ref = street_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        address_ = b;
+        street_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string address = 2;</code>
+     * <code>string street = 2;</code>
      */
-    public Builder setAddress(
+    public Builder setStreet(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      address_ = value;
+      street_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string address = 2;</code>
+     * <code>string street = 2;</code>
      */
-    public Builder clearAddress() {
+    public Builder clearStreet() {
       
-      address_ = getDefaultInstance().getAddress();
+      street_ = getDefaultInstance().getStreet();
       onChanged();
       return this;
     }
     /**
-     * <code>string address = 2;</code>
+     * <code>string street = 2;</code>
      */
-    public Builder setAddressBytes(
+    public Builder setStreetBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      address_ = value;
+      street_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int number_ ;
+    /**
+     * <code>int32 number = 3;</code>
+     */
+    public int getNumber() {
+      return number_;
+    }
+    /**
+     * <code>int32 number = 3;</code>
+     */
+    public Builder setNumber(int value) {
+      
+      number_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 number = 3;</code>
+     */
+    public Builder clearNumber() {
+      
+      number_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object city_ = "";
+    /**
+     * <code>string city = 4;</code>
+     */
+    public java.lang.String getCity() {
+      java.lang.Object ref = city_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        city_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string city = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCityBytes() {
+      java.lang.Object ref = city_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        city_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string city = 4;</code>
+     */
+    public Builder setCity(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      city_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string city = 4;</code>
+     */
+    public Builder clearCity() {
+      
+      city_ = getDefaultInstance().getCity();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string city = 4;</code>
+     */
+    public Builder setCityBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      city_ = value;
       onChanged();
       return this;
     }

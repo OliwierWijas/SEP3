@@ -26,7 +26,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
   private Connection getConnection() throws SQLException
   {
-    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "sql3486");
+    return DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?currentSchema=toofreshtoowastedatabase", "postgres", "xf31bhl9");
   }
 
   @Override public synchronized void createFoodOffer(FoodOfferCreationDTO dto) throws SQLException
@@ -71,7 +71,10 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
         Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
         String foodSellerName = resultSet.getString("name");
-        String foodSellerAddress = resultSet.getString("address");
+        String street = resultSet.getString("street");
+        int number = resultSet.getInt("number");
+        String city = resultSet.getString("city");
+        String foodSellerAddress = street + " " + number + ", " + city;
 
         MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
@@ -171,7 +174,10 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         Timestamp startPickUpTime = resultSet.getTimestamp("startpickuptime");
         Timestamp endPickUpTime = resultSet.getTimestamp("endpickuptime");
         String foodSellerName = resultSet.getString("name");
-        String foodSellerAddress = resultSet.getString("address");
+        String street = resultSet.getString("street");
+        int number = resultSet.getInt("number");
+        String city = resultSet.getString("city");
+        String foodSellerAddress = street + " " + number + ", " + city;
         MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
         boolean isReserved = resultSet.getBoolean("isreserved");

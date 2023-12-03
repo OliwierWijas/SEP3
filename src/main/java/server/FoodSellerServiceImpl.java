@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import dao.AccountDAO;
 import dao.FoodSellerDAOInterface;
 import dto.FoodSellerCreationDTO;
+import dto.FoodSellerUpdateDTO;
 import dto.ReadFoodOffersDTO;
 import dto.ReadFoodSellerDTO;
 import foodOffer.ReadFoodOffersListResponse;
@@ -30,7 +31,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
   {
     try
     {
-      FoodSellerCreationDTO dto = new FoodSellerCreationDTO(request.getName(), request.getAddress(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      FoodSellerCreationDTO dto = new FoodSellerCreationDTO(request.getName(), request.getStreet(), request.getNumber(), request.getCity(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
       dao.createFoodSeller(dto);
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
@@ -51,7 +52,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       StreamObserver<FoodSellerEmptyResponse> responseObserver)
   {
     try {
-      dao.updateName(request.getAccountId(), request.getName());
+      dao.updateName(new FoodSellerUpdateDTO(request.getAccountId(), request.getName(), null,0,null,null,null,null));
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
@@ -63,7 +64,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       StreamObserver<FoodSellerEmptyResponse> responseObserver)
   {
     try {
-      dao.updateAddress(request.getAccountId(), request.getAddress());
+      dao.updateAddress(new FoodSellerUpdateDTO(request.getAccountId(), null, request.getStreet(), request.getNumber(), request.getCity(), null,null,null));
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
@@ -117,7 +118,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    }catch (SQLException e) {
+    }catch (Exception e) {
       responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }

@@ -13,12 +13,27 @@ public interface UpdateFoodSellerAddressRequestOrBuilder extends
   int getAccountId();
 
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
-  java.lang.String getAddress();
+  java.lang.String getStreet();
   /**
-   * <code>string address = 2;</code>
+   * <code>string street = 2;</code>
    */
   com.google.protobuf.ByteString
-      getAddressBytes();
+      getStreetBytes();
+
+  /**
+   * <code>int32 number = 3;</code>
+   */
+  int getNumber();
+
+  /**
+   * <code>string city = 4;</code>
+   */
+  java.lang.String getCity();
+  /**
+   * <code>string city = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getCityBytes();
 }
