@@ -81,7 +81,6 @@ public class ReservationServiceImpl extends ReservationServiceGrpc.ReservationSe
     {
       ArrayList<ReadFoodSellerReservationDTO> foodSellerReservations = dao.readFoodSellerReservations(request.getFoodSellerId());
       String string = gson.toJson(foodSellerReservations);
-      System.out.println(string);
       ReadReservationsListResponse response = ReadReservationsListResponse.newBuilder().setList(string).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();

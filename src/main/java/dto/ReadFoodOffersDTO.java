@@ -5,20 +5,18 @@ import shared.MyDate;
 public class ReadFoodOffersDTO
 {
     private final int id;
-    private final int foodSellerId;
+    private final ReadFoodSellerDTO foodSeller;
     private final String title;
     private final String description;
     private final double price;
     private final MyDate startPickUpTime;
     private final MyDate endPickUpTime;
-    private String foodSellerName;
-    private String foodSellerAddress;
     private final boolean isReserved;
     private final boolean isCompleted;
 
-    public ReadFoodOffersDTO(int id, int foodSellerId, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, boolean isReserved, boolean isCompleted) {
+    public ReadFoodOffersDTO(int id, ReadFoodSellerDTO foodSeller, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, boolean isReserved, boolean isCompleted) {
         this.id = id;
-        this.foodSellerId = foodSellerId;
+        this.foodSeller = foodSeller;
         this.title = title;
         this.description = description;
         this.price = price;
@@ -32,8 +30,8 @@ public class ReadFoodOffersDTO
         return id;
     }
 
-    public int getFoodSellerId() {
-        return foodSellerId;
+    public ReadFoodSellerDTO getFoodSeller() {
+        return foodSeller;
     }
 
     public String getTitle() {
@@ -48,14 +46,6 @@ public class ReadFoodOffersDTO
         return price;
     }
 
-    public String getFoodSellerName() {
-        return foodSellerName;
-    }
-
-    public String getFoodSellerAddress() {
-        return foodSellerAddress;
-    }
-
     public boolean isReserved() {
         return isReserved;
     }
@@ -64,36 +54,11 @@ public class ReadFoodOffersDTO
         return isCompleted;
     }
 
-    public void setFoodSellerName(String foodSellerName) {
-        this.foodSellerName = foodSellerName;
-    }
-
-    public void setFoodSellerAddress(String foodSellerAddress) {
-        this.foodSellerAddress = foodSellerAddress;
-    }
-
     public MyDate getStartPickUpTime() {
         return startPickUpTime;
     }
 
     public MyDate getEndPickUpTime() {
         return endPickUpTime;
-    }
-
-    @Override
-    public String toString() {
-        return "ReadFoodOffersDTO{" +
-                "id=" + id +
-                ", foodSellerId=" + foodSellerId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", startPickUpTime=" + startPickUpTime +
-                ", endPickUpTime=" + endPickUpTime +
-                ", foodSellerName='" + foodSellerName + '\'' +
-                ", foodSellerAddress='" + foodSellerAddress + '\'' +
-                ", isReserved=" + isReserved +
-                ", isCompleted=" + isCompleted +
-                '}';
     }
 }

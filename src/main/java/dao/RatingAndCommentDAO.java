@@ -1,9 +1,6 @@
 package dao;
 
-import dto.CommentBasicDTO;
-import dto.RatingBasicDTO;
-import dto.ReadCommentDTO;
-import dto.ReadRatingDTO;
+import dto.*;
 import shared.MyDate;
 
 import java.sql.*;
@@ -104,7 +101,9 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
                 MyDate myDate = new MyDate(date.getYear()+1900, date.getMonth()+1, date.getDate(), 0,0);
                 String content = resultSet.getString("text");
 
-                ReadCommentDTO comment = new ReadCommentDTO(id, customerId, foodSellerId, customerFirstName, customerLastName, myDate, content);
+                ReadCustomerDTO customer = new ReadCustomerDTO(customerId, null, null, customerFirstName, customerLastName);
+                ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, null, null);
+                ReadCommentDTO comment = new ReadCommentDTO(id, customer, foodSeller, myDate, content);
                 comments.add(comment);
             }
             return comments;

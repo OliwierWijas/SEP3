@@ -3,6 +3,7 @@ package dao;
 import dto.FoodOfferCreationDTO;
 import dto.FoodOfferUpdateDTO;
 import dto.ReadFoodOffersDTO;
+import dto.ReadFoodSellerDTO;
 import shared.MyDate;
 
 import java.sql.*;
@@ -79,9 +80,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
 
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSellerId, title, description, price, start, end, false, false);
-        dto.setFoodSellerName(foodSellerName);
-        dto.setFoodSellerAddress(foodSellerAddress);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, foodSellerName, foodSellerAddress);
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description, price, start, end, false, false);
         foodOffersDTOS.add(dto);
       }
       return foodOffersDTOS;
@@ -112,7 +112,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
         boolean isReserved = resultSet.getBoolean("isreserved");
         boolean isCompleted = resultSet.getBoolean("iscompleted");
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSellerId, title, description,price,  start, end, isReserved, isCompleted);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, null, null);
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSeller, title, description,price,  start, end, isReserved, isCompleted);
         foodOffers.add(dto);
       }
       return foodOffers;
@@ -182,9 +183,8 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
         boolean isReserved = resultSet.getBoolean("isreserved");
         boolean isCompleted = resultSet.getBoolean("iscompleted");
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSellerId, title, description,price,  start, end, isReserved, isCompleted);
-        dto.setFoodSellerAddress(foodSellerAddress);
-        dto.setFoodSellerName(foodSellerName);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, foodSellerName, foodSellerAddress);
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description,price,  start, end, isReserved, isCompleted);
         return dto;
       }
     }catch(Exception e){

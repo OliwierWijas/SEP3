@@ -16,14 +16,12 @@ public  final class ReadFoodOfferByIdResponse extends
   }
   private ReadFoodOfferByIdResponse() {
     id_ = 0;
-    foodSellerId_ = 0;
+    foodSeller_ = "";
     title_ = "";
     description_ = "";
     price_ = 0D;
     startPickUpTime_ = "";
     endPickUpTime_ = "";
-    foodSellerName_ = "";
-    foodSellerAddress_ = "";
     isReserved_ = false;
     isCompleted_ = false;
   }
@@ -58,9 +56,10 @@ public  final class ReadFoodOfferByIdResponse extends
             id_ = input.readInt32();
             break;
           }
-          case 16: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            foodSellerId_ = input.readInt32();
+            foodSeller_ = s;
             break;
           }
           case 26: {
@@ -90,18 +89,6 @@ public  final class ReadFoodOfferByIdResponse extends
             java.lang.String s = input.readStringRequireUtf8();
 
             endPickUpTime_ = s;
-            break;
-          }
-          case 66: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            foodSellerName_ = s;
-            break;
-          }
-          case 74: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            foodSellerAddress_ = s;
             break;
           }
           case 80: {
@@ -146,13 +133,38 @@ public  final class ReadFoodOfferByIdResponse extends
     return id_;
   }
 
-  public static final int FOODSELLERID_FIELD_NUMBER = 2;
-  private int foodSellerId_;
+  public static final int FOODSELLER_FIELD_NUMBER = 2;
+  private volatile java.lang.Object foodSeller_;
   /**
-   * <code>int32 foodSellerId = 2;</code>
+   * <code>string foodSeller = 2;</code>
    */
-  public int getFoodSellerId() {
-    return foodSellerId_;
+  public java.lang.String getFoodSeller() {
+    java.lang.Object ref = foodSeller_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      foodSeller_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string foodSeller = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getFoodSellerBytes() {
+    java.lang.Object ref = foodSeller_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      foodSeller_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int TITLE_FIELD_NUMBER = 3;
@@ -300,74 +312,6 @@ public  final class ReadFoodOfferByIdResponse extends
     }
   }
 
-  public static final int FOODSELLERNAME_FIELD_NUMBER = 8;
-  private volatile java.lang.Object foodSellerName_;
-  /**
-   * <code>string foodSellerName = 8;</code>
-   */
-  public java.lang.String getFoodSellerName() {
-    java.lang.Object ref = foodSellerName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      foodSellerName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string foodSellerName = 8;</code>
-   */
-  public com.google.protobuf.ByteString
-      getFoodSellerNameBytes() {
-    java.lang.Object ref = foodSellerName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      foodSellerName_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int FOODSELLERADDRESS_FIELD_NUMBER = 9;
-  private volatile java.lang.Object foodSellerAddress_;
-  /**
-   * <code>string foodSellerAddress = 9;</code>
-   */
-  public java.lang.String getFoodSellerAddress() {
-    java.lang.Object ref = foodSellerAddress_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      foodSellerAddress_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string foodSellerAddress = 9;</code>
-   */
-  public com.google.protobuf.ByteString
-      getFoodSellerAddressBytes() {
-    java.lang.Object ref = foodSellerAddress_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      foodSellerAddress_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int ISRESERVED_FIELD_NUMBER = 10;
   private boolean isReserved_;
   /**
@@ -401,8 +345,8 @@ public  final class ReadFoodOfferByIdResponse extends
     if (id_ != 0) {
       output.writeInt32(1, id_);
     }
-    if (foodSellerId_ != 0) {
-      output.writeInt32(2, foodSellerId_);
+    if (!getFoodSellerBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, foodSeller_);
     }
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
@@ -418,12 +362,6 @@ public  final class ReadFoodOfferByIdResponse extends
     }
     if (!getEndPickUpTimeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, endPickUpTime_);
-    }
-    if (!getFoodSellerNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, foodSellerName_);
-    }
-    if (!getFoodSellerAddressBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, foodSellerAddress_);
     }
     if (isReserved_ != false) {
       output.writeBool(10, isReserved_);
@@ -442,9 +380,8 @@ public  final class ReadFoodOfferByIdResponse extends
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, id_);
     }
-    if (foodSellerId_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, foodSellerId_);
+    if (!getFoodSellerBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, foodSeller_);
     }
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
@@ -461,12 +398,6 @@ public  final class ReadFoodOfferByIdResponse extends
     }
     if (!getEndPickUpTimeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, endPickUpTime_);
-    }
-    if (!getFoodSellerNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, foodSellerName_);
-    }
-    if (!getFoodSellerAddressBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, foodSellerAddress_);
     }
     if (isReserved_ != false) {
       size += com.google.protobuf.CodedOutputStream
@@ -494,8 +425,8 @@ public  final class ReadFoodOfferByIdResponse extends
     boolean result = true;
     result = result && (getId()
         == other.getId());
-    result = result && (getFoodSellerId()
-        == other.getFoodSellerId());
+    result = result && getFoodSeller()
+        .equals(other.getFoodSeller());
     result = result && getTitle()
         .equals(other.getTitle());
     result = result && getDescription()
@@ -508,10 +439,6 @@ public  final class ReadFoodOfferByIdResponse extends
         .equals(other.getStartPickUpTime());
     result = result && getEndPickUpTime()
         .equals(other.getEndPickUpTime());
-    result = result && getFoodSellerName()
-        .equals(other.getFoodSellerName());
-    result = result && getFoodSellerAddress()
-        .equals(other.getFoodSellerAddress());
     result = result && (getIsReserved()
         == other.getIsReserved());
     result = result && (getIsCompleted()
@@ -528,8 +455,8 @@ public  final class ReadFoodOfferByIdResponse extends
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
-    hash = (37 * hash) + FOODSELLERID_FIELD_NUMBER;
-    hash = (53 * hash) + getFoodSellerId();
+    hash = (37 * hash) + FOODSELLER_FIELD_NUMBER;
+    hash = (53 * hash) + getFoodSeller().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -541,10 +468,6 @@ public  final class ReadFoodOfferByIdResponse extends
     hash = (53 * hash) + getStartPickUpTime().hashCode();
     hash = (37 * hash) + ENDPICKUPTIME_FIELD_NUMBER;
     hash = (53 * hash) + getEndPickUpTime().hashCode();
-    hash = (37 * hash) + FOODSELLERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFoodSellerName().hashCode();
-    hash = (37 * hash) + FOODSELLERADDRESS_FIELD_NUMBER;
-    hash = (53 * hash) + getFoodSellerAddress().hashCode();
     hash = (37 * hash) + ISRESERVED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsReserved());
@@ -682,7 +605,7 @@ public  final class ReadFoodOfferByIdResponse extends
       super.clear();
       id_ = 0;
 
-      foodSellerId_ = 0;
+      foodSeller_ = "";
 
       title_ = "";
 
@@ -693,10 +616,6 @@ public  final class ReadFoodOfferByIdResponse extends
       startPickUpTime_ = "";
 
       endPickUpTime_ = "";
-
-      foodSellerName_ = "";
-
-      foodSellerAddress_ = "";
 
       isReserved_ = false;
 
@@ -725,14 +644,12 @@ public  final class ReadFoodOfferByIdResponse extends
     public foodOffer.ReadFoodOfferByIdResponse buildPartial() {
       foodOffer.ReadFoodOfferByIdResponse result = new foodOffer.ReadFoodOfferByIdResponse(this);
       result.id_ = id_;
-      result.foodSellerId_ = foodSellerId_;
+      result.foodSeller_ = foodSeller_;
       result.title_ = title_;
       result.description_ = description_;
       result.price_ = price_;
       result.startPickUpTime_ = startPickUpTime_;
       result.endPickUpTime_ = endPickUpTime_;
-      result.foodSellerName_ = foodSellerName_;
-      result.foodSellerAddress_ = foodSellerAddress_;
       result.isReserved_ = isReserved_;
       result.isCompleted_ = isCompleted_;
       onBuilt();
@@ -779,8 +696,9 @@ public  final class ReadFoodOfferByIdResponse extends
       if (other.getId() != 0) {
         setId(other.getId());
       }
-      if (other.getFoodSellerId() != 0) {
-        setFoodSellerId(other.getFoodSellerId());
+      if (!other.getFoodSeller().isEmpty()) {
+        foodSeller_ = other.foodSeller_;
+        onChanged();
       }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
@@ -799,14 +717,6 @@ public  final class ReadFoodOfferByIdResponse extends
       }
       if (!other.getEndPickUpTime().isEmpty()) {
         endPickUpTime_ = other.endPickUpTime_;
-        onChanged();
-      }
-      if (!other.getFoodSellerName().isEmpty()) {
-        foodSellerName_ = other.foodSellerName_;
-        onChanged();
-      }
-      if (!other.getFoodSellerAddress().isEmpty()) {
-        foodSellerAddress_ = other.foodSellerAddress_;
         onChanged();
       }
       if (other.getIsReserved() != false) {
@@ -867,28 +777,71 @@ public  final class ReadFoodOfferByIdResponse extends
       return this;
     }
 
-    private int foodSellerId_ ;
+    private java.lang.Object foodSeller_ = "";
     /**
-     * <code>int32 foodSellerId = 2;</code>
+     * <code>string foodSeller = 2;</code>
      */
-    public int getFoodSellerId() {
-      return foodSellerId_;
+    public java.lang.String getFoodSeller() {
+      java.lang.Object ref = foodSeller_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        foodSeller_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int32 foodSellerId = 2;</code>
+     * <code>string foodSeller = 2;</code>
      */
-    public Builder setFoodSellerId(int value) {
-      
-      foodSellerId_ = value;
+    public com.google.protobuf.ByteString
+        getFoodSellerBytes() {
+      java.lang.Object ref = foodSeller_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        foodSeller_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string foodSeller = 2;</code>
+     */
+    public Builder setFoodSeller(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      foodSeller_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 foodSellerId = 2;</code>
+     * <code>string foodSeller = 2;</code>
      */
-    public Builder clearFoodSellerId() {
+    public Builder clearFoodSeller() {
       
-      foodSellerId_ = 0;
+      foodSeller_ = getDefaultInstance().getFoodSeller();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string foodSeller = 2;</code>
+     */
+    public Builder setFoodSellerBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      foodSeller_ = value;
       onChanged();
       return this;
     }
@@ -1191,144 +1144,6 @@ public  final class ReadFoodOfferByIdResponse extends
   checkByteStringIsUtf8(value);
       
       endPickUpTime_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object foodSellerName_ = "";
-    /**
-     * <code>string foodSellerName = 8;</code>
-     */
-    public java.lang.String getFoodSellerName() {
-      java.lang.Object ref = foodSellerName_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        foodSellerName_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string foodSellerName = 8;</code>
-     */
-    public com.google.protobuf.ByteString
-        getFoodSellerNameBytes() {
-      java.lang.Object ref = foodSellerName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        foodSellerName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string foodSellerName = 8;</code>
-     */
-    public Builder setFoodSellerName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      foodSellerName_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string foodSellerName = 8;</code>
-     */
-    public Builder clearFoodSellerName() {
-      
-      foodSellerName_ = getDefaultInstance().getFoodSellerName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string foodSellerName = 8;</code>
-     */
-    public Builder setFoodSellerNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      foodSellerName_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object foodSellerAddress_ = "";
-    /**
-     * <code>string foodSellerAddress = 9;</code>
-     */
-    public java.lang.String getFoodSellerAddress() {
-      java.lang.Object ref = foodSellerAddress_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        foodSellerAddress_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string foodSellerAddress = 9;</code>
-     */
-    public com.google.protobuf.ByteString
-        getFoodSellerAddressBytes() {
-      java.lang.Object ref = foodSellerAddress_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        foodSellerAddress_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string foodSellerAddress = 9;</code>
-     */
-    public Builder setFoodSellerAddress(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      foodSellerAddress_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string foodSellerAddress = 9;</code>
-     */
-    public Builder clearFoodSellerAddress() {
-      
-      foodSellerAddress_ = getDefaultInstance().getFoodSellerAddress();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string foodSellerAddress = 9;</code>
-     */
-    public Builder setFoodSellerAddressBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      foodSellerAddress_ = value;
       onChanged();
       return this;
     }

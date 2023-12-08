@@ -1,8 +1,6 @@
 package dao;
 
-import dto.ReadCustomerReservationDTO;
-import dto.ReadFoodSellerReservationDTO;
-import dto.ReservationCreationDTO;
+import dto.*;
 import shared.MyDate;
 
 import java.sql.*;
@@ -100,9 +98,10 @@ public class ReservationDAO implements ReservationDAOInterface
         String city = resultSet.getString("city");
         String address = street + " " + number + ", " + city;
         boolean isCompleted = resultSet.getBoolean("isCompleted");
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, foodSellerName, address);
         ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(
             foodOfferId, title, description, price, start, end,
-            reservationNumber, foodSellerId, foodSellerName, address,
+            reservationNumber, foodSeller,
             isCompleted);
         reservationsDtos.add(dto);
       }
@@ -146,9 +145,10 @@ public class ReservationDAO implements ReservationDAOInterface
         String customerLastName = resultSet.getString("lastname");
         boolean isCompleted = resultSet.getBoolean("isCompleted");
 
+        ReadCustomerDTO customer = new ReadCustomerDTO(customerId, null, null, customerFirstName, customerLastName);
         ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(
             foodOfferId, title, description, price, start, end,
-            reservationNumber, customerId, customerFirstName, customerLastName,
+            reservationNumber, customer,
             isCompleted);
         reservationDtos.add(dto);
       }

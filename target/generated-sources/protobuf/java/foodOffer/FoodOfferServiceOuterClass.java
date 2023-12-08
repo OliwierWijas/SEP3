@@ -82,29 +82,28 @@ public final class FoodOfferServiceOuterClass {
       "(\t\022\025\n\rendPickUpTime\030\006 \001(\t\"-\n\026DeleteFoodO" +
       "fferRequest\022\023\n\013foodOfferId\030\001 \001(\005\"\030\n\026Food" +
       "OfferEmptyResponse\"*\n\032ReadFoodOffersList" +
-      "Response\022\014\n\004list\030\001 \001(\t\"\374\001\n\031ReadFoodOffer" +
-      "ByIdResponse\022\n\n\002id\030\001 \001(\005\022\024\n\014foodSellerId" +
-      "\030\002 \001(\005\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004 \001" +
-      "(\t\022\r\n\005price\030\005 \001(\001\022\027\n\017startPickUpTime\030\006 \001" +
-      "(\t\022\025\n\rendPickUpTime\030\007 \001(\t\022\026\n\016foodSellerN" +
-      "ame\030\010 \001(\t\022\031\n\021foodSellerAddress\030\t \001(\t\022\022\n\n",
-      "isReserved\030\n \001(\010\022\023\n\013isCompleted\030\013 \001(\0102\341\004" +
-      "\n\020FoodOfferService\022W\n\017createFoodOffer\022!." +
-      "foodOffer.CreateFoodOfferRequest\032!.foodO" +
-      "ffer.FoodOfferEmptyResponse\022k\n\027readAvail" +
-      "ableFoodOffers\022).foodOffer.ReadAvailable" +
-      "FoodOffersRequest\032%.foodOffer.ReadFoodOf" +
-      "fersListResponse\022u\n\034readFoodOffersByFood" +
-      "SellerId\022..foodOffer.ReadFoodOffersByFoo" +
-      "dSellerIdRequest\032%.foodOffer.ReadFoodOff" +
-      "ersListResponse\022W\n\017updateFoodOffer\022!.foo",
-      "dOffer.UpdateFoodOfferRequest\032!.foodOffe" +
-      "r.FoodOfferEmptyResponse\022W\n\017deleteFoodOf" +
-      "fer\022!.foodOffer.DeleteFoodOfferRequest\032!" +
-      ".foodOffer.FoodOfferEmptyResponse\022^\n\021rea" +
-      "dFoodOfferById\022#.foodOffer.ReadFoodOffer" +
-      "ByIdRequest\032$.foodOffer.ReadFoodOfferByI" +
-      "dResponseB\002P\001b\006proto3"
+      "Response\022\014\n\004list\030\001 \001(\t\"\307\001\n\031ReadFoodOffer" +
+      "ByIdResponse\022\n\n\002id\030\001 \001(\005\022\022\n\nfoodSeller\030\002" +
+      " \001(\t\022\r\n\005title\030\003 \001(\t\022\023\n\013description\030\004 \001(\t" +
+      "\022\r\n\005price\030\005 \001(\001\022\027\n\017startPickUpTime\030\006 \001(\t" +
+      "\022\025\n\rendPickUpTime\030\007 \001(\t\022\022\n\nisReserved\030\n " +
+      "\001(\010\022\023\n\013isCompleted\030\013 \001(\0102\341\004\n\020FoodOfferSe",
+      "rvice\022W\n\017createFoodOffer\022!.foodOffer.Cre" +
+      "ateFoodOfferRequest\032!.foodOffer.FoodOffe" +
+      "rEmptyResponse\022k\n\027readAvailableFoodOffer" +
+      "s\022).foodOffer.ReadAvailableFoodOffersReq" +
+      "uest\032%.foodOffer.ReadFoodOffersListRespo" +
+      "nse\022u\n\034readFoodOffersByFoodSellerId\022..fo" +
+      "odOffer.ReadFoodOffersByFoodSellerIdRequ" +
+      "est\032%.foodOffer.ReadFoodOffersListRespon" +
+      "se\022W\n\017updateFoodOffer\022!.foodOffer.Update" +
+      "FoodOfferRequest\032!.foodOffer.FoodOfferEm",
+      "ptyResponse\022W\n\017deleteFoodOffer\022!.foodOff" +
+      "er.DeleteFoodOfferRequest\032!.foodOffer.Fo" +
+      "odOfferEmptyResponse\022^\n\021readFoodOfferByI" +
+      "d\022#.foodOffer.ReadFoodOfferByIdRequest\032$" +
+      ".foodOffer.ReadFoodOfferByIdResponseB\002P\001" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -171,7 +170,7 @@ public final class FoodOfferServiceOuterClass {
     internal_static_foodOffer_ReadFoodOfferByIdResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_foodOffer_ReadFoodOfferByIdResponse_descriptor,
-        new java.lang.String[] { "Id", "FoodSellerId", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", "FoodSellerName", "FoodSellerAddress", "IsReserved", "IsCompleted", });
+        new java.lang.String[] { "Id", "FoodSeller", "Title", "Description", "Price", "StartPickUpTime", "EndPickUpTime", "IsReserved", "IsCompleted", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

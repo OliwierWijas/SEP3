@@ -10,8 +10,6 @@ import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import shared.MyDate;
 
-import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceImplBase
@@ -118,7 +116,8 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       ReadFoodOffersDTO dto = dao.readFoodOfferById(request.getId());
       String start = gson.toJson(dto.getStartPickUpTime());
       String end = gson.toJson(dto.getEndPickUpTime());
-      ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setFoodSellerId(dto.getId()).setFoodSellerId(dto.getFoodSellerId()).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setFoodSellerName(dto.getFoodSellerName()).setFoodSellerAddress(dto.getFoodSellerAddress()).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).build();
+      String foodSeller = gson.toJson(dto.getFoodSeller());
+      ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setId(dto.getId()).setFoodSeller(foodSeller).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }

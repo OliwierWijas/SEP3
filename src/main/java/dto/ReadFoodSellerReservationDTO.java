@@ -13,12 +13,10 @@ public class ReadFoodSellerReservationDTO {
     private MyDate startPickUpTime;
     private MyDate endPickUpTime;
     private int reservationNumber;
-    private int customerId;
-    private String customerFirstName;
-    private String customerLastName;
+    private ReadCustomerDTO customer;
     private boolean isCompleted;
 
-    public ReadFoodSellerReservationDTO(int id, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, int reservationNumber, int customerId, String customerFirstName, String customerLastName, boolean isCompleted) {
+    public ReadFoodSellerReservationDTO(int id, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, int reservationNumber, ReadCustomerDTO customer, boolean isCompleted) {
         this.foodOfferId = id;
         this.title = title;
         this.description = description;
@@ -26,9 +24,7 @@ public class ReadFoodSellerReservationDTO {
         this.startPickUpTime = startPickUpTime;
         this.endPickUpTime = endPickUpTime;
         this.reservationNumber = reservationNumber;
-        this.customerId = customerId;
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
+        this.customer = customer;
         this.isCompleted = isCompleted;
     }
 
@@ -65,16 +61,6 @@ public class ReadFoodSellerReservationDTO {
         return reservationNumber;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public String getCustomerFirstName() {
-        return customerFirstName;
-    }
-
-    public String getCustomerLastName() {
-        return customerLastName;
-    }
+    public ReadCustomerDTO getCustomer() {return customer;}
 
 }

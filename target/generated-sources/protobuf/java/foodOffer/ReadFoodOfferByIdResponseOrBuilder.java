@@ -13,9 +13,14 @@ public interface ReadFoodOfferByIdResponseOrBuilder extends
   int getId();
 
   /**
-   * <code>int32 foodSellerId = 2;</code>
+   * <code>string foodSeller = 2;</code>
    */
-  int getFoodSellerId();
+  java.lang.String getFoodSeller();
+  /**
+   * <code>string foodSeller = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getFoodSellerBytes();
 
   /**
    * <code>string title = 3;</code>
@@ -61,26 +66,6 @@ public interface ReadFoodOfferByIdResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getEndPickUpTimeBytes();
-
-  /**
-   * <code>string foodSellerName = 8;</code>
-   */
-  java.lang.String getFoodSellerName();
-  /**
-   * <code>string foodSellerName = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getFoodSellerNameBytes();
-
-  /**
-   * <code>string foodSellerAddress = 9;</code>
-   */
-  java.lang.String getFoodSellerAddress();
-  /**
-   * <code>string foodSellerAddress = 9;</code>
-   */
-  com.google.protobuf.ByteString
-      getFoodSellerAddressBytes();
 
   /**
    * <code>bool isReserved = 10;</code>
