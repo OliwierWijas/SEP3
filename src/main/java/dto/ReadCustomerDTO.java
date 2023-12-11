@@ -42,4 +42,13 @@ public class ReadCustomerDTO
   {
     return lastName;
   }
+
+  @Override public boolean equals(Object obj)
+  {
+    if (obj == null || obj.getClass() != getClass())
+      return false;
+
+    ReadCustomerDTO other = (ReadCustomerDTO) obj;
+    return this.accountId == other.accountId && this.email.equals(other.email) && this.phoneNumber.equals(other.phoneNumber) && this.firstName.equals(other.firstName) && this.lastName.equals(other.lastName);
+  }
 }

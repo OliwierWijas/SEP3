@@ -42,8 +42,18 @@ public class MyDate
     return minute;
   }
 
-  public String ToString()
+  @Override public String toString()
   {
-    return day+"/"+month+"/"+year;
+    return "MyDate{" + "year=" + year + ", month=" + month + ", day=" + day
+        + ", hour=" + hour + ", minute=" + minute + '}';
+  }
+
+  @Override public boolean equals(Object obj)
+  {
+    if (obj == null || obj.getClass() != getClass())
+      return false;
+
+    MyDate other = (MyDate) obj;
+    return this.year == other.year && this.month == other.month && this.day == other.day && this.hour == other.hour && this.minute == other.minute;
   }
 }

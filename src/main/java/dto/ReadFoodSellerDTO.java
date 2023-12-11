@@ -44,4 +44,20 @@ public class ReadFoodSellerDTO {
     public String getAddress() {
         return address;
     }
+
+    @Override public String toString()
+    {
+        return "ReadFoodSellerDTO{" + "accountId=" + accountId + ", email='"
+            + email + '\'' + ", phoneNumber='" + phoneNumber + '\'' + ", name='"
+            + name + '\'' + ", address='" + address + '\'' + '}';
+    }
+
+    @Override public boolean equals(Object obj)
+    {
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+
+        ReadFoodSellerDTO other = (ReadFoodSellerDTO) obj;
+        return this.accountId == other.accountId && this.email.equals(other.email) && this.phoneNumber.equals(other.phoneNumber) && this.name.equals(other.name) && this.address.equals(other.address);
+    }
 }

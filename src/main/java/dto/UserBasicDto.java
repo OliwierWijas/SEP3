@@ -67,5 +67,12 @@ public class UserBasicDto
     return address;
   }
 
-
+  @Override public String toString()
+  {
+    return "UserBasicDto{" + "id=" + id + ", email='" + email + '\''
+        + ", password='" + password + '\'' + ", phoneNumber='" + phoneNumber
+        + '\'' + ", type='" + type + '\'' + ", firstName='" + firstName + '\''
+        + ", lastName='" + lastName + '\'' + ", name='" + name + '\''
+        + ", address='" + address + '\'' + '}';
+  }
 }

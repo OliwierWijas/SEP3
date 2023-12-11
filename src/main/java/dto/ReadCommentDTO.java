@@ -19,4 +19,18 @@ public class ReadCommentDTO
     this.date = date;
     this.content = content;
   }
+
+  public ReadFoodSellerDTO getFoodSeller()
+  {
+    return foodSeller;
+  }
+
+  @Override public boolean equals(Object obj)
+  {
+    if (obj == null || obj.getClass() != getClass())
+      return false;
+
+    ReadCommentDTO other = (ReadCommentDTO) obj;
+    return this.id == other.id && this.customer.equals(other.customer) && this.foodSeller.equals(other.foodSeller) && this.date.equals(other.date) && this.content.equals(other.content);
+  }
 }

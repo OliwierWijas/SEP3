@@ -61,4 +61,23 @@ public class ReadCustomerReservationDTO {
     }
 
     public ReadFoodSellerDTO getFoodSeller() {return foodSeller;}
+
+    @Override public String toString()
+    {
+        return "ReadCustomerReservationDTO{" + "foodOfferId=" + foodOfferId
+            + ", title='" + title + '\'' + ", description='" + description
+            + '\'' + ", price=" + price + ", startPickUpTime=" + startPickUpTime
+            + ", endPickUpTime=" + endPickUpTime + ", reservationNumber="
+            + reservationNumber + ", foodSeller=" + foodSeller
+            + ", isCompleted=" + isCompleted + '}';
+    }
+
+    @Override public boolean equals(Object obj)
+    {
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+
+        ReadCustomerReservationDTO other = (ReadCustomerReservationDTO) obj;
+        return this.foodOfferId == other.foodOfferId && this.title.equals(other.title) && this.description.equals(other.description) && this.price == other.price && this.startPickUpTime.equals(other.startPickUpTime) && this.endPickUpTime.equals(other.endPickUpTime) && this.reservationNumber == other.reservationNumber && this.foodSeller.equals(other.foodSeller) && this.isCompleted == other.isCompleted;
+    }
 }

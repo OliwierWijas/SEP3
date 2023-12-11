@@ -71,7 +71,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         statement1.setString(2, dto.getName());
         statement1.setString(3, dto.getStreet());
         statement1.setInt(4, dto.getNumber());
-        statement1.setString(5, dto.getStreet());
+        statement1.setString(5, dto.getCity());
         statement1.executeUpdate();
       }
     }catch(Exception e){
@@ -201,7 +201,10 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         String email = resultSet.getString(2);
         String phoneNumber = resultSet.getString(3);
         String name = resultSet.getString(7);
-        String address = resultSet.getString(8);
+        String street = resultSet.getString(8);
+        int number = resultSet.getInt(9);
+        String city = resultSet.getString(10);
+        String address = street + " " + number + ", " + city;
 
         ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
         dtoList.add(dto);

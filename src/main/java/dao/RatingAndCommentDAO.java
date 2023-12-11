@@ -101,8 +101,8 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
                 MyDate myDate = new MyDate(date.getYear()+1900, date.getMonth()+1, date.getDate(), 0,0);
                 String content = resultSet.getString("text");
 
-                ReadCustomerDTO customer = new ReadCustomerDTO(customerId, null, null, customerFirstName, customerLastName);
-                ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, null, null);
+                ReadCustomerDTO customer = new ReadCustomerDTO(customerId, "", "", customerFirstName, customerLastName);
+                ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", "", "");
                 ReadCommentDTO comment = new ReadCommentDTO(id, customer, foodSeller, myDate, content);
                 comments.add(comment);
             }

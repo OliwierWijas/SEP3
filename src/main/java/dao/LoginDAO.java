@@ -44,7 +44,7 @@ public class LoginDAO implements LoginDAOInterface
         {
           PreparedStatement statement1 = connection.prepareStatement("SELECT * FROM Customer WHERE accountid = ?;");
           statement1.setInt(1, id);
-          ResultSet set = statement.executeQuery();
+          ResultSet set = statement1.executeQuery();
           if(set.next())
           {
             String firstName = set.getString(2);
@@ -72,7 +72,8 @@ public class LoginDAO implements LoginDAOInterface
       e.printStackTrace();
       throw new RuntimeException(e.getMessage());
     }
+    if (dto == null)
+      throw new RuntimeException("Account with the given information does not exist.");
     return dto;
   }
-
 }

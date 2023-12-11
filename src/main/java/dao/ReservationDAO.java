@@ -98,7 +98,7 @@ public class ReservationDAO implements ReservationDAOInterface
         String city = resultSet.getString("city");
         String address = street + " " + number + ", " + city;
         boolean isCompleted = resultSet.getBoolean("isCompleted");
-        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, foodSellerName, address);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, address);
         ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(
             foodOfferId, title, description, price, start, end,
             reservationNumber, foodSeller,
@@ -145,7 +145,7 @@ public class ReservationDAO implements ReservationDAOInterface
         String customerLastName = resultSet.getString("lastname");
         boolean isCompleted = resultSet.getBoolean("isCompleted");
 
-        ReadCustomerDTO customer = new ReadCustomerDTO(customerId, null, null, customerFirstName, customerLastName);
+        ReadCustomerDTO customer = new ReadCustomerDTO(customerId, "", "", customerFirstName, customerLastName);
         ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(
             foodOfferId, title, description, price, start, end,
             reservationNumber, customer,

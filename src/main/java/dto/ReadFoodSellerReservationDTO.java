@@ -63,4 +63,12 @@ public class ReadFoodSellerReservationDTO {
 
     public ReadCustomerDTO getCustomer() {return customer;}
 
+    @Override public boolean equals(Object obj)
+    {
+        if (obj == null || obj.getClass() != getClass())
+            return false;
+
+        ReadFoodSellerReservationDTO other =(ReadFoodSellerReservationDTO) obj;
+        return this.foodOfferId == other.foodOfferId && this.title.equals(other.title) && this.description.equals(other.description) && this.price == other.price && this.startPickUpTime.equals(other.startPickUpTime) && this.endPickUpTime.equals(other.endPickUpTime) && this.reservationNumber == other.reservationNumber && this.customer.equals(other.customer) && this.isCompleted == other.isCompleted;
+    }
 }
