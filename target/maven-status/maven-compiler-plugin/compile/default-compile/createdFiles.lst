@@ -3,6 +3,7 @@ ratingAndComment\DeleteCommentRequest$Builder.class
 ratingAndComment\ReadRatingRequest$Builder.class
 foodOffer\FoodOfferServiceGrpc$FoodOfferServiceDescriptorSupplier.class
 customer\UpdateCustomerPasswordRequest.class
+foodSeller\GetPhotoResponseOrBuilder.class
 dao\FoodSellerDAOInterface.class
 customer\CustomerEmptyResponseOrBuilder.class
 reservation\ReservationServiceGrpc$ReservationServiceStub.class
@@ -10,8 +11,10 @@ foodSeller\GetAllFoodSellersResponse.class
 customer\CustomerServiceGrpc$CustomerServiceBlockingStub.class
 ratingAndComment\RatingAndCommentServiceGrpc$MethodHandlers.class
 ratingAndComment\CreateCommentRequest$Builder.class
+foodSeller\GetPhotoRequest.class
 foodOffer\ReadAvailableFoodOffersRequest$Builder.class
 login\LoginRequestOrBuilder.class
+foodSeller\GetPhotoResponse$1.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest$1.class
 ratingAndComment\ReadAverageRatingByFoodSellerIdRequest$1.class
 customer\UpdateCustomerPhoneNumberRequest$1.class
@@ -35,6 +38,7 @@ dao\ReservationDAO.class
 reservation\DeleteReservationRequest$Builder.class
 foodSeller\CreateFoodSellerRequest.class
 server\FoodSellerServiceImpl.class
+foodSeller\GetPhotoRequest$Builder.class
 shared\MyDate.class
 ratingAndComment\ReadAverageRatingByFoodSellerIdResponse$1.class
 customer\CreateCustomerRequestOrBuilder.class
@@ -47,6 +51,7 @@ customer\CreateCustomerRequest$Builder.class
 dto\ReadFoodOffersDTO.class
 dto\ReadCustomerReservationDTO.class
 foodOffer\ReadAvailableFoodOffersRequestOrBuilder.class
+foodSeller\GetPhotoRequestOrBuilder.class
 customer\CustomerServiceOuterClass$1.class
 login\LoginServiceGrpc$LoginServiceDescriptorSupplier.class
 customer\UpdateCustomerPasswordRequestOrBuilder.class
@@ -65,7 +70,6 @@ foodSeller\UpdateFoodSellerEmailRequest.class
 reservation\CompleteReservationRequestOrBuilder.class
 customer\DeleteCustomerAccountRequestOrBuilder.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest.class
-Test.class
 foodOffer\DeleteFoodOfferRequestOrBuilder.class
 foodSeller\GetAllFoodSellersRequestOrBuilder.class
 reservation\CreateReservationRequest$Builder.class
@@ -100,6 +104,7 @@ server\RatingAndCommentServiceImpl.class
 foodOffer\FoodOfferEmptyResponseOrBuilder.class
 foodOffer\ReadFoodOfferByIdResponse$1.class
 reservation\ReservationServiceGrpc$ReservationServiceBlockingStub.class
+foodSeller\GetPhotoResponse$Builder.class
 reservation\DeleteReservationRequest.class
 foodOffer\FoodOfferServiceGrpc$FoodOfferServiceImplBase.class
 login\LoginServiceGrpc$MethodHandlers.class
@@ -180,6 +185,7 @@ ratingAndComment\DeleteCommentRequest$1.class
 foodSeller\CreateFoodSellerRequestOrBuilder.class
 login\LoginResponse$1.class
 ratingAndComment\ReadCommentsByFoodSellerIdResponse$Builder.class
+foodSeller\GetPhotoRequest$1.class
 foodSeller\UpdateFoodSellerEmailRequestOrBuilder.class
 reservation\DeleteReservationRequestOrBuilder.class
 ratingAndComment\CreateCommentRequestOrBuilder.class
@@ -210,6 +216,7 @@ server\CustomerServiceImpl.class
 foodOffer\ReadFoodOffersByFoodSellerIdRequest$Builder.class
 reservation\ReservationEmptyResponseOrBuilder.class
 server\ReservationServiceImpl.class
+foodSeller\GetPhotoResponse.class
 dao\FoodOfferDAOInterface.class
 foodOffer\DeleteFoodOfferRequest$1.class
 dto\CommentBasicDTO.class
