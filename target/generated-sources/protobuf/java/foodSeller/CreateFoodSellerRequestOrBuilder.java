@@ -71,4 +71,14 @@ public interface CreateFoodSellerRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getPasswordBytes();
+
+  /**
+   * <code>string photo = 8;</code>
+   */
+  java.lang.String getPhoto();
+  /**
+   * <code>string photo = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getPhotoBytes();
 }

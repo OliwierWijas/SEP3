@@ -6,13 +6,15 @@ public class ReadFoodSellerDTO {
     private String phoneNumber;
     private String name;
     private String address;
+    private String photo;
 
-    public ReadFoodSellerDTO(int accountId, String email, String phoneNumber, String name, String address) {
+    public ReadFoodSellerDTO(int accountId, String email, String phoneNumber, String name, String address, String photo) {
         this.accountId = accountId;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.address = address;
+        this.photo = photo;
     }
 
     public void setName(String name)
@@ -43,6 +45,11 @@ public class ReadFoodSellerDTO {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getPhoto()
+    {
+        return photo;
     }
 
     @Override public String toString()

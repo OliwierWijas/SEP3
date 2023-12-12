@@ -14,8 +14,9 @@ public class ReadCustomerReservationDTO {
     private int reservationNumber;
     private ReadFoodSellerDTO foodSeller;
     private boolean isCompleted;
+    private String photo;
 
-    public ReadCustomerReservationDTO(int id, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, int reservationNumber, ReadFoodSellerDTO foodSeller, boolean isCompleted) {
+    public ReadCustomerReservationDTO(int id, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, int reservationNumber, ReadFoodSellerDTO foodSeller, boolean isCompleted, String photo) {
         this.foodOfferId = id;
         this.title = title;
         this.description = description;
@@ -25,6 +26,7 @@ public class ReadCustomerReservationDTO {
         this.reservationNumber = reservationNumber;
         this.foodSeller = foodSeller;
         this.isCompleted = isCompleted;
+        this.photo = photo;
     }
 
     public boolean isCompleted()
@@ -61,6 +63,11 @@ public class ReadCustomerReservationDTO {
     }
 
     public ReadFoodSellerDTO getFoodSeller() {return foodSeller;}
+
+    public String getPhoto()
+    {
+        return photo;
+    }
 
     @Override public String toString()
     {

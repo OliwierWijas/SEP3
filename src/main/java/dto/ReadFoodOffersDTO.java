@@ -13,8 +13,9 @@ public class ReadFoodOffersDTO
     private final MyDate endPickUpTime;
     private final boolean isReserved;
     private final boolean isCompleted;
+    private final String photo;
 
-    public ReadFoodOffersDTO(int id, ReadFoodSellerDTO foodSeller, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, boolean isReserved, boolean isCompleted) {
+    public ReadFoodOffersDTO(int id, ReadFoodSellerDTO foodSeller, String title, String description, double price, MyDate startPickUpTime, MyDate endPickUpTime, boolean isReserved, boolean isCompleted, String photo) {
         this.id = id;
         this.foodSeller = foodSeller;
         this.title = title;
@@ -24,6 +25,7 @@ public class ReadFoodOffersDTO
         this.endPickUpTime = endPickUpTime;
         this.isReserved = isReserved;
         this.isCompleted = isCompleted;
+        this.photo = photo;
     }
 
     public int getId() {
@@ -60,6 +62,11 @@ public class ReadFoodOffersDTO
 
     public MyDate getEndPickUpTime() {
         return endPickUpTime;
+    }
+
+    public String getPhoto()
+    {
+        return photo;
     }
 
     @Override public String toString()

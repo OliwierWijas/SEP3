@@ -28,7 +28,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
   {
     try
     {
-      FoodOfferCreationDTO dto = new FoodOfferCreationDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), MyDate.class), gson.fromJson(request.getEndPickUpTime(), MyDate.class));
+      FoodOfferCreationDTO dto = new FoodOfferCreationDTO(request.getFoodSellerId(), request.getTitle(), request.getDescription(), request.getPrice(), gson.fromJson(request.getStartPickUpTime(), MyDate.class), gson.fromJson(request.getEndPickUpTime(), MyDate.class), request.getPhoto());
       dao.createFoodOffer(dto);
       FoodOfferEmptyResponse response = FoodOfferEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
@@ -117,7 +117,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
       String start = gson.toJson(dto.getStartPickUpTime());
       String end = gson.toJson(dto.getEndPickUpTime());
       String foodSeller = gson.toJson(dto.getFoodSeller());
-      ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setId(dto.getId()).setFoodSeller(foodSeller).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).build();
+      ReadFoodOfferByIdResponse response = ReadFoodOfferByIdResponse.newBuilder().setId(dto.getId()).setFoodSeller(foodSeller).setTitle(dto.getTitle()).setDescription(dto.getDescription()).setPrice(dto.getPrice()).setStartPickUpTime(start).setEndPickUpTime(end).setIsReserved(dto.isReserved()).setIsCompleted(dto.isCompleted()).setPhoto(dto.getPhoto()).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }

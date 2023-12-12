@@ -35,6 +35,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
             statement.setInt(1, dto.getRate());
             statement.setInt(2, dto.getCustomerId());
             statement.setInt(3, dto.getFoodSellerId());
+            System.out.println(dto.getRate());
 
             statement.executeUpdate();
         }catch(Exception e){
@@ -102,7 +103,7 @@ public class RatingAndCommentDAO implements RatingAndCommentDAOInterface{
                 String content = resultSet.getString("text");
 
                 ReadCustomerDTO customer = new ReadCustomerDTO(customerId, "", "", customerFirstName, customerLastName);
-                ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", "", "");
+                ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", "", "", "");
                 ReadCommentDTO comment = new ReadCommentDTO(id, customer, foodSeller, myDate, content);
                 comments.add(comment);
             }

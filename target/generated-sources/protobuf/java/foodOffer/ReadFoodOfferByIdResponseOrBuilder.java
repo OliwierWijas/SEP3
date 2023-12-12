@@ -76,4 +76,14 @@ public interface ReadFoodOfferByIdResponseOrBuilder extends
    * <code>bool isCompleted = 11;</code>
    */
   boolean getIsCompleted();
+
+  /**
+   * <code>string photo = 12;</code>
+   */
+  java.lang.String getPhoto();
+  /**
+   * <code>string photo = 12;</code>
+   */
+  com.google.protobuf.ByteString
+      getPhotoBytes();
 }

@@ -8,8 +8,9 @@ public class FoodSellerCreationDTO {
     private String phoneNumber;
     private String email;
     private String password;
+    private String photo;
 
-    public FoodSellerCreationDTO(String name, String street, int number, String city, String phoneNumber, String email, String password) {
+    public FoodSellerCreationDTO(String name, String street, int number, String city, String phoneNumber, String email, String password, String photo) {
         this.name = name;
         this.street = street;
         this.number = number;
@@ -17,6 +18,7 @@ public class FoodSellerCreationDTO {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+        this.photo = photo;
     }
 
     public String getName() {
@@ -48,5 +50,10 @@ public class FoodSellerCreationDTO {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getPhoto()
+    {
+        return photo;
     }
 }

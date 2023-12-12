@@ -135,6 +135,18 @@ public final class FoodSellerServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               foodSeller.GetAllFoodSellersResponse.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<foodSeller.GetPhotoRequest,
+      foodSeller.GetPhotoResponse> METHOD_GET_FOOD_SELLER_PHOTO =
+      io.grpc.MethodDescriptor.<foodSeller.GetPhotoRequest, foodSeller.GetPhotoResponse>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "foodSeller.FoodSellerService", "GetFoodSellerPhoto"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              foodSeller.GetPhotoRequest.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              foodSeller.GetPhotoResponse.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -226,6 +238,13 @@ public final class FoodSellerServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_GET_ALL_FOOD_SELLERS, responseObserver);
     }
 
+    /**
+     */
+    public void getFoodSellerPhoto(foodSeller.GetPhotoRequest request,
+        io.grpc.stub.StreamObserver<foodSeller.GetPhotoResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_GET_FOOD_SELLER_PHOTO, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -291,6 +310,13 @@ public final class FoodSellerServiceGrpc {
                 foodSeller.GetAllFoodSellersRequest,
                 foodSeller.GetAllFoodSellersResponse>(
                   this, METHODID_GET_ALL_FOOD_SELLERS)))
+          .addMethod(
+            METHOD_GET_FOOD_SELLER_PHOTO,
+            asyncUnaryCall(
+              new MethodHandlers<
+                foodSeller.GetPhotoRequest,
+                foodSeller.GetPhotoResponse>(
+                  this, METHODID_GET_FOOD_SELLER_PHOTO)))
           .build();
     }
   }
@@ -384,6 +410,14 @@ public final class FoodSellerServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GET_ALL_FOOD_SELLERS, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getFoodSellerPhoto(foodSeller.GetPhotoRequest request,
+        io.grpc.stub.StreamObserver<foodSeller.GetPhotoResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_GET_FOOD_SELLER_PHOTO, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -465,6 +499,13 @@ public final class FoodSellerServiceGrpc {
     public foodSeller.GetAllFoodSellersResponse getAllFoodSellers(foodSeller.GetAllFoodSellersRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_ALL_FOOD_SELLERS, getCallOptions(), request);
+    }
+
+    /**
+     */
+    public foodSeller.GetPhotoResponse getFoodSellerPhoto(foodSeller.GetPhotoRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_GET_FOOD_SELLER_PHOTO, getCallOptions(), request);
     }
   }
 
@@ -557,6 +598,14 @@ public final class FoodSellerServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_ALL_FOOD_SELLERS, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<foodSeller.GetPhotoResponse> getFoodSellerPhoto(
+        foodSeller.GetPhotoRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_GET_FOOD_SELLER_PHOTO, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_FOOD_SELLER = 0;
@@ -568,6 +617,7 @@ public final class FoodSellerServiceGrpc {
   private static final int METHODID_DELETE_ACCOUNT = 6;
   private static final int METHODID_GET_FOOD_SELLER_BY_ID = 7;
   private static final int METHODID_GET_ALL_FOOD_SELLERS = 8;
+  private static final int METHODID_GET_FOOD_SELLER_PHOTO = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -622,6 +672,10 @@ public final class FoodSellerServiceGrpc {
           serviceImpl.getAllFoodSellers((foodSeller.GetAllFoodSellersRequest) request,
               (io.grpc.stub.StreamObserver<foodSeller.GetAllFoodSellersResponse>) responseObserver);
           break;
+        case METHODID_GET_FOOD_SELLER_PHOTO:
+          serviceImpl.getFoodSellerPhoto((foodSeller.GetPhotoRequest) request,
+              (io.grpc.stub.StreamObserver<foodSeller.GetPhotoResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -664,6 +718,7 @@ public final class FoodSellerServiceGrpc {
               .addMethod(METHOD_DELETE_ACCOUNT)
               .addMethod(METHOD_GET_FOOD_SELLER_BY_ID)
               .addMethod(METHOD_GET_ALL_FOOD_SELLERS)
+              .addMethod(METHOD_GET_FOOD_SELLER_PHOTO)
               .build();
         }
       }

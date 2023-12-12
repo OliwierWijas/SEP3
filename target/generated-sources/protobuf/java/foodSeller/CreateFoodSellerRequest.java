@@ -22,6 +22,7 @@ public  final class CreateFoodSellerRequest extends
     phoneNumber_ = "";
     email_ = "";
     password_ = "";
+    photo_ = "";
   }
 
   @java.lang.Override
@@ -88,6 +89,12 @@ public  final class CreateFoodSellerRequest extends
             java.lang.String s = input.readStringRequireUtf8();
 
             password_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            photo_ = s;
             break;
           }
         }
@@ -326,6 +333,40 @@ public  final class CreateFoodSellerRequest extends
     }
   }
 
+  public static final int PHOTO_FIELD_NUMBER = 8;
+  private volatile java.lang.Object photo_;
+  /**
+   * <code>string photo = 8;</code>
+   */
+  public java.lang.String getPhoto() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      photo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string photo = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPhotoBytes() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      photo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -359,6 +400,9 @@ public  final class CreateFoodSellerRequest extends
     if (!getPasswordBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, password_);
     }
+    if (!getPhotoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, photo_);
+    }
   }
 
   public int getSerializedSize() {
@@ -387,6 +431,9 @@ public  final class CreateFoodSellerRequest extends
     }
     if (!getPasswordBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, password_);
+    }
+    if (!getPhotoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, photo_);
     }
     memoizedSize = size;
     return size;
@@ -418,6 +465,8 @@ public  final class CreateFoodSellerRequest extends
         .equals(other.getEmail());
     result = result && getPassword()
         .equals(other.getPassword());
+    result = result && getPhoto()
+        .equals(other.getPhoto());
     return result;
   }
 
@@ -442,6 +491,8 @@ public  final class CreateFoodSellerRequest extends
     hash = (53 * hash) + getEmail().hashCode();
     hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
     hash = (53 * hash) + getPassword().hashCode();
+    hash = (37 * hash) + PHOTO_FIELD_NUMBER;
+    hash = (53 * hash) + getPhoto().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -585,6 +636,8 @@ public  final class CreateFoodSellerRequest extends
 
       password_ = "";
 
+      photo_ = "";
+
       return this;
     }
 
@@ -614,6 +667,7 @@ public  final class CreateFoodSellerRequest extends
       result.phoneNumber_ = phoneNumber_;
       result.email_ = email_;
       result.password_ = password_;
+      result.photo_ = photo_;
       onBuilt();
       return result;
     }
@@ -680,6 +734,10 @@ public  final class CreateFoodSellerRequest extends
       }
       if (!other.getPassword().isEmpty()) {
         password_ = other.password_;
+        onChanged();
+      }
+      if (!other.getPhoto().isEmpty()) {
+        photo_ = other.photo_;
         onChanged();
       }
       onChanged();
@@ -1144,6 +1202,75 @@ public  final class CreateFoodSellerRequest extends
   checkByteStringIsUtf8(value);
       
       password_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object photo_ = "";
+    /**
+     * <code>string photo = 8;</code>
+     */
+    public java.lang.String getPhoto() {
+      java.lang.Object ref = photo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        photo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string photo = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPhotoBytes() {
+      java.lang.Object ref = photo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        photo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string photo = 8;</code>
+     */
+    public Builder setPhoto(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      photo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 8;</code>
+     */
+    public Builder clearPhoto() {
+      
+      photo_ = getDefaultInstance().getPhoto();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 8;</code>
+     */
+    public Builder setPhotoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      photo_ = value;
       onChanged();
       return this;
     }

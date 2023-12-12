@@ -56,4 +56,14 @@ public interface CreateFoodOfferRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getEndPickUpTimeBytes();
+
+  /**
+   * <code>string photo = 7;</code>
+   */
+  java.lang.String getPhoto();
+  /**
+   * <code>string photo = 7;</code>
+   */
+  com.google.protobuf.ByteString
+      getPhotoBytes();
 }

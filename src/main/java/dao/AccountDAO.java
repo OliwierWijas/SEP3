@@ -66,12 +66,13 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
       if (keys.next())
       {
         int id = keys.getInt(1);
-        PreparedStatement statement1 = connection.prepareStatement("INSERT INTO FoodSeller(accountId, name, street, number, city) VALUES (?,?,?,?,?);");
+        PreparedStatement statement1 = connection.prepareStatement("INSERT INTO FoodSeller(accountId, name, street, number, city, photo) VALUES (?,?,?,?,?,?);");
         statement1.setInt(1, id);
         statement1.setString(2, dto.getName());
         statement1.setString(3, dto.getStreet());
         statement1.setInt(4, dto.getNumber());
         statement1.setString(5, dto.getCity());
+        statement1.setString(6, dto.getPhoto());
         statement1.executeUpdate();
       }
     }catch(Exception e){
@@ -179,7 +180,7 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         String city = resultSet.getString(10);
         String address = street + " " + number + ", " + city;
 
-        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
+        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address, "");
         return dto;
       }
     }catch(Exception e){
@@ -205,13 +206,32 @@ public class AccountDAO implements CustomerDAOInterface, FoodSellerDAOInterface
         int number = resultSet.getInt(9);
         String city = resultSet.getString(10);
         String address = street + " " + number + ", " + city;
+        String photo = resultSet.getString(11);
 
-        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address);
+        ReadFoodSellerDTO dto = new ReadFoodSellerDTO(accountId, email, phoneNumber, name, address, photo);
         dtoList.add(dto);
       }
     }catch(Exception e){
       throw new RuntimeException(e.getMessage());
     }
     return dtoList;
+  }
+
+  @Override public String getFoodSellerPhoto(int accountId) throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("SELECT photo FROM foodseller WHERE accountid = ?;");
+      statement.setInt(1, accountId);
+      ResultSet resultSet = statement.executeQuery();
+      String photo = "";
+      if (resultSet.next())
+        photo = resultSet.getString(1);
+      return photo;
+    }
+    catch(Exception e){
+      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
+    }
   }
 }

@@ -10,9 +10,10 @@ public class FoodOfferCreationDTO
   private double price;
   private MyDate startPickUpTime;
   private MyDate endPickUpTime;
+  private String photo;
 
   public FoodOfferCreationDTO(int foodSellerId, String title, String description,
-      double price, MyDate startPickUpTime, MyDate endPickUpTime)
+      double price, MyDate startPickUpTime, MyDate endPickUpTime, String photo)
   {
     this.foodSellerId = foodSellerId;
     this.title = title;
@@ -20,6 +21,7 @@ public class FoodOfferCreationDTO
     this.price = price;
     this.startPickUpTime = startPickUpTime;
     this.endPickUpTime = endPickUpTime;
+    this.photo = photo;
   }
 
   public int getFoodSellerId()
@@ -50,5 +52,10 @@ public class FoodOfferCreationDTO
   public MyDate getEndPickUpTime()
   {
     return endPickUpTime;
+  }
+
+  public String getPhoto()
+  {
+    return photo;
   }
 }

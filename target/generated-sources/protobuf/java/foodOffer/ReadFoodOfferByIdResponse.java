@@ -24,6 +24,7 @@ public  final class ReadFoodOfferByIdResponse extends
     endPickUpTime_ = "";
     isReserved_ = false;
     isCompleted_ = false;
+    photo_ = "";
   }
 
   @java.lang.Override
@@ -99,6 +100,12 @@ public  final class ReadFoodOfferByIdResponse extends
           case 88: {
 
             isCompleted_ = input.readBool();
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            photo_ = s;
             break;
           }
         }
@@ -330,6 +337,40 @@ public  final class ReadFoodOfferByIdResponse extends
     return isCompleted_;
   }
 
+  public static final int PHOTO_FIELD_NUMBER = 12;
+  private volatile java.lang.Object photo_;
+  /**
+   * <code>string photo = 12;</code>
+   */
+  public java.lang.String getPhoto() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      photo_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string photo = 12;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPhotoBytes() {
+    java.lang.Object ref = photo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      photo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -369,6 +410,9 @@ public  final class ReadFoodOfferByIdResponse extends
     if (isCompleted_ != false) {
       output.writeBool(11, isCompleted_);
     }
+    if (!getPhotoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, photo_);
+    }
   }
 
   public int getSerializedSize() {
@@ -407,6 +451,9 @@ public  final class ReadFoodOfferByIdResponse extends
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(11, isCompleted_);
     }
+    if (!getPhotoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, photo_);
+    }
     memoizedSize = size;
     return size;
   }
@@ -443,6 +490,8 @@ public  final class ReadFoodOfferByIdResponse extends
         == other.getIsReserved());
     result = result && (getIsCompleted()
         == other.getIsCompleted());
+    result = result && getPhoto()
+        .equals(other.getPhoto());
     return result;
   }
 
@@ -474,6 +523,8 @@ public  final class ReadFoodOfferByIdResponse extends
     hash = (37 * hash) + ISCOMPLETED_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getIsCompleted());
+    hash = (37 * hash) + PHOTO_FIELD_NUMBER;
+    hash = (53 * hash) + getPhoto().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -621,6 +672,8 @@ public  final class ReadFoodOfferByIdResponse extends
 
       isCompleted_ = false;
 
+      photo_ = "";
+
       return this;
     }
 
@@ -652,6 +705,7 @@ public  final class ReadFoodOfferByIdResponse extends
       result.endPickUpTime_ = endPickUpTime_;
       result.isReserved_ = isReserved_;
       result.isCompleted_ = isCompleted_;
+      result.photo_ = photo_;
       onBuilt();
       return result;
     }
@@ -724,6 +778,10 @@ public  final class ReadFoodOfferByIdResponse extends
       }
       if (other.getIsCompleted() != false) {
         setIsCompleted(other.getIsCompleted());
+      }
+      if (!other.getPhoto().isEmpty()) {
+        photo_ = other.photo_;
+        onChanged();
       }
       onChanged();
       return this;
@@ -1196,6 +1254,75 @@ public  final class ReadFoodOfferByIdResponse extends
     public Builder clearIsCompleted() {
       
       isCompleted_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object photo_ = "";
+    /**
+     * <code>string photo = 12;</code>
+     */
+    public java.lang.String getPhoto() {
+      java.lang.Object ref = photo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        photo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string photo = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPhotoBytes() {
+      java.lang.Object ref = photo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        photo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string photo = 12;</code>
+     */
+    public Builder setPhoto(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      photo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 12;</code>
+     */
+    public Builder clearPhoto() {
+      
+      photo_ = getDefaultInstance().getPhoto();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string photo = 12;</code>
+     */
+    public Builder setPhotoBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      photo_ = value;
       onChanged();
       return this;
     }

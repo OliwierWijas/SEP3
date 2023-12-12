@@ -31,7 +31,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
   {
     try
     {
-      FoodSellerCreationDTO dto = new FoodSellerCreationDTO(request.getName(), request.getStreet(), request.getNumber(), request.getCity(), request.getPhoneNumber(), request.getEmail(), request.getPassword());
+      FoodSellerCreationDTO dto = new FoodSellerCreationDTO(request.getName(), request.getStreet(), request.getNumber(), request.getCity(), request.getPhoneNumber(), request.getEmail(), request.getPassword(), request.getPhoto());
       dao.createFoodSeller(dto);
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
@@ -143,6 +143,22 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       ArrayList<ReadFoodSellerDTO> foodSellers = dao.getAllFoodSellers();
       String string = gson.toJson(foodSellers);
       GetAllFoodSellersResponse response = GetAllFoodSellersResponse.newBuilder().setList(string).build();
+      responseObserver.onNext(response);
+      responseObserver.onCompleted();
+    }
+    catch (Exception e)
+    {
+      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+    }
+  }
+
+  @Override public void getFoodSellerPhoto(GetPhotoRequest request,
+      StreamObserver<GetPhotoResponse> responseObserver)
+  {
+    try
+    {
+      String photo = dao.getFoodSellerPhoto(request.getAccountId());
+      GetPhotoResponse response = GetPhotoResponse.newBuilder().setPhoto(photo).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }

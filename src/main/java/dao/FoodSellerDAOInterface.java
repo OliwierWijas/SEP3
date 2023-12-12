@@ -20,4 +20,5 @@ public interface FoodSellerDAOInterface
   void deleteAccount(int accountId) throws SQLException;
   ReadFoodSellerDTO getFoodSellerById(int accountId) throws SQLException;
   ArrayList<ReadFoodSellerDTO> getAllFoodSellers() throws SQLException;
+  String getFoodSellerPhoto(int accountId) throws SQLException;
 }

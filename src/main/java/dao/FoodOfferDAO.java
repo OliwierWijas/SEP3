@@ -34,7 +34,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO FoodOffer (title, description, price, startPickUpTime, endPickUpTime, foodSellerId) VALUES (?,?,?,?,?,?);");
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO FoodOffer (title, description, price, startPickUpTime, endPickUpTime, foodSellerId, photo) VALUES (?,?,?,?,?,?,?);");
       statement.setString(1, dto.getTitle());
       statement.setString(2, dto.getDescription());
       statement.setDouble(3, dto.getPrice());
@@ -49,6 +49,7 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
 
       statement.setTimestamp(5, end);
       statement.setInt(6, dto.getFoodSellerId());
+      statement.setString(7, dto.getPhoto());
       statement.executeUpdate();
     }catch(Exception e){
       e.printStackTrace();
@@ -76,12 +77,13 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         int number = resultSet.getInt("number");
         String city = resultSet.getString("city");
         String foodSellerAddress = street + " " + number + ", " + city;
+        String photo = resultSet.getString(10);
 
         MyDate start = new MyDate(startPickUpTime.getYear() + 1900, startPickUpTime.getMonth() + 1, startPickUpTime.getDate(), startPickUpTime.getHours(), startPickUpTime.getMinutes());
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
 
-        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, foodSellerAddress);
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description, price, start, end, false, false);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, foodSellerAddress, "");
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description, price, start, end, false, false, photo);
         foodOffersDTOS.add(dto);
       }
       return foodOffersDTOS;
@@ -112,8 +114,9 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
         boolean isReserved = resultSet.getBoolean("isreserved");
         boolean isCompleted = resultSet.getBoolean("iscompleted");
-        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", "", "");
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSeller, title, description,price,  start, end, isReserved, isCompleted);
+        String photo = resultSet.getString("photo");
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", "", "", "");
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(foodOfferId, foodSeller, title, description,price,  start, end, isReserved, isCompleted, photo);
         foodOffers.add(dto);
       }
       return foodOffers;
@@ -183,8 +186,9 @@ public class FoodOfferDAO implements FoodOfferDAOInterface
         MyDate end = new MyDate(endPickUpTime.getYear() + 1900, endPickUpTime.getMonth() + 1, endPickUpTime.getDate(), endPickUpTime.getHours(), endPickUpTime.getMinutes());
         boolean isReserved = resultSet.getBoolean("isreserved");
         boolean isCompleted = resultSet.getBoolean("iscompleted");
-        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, null, null, foodSellerName, foodSellerAddress);
-        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description,price,  start, end, isReserved, isCompleted);
+        String photo = resultSet.getString("photo");
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, foodSellerAddress, "");
+        ReadFoodOffersDTO dto = new ReadFoodOffersDTO(id, foodSeller, title, description,price,  start, end, isReserved, isCompleted, photo);
         return dto;
       }
     }catch(Exception e){

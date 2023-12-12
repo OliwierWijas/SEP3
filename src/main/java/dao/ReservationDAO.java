@@ -98,11 +98,12 @@ public class ReservationDAO implements ReservationDAOInterface
         String city = resultSet.getString("city");
         String address = street + " " + number + ", " + city;
         boolean isCompleted = resultSet.getBoolean("isCompleted");
-        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, address);
+        String photo = resultSet.getString(10);
+        ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(foodSellerId, "", "", foodSellerName, address, "");
         ReadCustomerReservationDTO dto = new ReadCustomerReservationDTO(
             foodOfferId, title, description, price, start, end,
             reservationNumber, foodSeller,
-            isCompleted);
+            isCompleted, photo);
         reservationsDtos.add(dto);
       }
       return reservationsDtos;
@@ -143,19 +144,31 @@ public class ReservationDAO implements ReservationDAOInterface
         int customerId = resultSet.getInt("customerid");
         String customerFirstName = resultSet.getString("firstname");
         String customerLastName = resultSet.getString("lastname");
-        boolean isCompleted = resultSet.getBoolean("isCompleted");
 
-        ReadCustomerDTO customer = new ReadCustomerDTO(customerId, "", "", customerFirstName, customerLastName);
+        PreparedStatement statement1 = connection.prepareStatement(
+            "SELECT * FROM account where id = ?");
+        statement1.setInt(1, customerId);
+        ResultSet resultSet1 = statement1.executeQuery();
+        String phoneNumber = "";
+        if (resultSet1.next())
+        {
+          phoneNumber = resultSet1.getString("phonenumber");
+        }
+
+        boolean isCompleted = resultSet.getBoolean("isCompleted");
+        String photo = resultSet.getString(10);
+        ReadCustomerDTO customer = new ReadCustomerDTO(customerId, "", phoneNumber, customerFirstName, customerLastName);
         ReadFoodSellerReservationDTO dto = new ReadFoodSellerReservationDTO(
             foodOfferId, title, description, price, start, end,
             reservationNumber, customer,
-            isCompleted);
+            isCompleted, photo);
         reservationDtos.add(dto);
       }
       return reservationDtos;
     }
     catch (Exception e)
     {
+      e.printStackTrace();
       throw new RuntimeException(e.getMessage());
     }
   }

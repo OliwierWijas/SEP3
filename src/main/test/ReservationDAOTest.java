@@ -85,4 +85,15 @@ public class ReservationDAOTest
     ReadFoodSellerReservationDTO reservation = new ReadFoodSellerReservationDTO(11, "title", "description", 100, start, end, 12, customer , true);
     assertTrue(dtos.contains(reservation));
   }
+
+  @Test
+  void reading_customer_reservations_returns_correct_reservations() throws SQLException
+  {
+    ArrayList<ReadCustomerReservationDTO> dtos = dao.readCustomerReservations(10);
+    MyDate start = new MyDate(2023, 12, 11, 10, 00);
+    MyDate end = new MyDate(2023, 12, 12, 10, 00);
+    ReadFoodSellerDTO foodSeller = new ReadFoodSellerDTO(2, "", "", "Burger Concept", "Main 70, Horsens");
+    ReadCustomerReservationDTO reservation = new ReadCustomerReservationDTO(11, "title", "description", 100, start, end, 12, foodSeller , true);
+    assertTrue(dtos.contains(reservation));
+  }
 }
