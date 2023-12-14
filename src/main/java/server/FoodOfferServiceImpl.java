@@ -36,7 +36,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-        responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -54,7 +54,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -72,7 +72,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -89,7 +89,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -105,7 +105,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -124,7 +124,7 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     catch (Exception e)
     {
       e.printStackTrace();
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 }

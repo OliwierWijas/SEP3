@@ -148,7 +148,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 
@@ -164,7 +164,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
     }
     catch (Exception e)
     {
-      responseObserver.onError(Status.INTERNAL.withDescription("Internal error. Try again later.").asRuntimeException());
+      responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
 }
