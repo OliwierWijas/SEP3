@@ -37,7 +37,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       if(e.getMessage().contains("duplicate key value violates unique constraint \"account_email_key\""))
         responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided email already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
@@ -56,7 +56,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided email already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }    }
 
@@ -68,7 +68,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided email already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }    }
 
@@ -80,7 +80,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided email already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }
@@ -93,7 +93,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    }catch (SQLException e) {
+    }catch (Exception e) {
       responseObserver.onError(Status.INTERNAL.withDescription("Something went wrong. Try again.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }  }
 
@@ -105,7 +105,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       foodSeller.FoodSellerEmptyResponse response = foodSeller.FoodSellerEmptyResponse.newBuilder().build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    } catch (SQLException e)
+    } catch (Exception e)
     {
       responseObserver.onError(Status.ALREADY_EXISTS.withDescription("User with the provided phone number already has an account.").withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }  }
@@ -130,7 +130,7 @@ public class FoodSellerServiceImpl extends FoodSellerServiceGrpc.FoodSellerServi
       GetFoodSellerByIdResponse response = GetFoodSellerByIdResponse.newBuilder().setAccountId(dto.getAccountId()).setEmail(dto.getEmail()).setPhoneNumber(dto.getPhoneNumber()).setName(dto.getName()).setAddress(dto.getAddress()).build();
       responseObserver.onNext(response);
       responseObserver.onCompleted();
-    }catch (SQLException e) {
+    }catch (Exception e) {
       responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }

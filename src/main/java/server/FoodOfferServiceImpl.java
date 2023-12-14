@@ -123,7 +123,6 @@ public class FoodOfferServiceImpl extends FoodOfferServiceGrpc.FoodOfferServiceI
     }
     catch (Exception e)
     {
-      e.printStackTrace();
       responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
   }

@@ -31,7 +31,7 @@ public class LoginServiceImpl extends LoginServiceGrpc.LoginServiceImplBase
       responseObserver.onNext(response);
       responseObserver.onCompleted();
     }
-    catch (SQLException e)
+    catch (Exception e)
     {
       responseObserver.onError(Status.NOT_FOUND.withDescription(e.getMessage()).withCause(new RuntimeException(e.getMessage())).asRuntimeException());
     }
